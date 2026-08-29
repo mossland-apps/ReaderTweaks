@@ -1,0 +1,27 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+---
+
+<BaseLayout
+  title="Newsletter"
+  description="The ReaderTweaks newsletter."
+  path="/subscribe/"
+  noindex
+>
+  <section class="section">
+    <div class="wrap narrow prose">
+      <p class="eyebrow">Newsletter</p>
+      <h1>Almost there</h1>
+      <p>
+        The newsletter is being connected to its mailing service. Once it is live,
+        this page will confirm your subscription. Nothing has been sent yet.
+      </p>
+      <p><a href="/">Back to the homepage</a></p>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .narrow { max-width: 640px; }
+  .prose h1 { font-size: var(--step-3); }
+</style>

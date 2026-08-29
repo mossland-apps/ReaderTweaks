@@ -1,0 +1,56 @@
+---
+import type { DecisionTree } from '../lib/types';
+
+interface Props {
+  tree: DecisionTree;
+}
+const { tree } = Astro.props;
+---
+
+<div class="dtree">
+  <p class="dtree__q">{tree.question}</p>
+  <ul class="dtree__branches">
+    {tree.branches.map((b) => (
+      <li>
+        <a href={b.href}>
+          <span class="dtree__label">{b.label}</span>
+          {b.hint && <span class="dtree__hint">{b.hint}</span>}
+          <span class="dtree__arrow" aria-hidden="true">→</span>
+        </a>
+      </li>
+    ))}
+  </ul>
+</div>
+
+<style>
+  .dtree {
+    border: 1px solid var(--rule-strong);
+    border-radius: var(--radius);
+    background: var(--card);
+    padding: 1.25rem;
+    margin: 1.5rem 0;
+  }
+  .dtree__q {
+    font-weight: 600;
+    font-size: 1.05rem;
+    margin: 0 0 0.9rem;
+  }
+  .dtree__branches { list-style: none; margin: 0; padding: 0; display: grid; gap: 0.5rem; }
+  .dtree__branches a {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    grid-template-areas: 'label arrow' 'hint arrow';
+    align-items: center;
+    gap: 0.1rem 0.75rem;
+    padding: 0.75rem 0.9rem;
+    border: 1px solid var(--rule);
+    border-radius: var(--radius);
+    background: var(--bg);
+    text-decoration: none;
+    color: var(--ink);
+  }
+  .dtree__branches a:hover { border-color: var(--accent); background: var(--accent-tint); }
+  .dtree__label { grid-area: label; font-family: var(--font-sans); font-weight: 600; font-size: 0.95rem; }
+  .dtree__hint { grid-area: hint; font-size: 0.84rem; color: var(--ink-faint); }
+  .dtree__arrow { grid-area: arrow; color: var(--accent-deep); font-size: 1.1rem; }
+</style>

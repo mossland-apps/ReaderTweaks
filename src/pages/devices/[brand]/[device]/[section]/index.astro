@@ -1,0 +1,208 @@
+---
+import { getEntry, render } from 'astro:content';
+import BaseLayout from '../../../../../layouts/BaseLayout.astro';
+import Breadcrumbs from '../../../../../components/Breadcrumbs.astro';
+import CompareTable from '../../../../../components/CompareTable.astro';
+import AccessoryList from '../../../../../components/AccessoryList.astro';
+import {
+  loadBrands,
+  loadDevices,
+  loadArticles,
+  loadAccessories,
+  loadTroubleshooting,
+} from '../../../../../lib/content';
+import { SECTIONS, getSection } from '../../../../../lib/sections';
+import {
+  sectionHref,
+  articlesForSection,
+  overviewArticle,
+} from '../../../../../lib/devices';
+import { comparisonTargets } from '../../../../../lib/compare';
+import { deviceTrail } from '../../../../../lib/breadcrumbs';
+import { formatMonthYear } from '../../../../../lib/format';
+import { breadcrumbJsonLd } from '../../../../../lib/seo';
+
+export async function getStaticPaths() {
+  const devices = await loadDevices();
+  const brands = await loadBrands();
+  const paths = [];
+  for (const device of devices) {
+    const brand = brands.find((b) => b.slug === device.brand)!;
+    for (const section of SECTIONS) {
+      paths.push({
+        params: { brand: device.brand, device: device.slug, section: section.slug },
+        props: { device, brand, sectionSlug: section.slug },
+      });
+    }
+  }
+  return paths;
+}
+
+const { device, brand, sectionSlug } = Astro.props;
+const section = getSection(sectionSlug)!;
+const allDevices = await loadDevices();
+const articles = await loadArticles();
+const list = articlesForSection(articles, device.slug, sectionSlug as any);
+const overview = overviewArticle(articles, device.slug, sectionSlug as any);
+
+const troubleshooting =
+  sectionSlug === 'troubleshooting'
+    ? (await loadTroubleshooting())
+        .filter((t) => t.device === device.slug)
+        .sort((a, b) => b.lastUpdated.getTime() - a.lastUpdated.getTime())
+    : [];
+
+const accessories =
+  sectionSlug === 'accessories'
+    ? (await loadAccessories())
+        .filter((a) => a.devices.length === 0 || a.devices.includes(device.slug))
+        .sort((a, b) => a.name.localeCompare(b.name))
+    : [];
+
+let compareDevices: typeof allDevices = [];
+if (sectionSlug === 'comparisons') {
+  const picked = overview?.compareWith
+    ?.map((slug) => allDevices.find((d) => d.slug === slug))
+    .filter((d): d is (typeof allDevices)[number] => !!d);
+  const targets =
+    picked && picked.length > 0 ? picked : comparisonTargets(device, allDevices, 3);
+  compareDevices = [device, ...targets];
+}
+
+let OverviewBody: any = null;
+if (overview) {
+  const entry = await getEntry('articles', overview.slug);
+  if (entry) OverviewBody = (await render(entry)).Content;
+}
+
+const trail = deviceTrail(brand, device, sectionSlug as any);
+const hasContent =
+  list.length > 0 ||
+  troubleshooting.length > 0 ||
+  accessories.length > 0 ||
+  compareDevices.length > 1 ||
+  OverviewBody;
+---
+
+<BaseLayout
+  title={`${device.shortName} — ${section.label}`}
+  description={`${section.blurb} For the ${device.name}.`}
+  path={sectionHref(device, sectionSlug as any)}
+  activeNav="devices"
+  jsonLd={breadcrumbJsonLd(trail)}
+>
+  <article class="section">
+    <div class={`wrap narrow${sectionSlug === 'comparisons' ? ' narrow--wide' : ''}`}>
+      <Breadcrumbs trail={trail} />
+
+      <header class="sec-head">
+        <p class="eyebrow">{device.name}</p>
+        <h1>{section.label}</h1>
+        <p class="lede">{section.blurb}</p>
+      </header>
+
+      {OverviewBody && (
+        <div class="prose"><OverviewBody /></div>
+      )}
+
+      {compareDevices.length > 1 && (
+        <>
+          <CompareTable devices={compareDevices} />
+          <p class="cmp-note">
+            Specifications only. Fuller head-to-head write-ups are being added —
+            for now, each device's own hub has the detail.
+          </p>
+        </>
+      )}
+
+      {accessories.length > 0 && (
+        <AccessoryList accessories={accessories} devices={allDevices} />
+      )}
+
+      {troubleshooting.length > 0 && (
+        <ul class="article-list">
+          {troubleshooting.map((t) => (
+            <li>
+              <a href={`${sectionHref(device, 'troubleshooting')}${t.pageSlug}/`}>
+                <span class="article-list__title">{t.title}</span>
+                <span class="article-list__summary">{t.summary}</span>
+                <span class="article-list__meta">
+                  {t.software && <span>{t.software}</span>}
+                  <span>{t.difficulty}</span>
+                  <span>Tested {formatMonthYear(t.lastTested)}</span>
+                </span>
+              </a>
+            </li>
+          ))}
+        </ul>
+      )}
+
+      {list.length > 0 && (
+        <ul class="article-list">
+          {list
+            .slice()
+            .sort((a, b) => a.order - b.order)
+            .map((a) => (
+              <li>
+                <a href={`${sectionHref(device, sectionSlug)}${a.pageSlug}/`}>
+                  <span class="article-list__title">{a.title}</span>
+                  <span class="article-list__summary">{a.summary}</span>
+                  <span class="article-list__meta">
+                    {a.difficulty && <span>{a.difficulty}</span>}
+                    {a.estimatedTime && <span>{a.estimatedTime}</span>}
+                    <span>Updated {formatMonthYear(a.lastUpdated)}</span>
+                  </span>
+                </a>
+              </li>
+            ))}
+        </ul>
+      )}
+
+      {!hasContent && (
+        <p class="notice">
+          Articles for <strong>{section.label.toLowerCase()}</strong> on the
+          {' '}{device.shortName} are planned. In the meantime, the
+          {' '}<a href="/guides/">cross-device guides</a> cover the basics.
+        </p>
+      )}
+    </div>
+  </article>
+</BaseLayout>
+
+<style>
+  .narrow { max-width: 760px; }
+  .narrow--wide { max-width: 900px; }
+  .sec-head { padding-bottom: 1.5rem; border-bottom: 1px solid var(--rule); margin-bottom: 1.5rem; }
+  .sec-head h1 { font-size: var(--step-3); }
+  .notice {
+    padding: 1rem 1.15rem;
+    background: var(--bg-sunk);
+    border: 1px solid var(--rule);
+    border-radius: var(--radius);
+    color: var(--ink-soft);
+    font-size: 0.95rem;
+  }
+  .article-list { list-style: none; margin: 2rem 0 0; padding: 0; display: grid; gap: 0.85rem; }
+  .article-list + .article-list { margin-top: 0.85rem; }
+  .article-list a {
+    display: block;
+    padding: 1.1rem 1.2rem;
+    background: var(--card);
+    border: 1px solid var(--rule);
+    border-radius: var(--radius);
+    text-decoration: none;
+    color: var(--ink);
+  }
+  .article-list a:hover { border-color: var(--accent); }
+  .article-list__title { display: block; font-weight: 600; font-size: 1.1rem; }
+  .article-list__summary { display: block; color: var(--ink-soft); font-size: 0.9rem; margin-top: 0.25rem; }
+  .article-list__meta {
+    display: flex;
+    gap: 1rem;
+    margin-top: 0.5rem;
+    font-family: var(--font-sans);
+    font-size: 0.76rem;
+    color: var(--ink-faint);
+  }
+  .cmp-note { font-size: 0.82rem; color: var(--ink-faint); margin-top: 0.9rem; }
+</style>

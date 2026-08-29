@@ -1,0 +1,39 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import DeviceGrid from '../../components/DeviceGrid.astro';
+import { loadBrands, loadDevices } from '../../lib/content';
+import { breadcrumbJsonLd } from '../../lib/seo';
+
+const brands = await loadBrands();
+const devices = await loadDevices();
+---
+
+<BaseLayout
+  title="E-reader devices"
+  description="Every e-reader we cover — Kobo, Kindle, BOOX, PocketBook and reMarkable — with a permanent hub for each model."
+  path="/devices/"
+  activeNav="devices"
+  jsonLd={breadcrumbJsonLd([
+    { name: 'Home', path: '/' },
+    { name: 'Devices', path: '/devices/' },
+  ])}
+>
+  <section class="section">
+    <div class="wrap">
+      <div class="section-head">
+        <p class="eyebrow">Devices</p>
+        <h1>Pick your e-reader</h1>
+        <p class="lede">
+          Every model has a permanent hub with the same seven sections. Start
+          here and drill in.
+        </p>
+      </div>
+      <DeviceGrid brands={brands} devices={devices} />
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .section-head { margin-bottom: 2.5rem; max-width: 55ch; }
+  .section-head h1 { font-size: var(--step-3); }
+</style>

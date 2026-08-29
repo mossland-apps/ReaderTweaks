@@ -1,0 +1,147 @@
+---
+import Callout from './Callout.astro';
+import DecisionTree from './DecisionTree.astro';
+import { formatMonthYear } from '../lib/format';
+import type { TroubleshootingEntry } from '../lib/types';
+
+interface Props {
+  entry: TroubleshootingEntry;
+}
+const { entry } = Astro.props;
+
+const fixId = (i: number) => `fix-${i + 1}`;
+
+const meta: { label: string; value: string }[] = [];
+if (entry.software) {
+  meta.push({
+    label: 'Software',
+    value: entry.softwareVersion ? `${entry.software} ${entry.softwareVersion}` : entry.software,
+  });
+}
+meta.push({ label: 'Difficulty', value: entry.difficulty });
+if (entry.estimatedTime) meta.push({ label: 'Time', value: entry.estimatedTime });
+meta.push({ label: 'Last tested', value: formatMonthYear(entry.lastTested) });
+meta.push({ label: 'Last updated', value: formatMonthYear(entry.lastUpdated) });
+---
+
+<div class="ts">
+  <dl class="ts__meta">
+    {meta.map((m) => (
+      <div><dt>{m.label}</dt><dd>{m.value}</dd></div>
+    ))}
+  </dl>
+
+  <section class="ts__block" aria-labelledby="symptoms">
+    <h2 id="symptoms">Symptoms</h2>
+    <ul class="ts__symptoms">
+      {entry.symptoms.map((s) => <li>{s}</li>)}
+    </ul>
+  </section>
+
+  {entry.beforeYouStart.length > 0 && (
+    <section class="ts__block" aria-labelledby="before">
+      <h2 id="before">Before you start</h2>
+      <ul class="ts__checks">
+        {entry.beforeYouStart.map((c) => <li>{c}</li>)}
+      </ul>
+    </section>
+  )}
+
+  {entry.decisionTree && (
+    <section class="ts__block" aria-labelledby="which-fix">
+      <h2 id="which-fix">Which fix do you need?</h2>
+      <DecisionTree tree={entry.decisionTree} />
+    </section>
+  )}
+
+  <section class="ts__block" aria-labelledby="cause">
+    <h2 id="cause">Most common cause</h2>
+    <p>{entry.mostCommonCause}</p>
+  </section>
+
+  <section class="ts__block" aria-labelledby="fixes">
+    <h2 id="fixes">Fixes</h2>
+    {entry.fixes.map((fix, i) => (
+      <div class="ts__fix" id={fixId(i)}>
+        <h3><span class="ts__fix-n">Fix {i + 1}</span> {fix.title}</h3>
+        {fix.rationale && <p class="ts__why">{fix.rationale}</p>}
+        {fix.steps.length > 0 && (
+          <ol class="ts__fix-steps">
+            {fix.steps.map((s) => <li>{s}</li>)}
+          </ol>
+        )}
+        {fix.note && <Callout kind="note"><p>{fix.note}</p></Callout>}
+      </div>
+    ))}
+  </section>
+
+  {entry.recovery && (
+    <section class="ts__block" aria-labelledby="recovery">
+      <h2 id="recovery">Undo / recovery</h2>
+      <p>{entry.recovery}</p>
+    </section>
+  )}
+
+  {entry.related.length > 0 && (
+    <section class="ts__block" aria-labelledby="related">
+      <h2 id="related">Related guides</h2>
+      <ul class="ts__related">
+        {entry.related.map((r) => (
+          <li><a href={r.href}>{r.text}</a></li>
+        ))}
+      </ul>
+    </section>
+  )}
+</div>
+
+<style>
+  .ts__meta {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+    gap: 0.9rem 1.5rem;
+    margin: 1.5rem 0 0;
+    padding: 1rem 1.2rem;
+    border: 1px solid var(--rule);
+    border-radius: var(--radius);
+    background: var(--card);
+  }
+  .ts__meta div { display: flex; flex-direction: column; gap: 0.15rem; }
+  .ts__meta dt {
+    font-family: var(--font-sans); font-size: 0.68rem; font-weight: 700;
+    letter-spacing: 0.07em; text-transform: uppercase; color: var(--ink-faint);
+  }
+  .ts__meta dd { margin: 0; font-size: 0.92rem; }
+
+  .ts__block { margin-top: 2.5rem; }
+  .ts__block h2 { font-size: var(--step-1); }
+  .ts__symptoms, .ts__checks { padding-left: 1.2rem; }
+  .ts__symptoms li, .ts__checks li { margin-top: 0.35rem; }
+  .ts__checks { list-style: none; padding-left: 0; }
+  .ts__checks li { position: relative; padding-left: 1.7rem; }
+  .ts__checks li::before {
+    content: "";
+    position: absolute; left: 0; top: 0.35em;
+    width: 0.9rem; height: 0.9rem;
+    border: 1.5px solid var(--accent);
+    border-radius: 3px;
+  }
+
+  .ts__fix {
+    margin-top: 1.5rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid var(--rule);
+    scroll-margin-top: 90px;
+  }
+  .ts__fix:first-of-type { border-top: 0; padding-top: 0; }
+  .ts__fix h3 { font-size: 1.15rem; margin-bottom: 0.4rem; }
+  .ts__fix-n {
+    font-family: var(--font-sans); font-size: 0.72rem; font-weight: 700;
+    letter-spacing: 0.06em; text-transform: uppercase; color: var(--accent-deep);
+    display: inline-block; margin-right: 0.4rem;
+  }
+  .ts__why { color: var(--ink-soft); margin: 0 0 0.6rem; }
+  .ts__fix-steps { padding-left: 1.3rem; }
+  .ts__fix-steps li { margin-top: 0.4rem; }
+  .ts__related { padding-left: 1.2rem; }
+  .ts__related li { margin-top: 0.3rem; }
+</style>

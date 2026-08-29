@@ -1,0 +1,175 @@
+---
+/* Sparse, hand-drawn-style line illustrations.
+   Charcoal strokes (currentColor) with the odd forest-green accent line.
+   Kept simple and distinct by silhouette — no doodle clutter. */
+interface Props {
+  name: string;
+  class?: string;
+  title?: string;
+}
+const { name, class: className, title } = Astro.props;
+
+const common = {
+  viewBox: '0 0 120 120',
+  width: 120,
+  height: 120,
+  fill: 'none',
+  stroke: 'currentColor',
+  'stroke-width': 2.4,
+  'stroke-linecap': 'round' as const,
+  'stroke-linejoin': 'round' as const,
+  role: title ? 'img' : 'presentation',
+  'aria-hidden': title ? undefined : 'true',
+};
+---
+
+<svg {...common} class={className} style="max-width:100%;height:auto">
+  {title && <title>{title}</title>}
+
+  {name === 'reader-plain' && (
+    <g>
+      <rect x="34" y="14" width="52" height="92" rx="6" />
+      <line x1="34" y1="94" x2="86" y2="94" />
+      <circle cx="60" cy="100" r="2.4" />
+      <line x1="43" y1="30" x2="77" y2="30" />
+      <line x1="43" y1="40" x2="77" y2="40" />
+      <line x1="43" y1="50" x2="70" y2="50" />
+    </g>
+  )}
+
+  {name === 'reader-buttons' && (
+    <g>
+      <rect x="30" y="14" width="60" height="92" rx="6" />
+      <path class="accent" d="M30 40 v34" stroke="var(--accent)" />
+      <rect x="24" y="44" width="6" height="12" rx="2" />
+      <rect x="24" y="60" width="6" height="12" rx="2" />
+      <line x1="46" y1="30" x2="82" y2="30" />
+      <line x1="46" y1="41" x2="82" y2="41" />
+      <line x1="46" y1="52" x2="74" y2="52" />
+      <circle cx="63" cy="98" r="2.4" />
+    </g>
+  )}
+
+  {name === 'reader-compact' && (
+    <g>
+      <rect x="38" y="24" width="44" height="72" rx="6" />
+      <line x1="46" y1="38" x2="74" y2="38" />
+      <line x1="46" y1="47" x2="74" y2="47" />
+      <line x1="46" y1="56" x2="66" y2="56" />
+      <circle cx="60" cy="88" r="2.2" />
+    </g>
+  )}
+
+  {name === 'reader-mini' && (
+    <g>
+      <rect x="42" y="28" width="36" height="64" rx="6" />
+      <line x1="49" y1="42" x2="71" y2="42" />
+      <line x1="49" y1="50" x2="71" y2="50" />
+      <line x1="49" y1="58" x2="64" y2="58" />
+      <circle cx="60" cy="84" r="2" />
+    </g>
+  )}
+
+  {name === 'reader-large' && (
+    <g>
+      <rect x="26" y="12" width="68" height="96" rx="7" />
+      <line x1="26" y1="12" x2="26" y2="108" class="accent" stroke="var(--accent)" />
+      <line x1="40" y1="30" x2="82" y2="30" />
+      <line x1="40" y1="42" x2="82" y2="42" />
+      <line x1="40" y1="54" x2="72" y2="54" />
+      <line x1="40" y1="66" x2="78" y2="66" />
+      <circle cx="60" cy="98" r="2.4" />
+    </g>
+  )}
+
+  {name === 'reader-tablet' && (
+    <g>
+      <rect x="20" y="18" width="72" height="84" rx="6" />
+      <path d="M84 96 l14 14" class="accent" stroke="var(--accent)" />
+      <line x1="98" y1="110" x2="104" y2="116" class="accent" stroke="var(--accent)" />
+      <line x1="32" y1="34" x2="80" y2="34" />
+      <line x1="32" y1="46" x2="80" y2="46" />
+      <line x1="32" y1="58" x2="66" y2="58" />
+    </g>
+  )}
+
+  {name === 'reader-android' && (
+    <g>
+      <rect x="30" y="14" width="60" height="92" rx="6" />
+      <rect x="24" y="46" width="6" height="12" rx="2" />
+      <rect x="24" y="62" width="6" height="12" rx="2" />
+      <line x1="46" y1="30" x2="82" y2="30" />
+      <line x1="46" y1="41" x2="82" y2="41" />
+      <circle cx="63" cy="70" r="10" class="accent" stroke="var(--accent)" />
+      <path d="M58 70 l4 4 l6 -8" class="accent" stroke="var(--accent)" />
+    </g>
+  )}
+
+  {name === 'stack' && (
+    <g>
+      <rect x="24" y="72" width="72" height="16" rx="2" />
+      <rect x="30" y="54" width="60" height="16" rx="2" />
+      <rect x="26" y="36" width="68" height="16" rx="2" class="accent" stroke="var(--accent)" />
+      <line x1="34" y1="80" x2="46" y2="80" />
+      <line x1="40" y1="62" x2="52" y2="62" />
+    </g>
+  )}
+
+  {name === 'hand-reader' && (
+    <g>
+      <rect x="40" y="16" width="46" height="70" rx="5" />
+      <line x1="48" y1="30" x2="78" y2="30" />
+      <line x1="48" y1="39" x2="78" y2="39" />
+      <line x1="48" y1="48" x2="70" y2="48" />
+      <path d="M30 74 q-8 6 -2 16 q4 8 18 10 h26 q10 0 10 -10 v-6" class="accent" stroke="var(--accent)" />
+    </g>
+  )}
+
+  {name === 'hero-reader' && (
+    <g stroke-width="2.2">
+      <rect x="26" y="10" width="60" height="100" rx="8" />
+      <line x1="26" y1="42" x2="26" y2="86" class="accent" stroke="var(--accent)" stroke-width="3" />
+      <rect x="20" y="48" width="6" height="12" rx="2" />
+      <rect x="20" y="66" width="6" height="12" rx="2" />
+      <line x1="40" y1="26" x2="74" y2="26" />
+      <line x1="40" y1="36" x2="74" y2="36" />
+      <line x1="40" y1="46" x2="74" y2="46" />
+      <line x1="40" y1="56" x2="66" y2="56" />
+      <line x1="40" y1="66" x2="70" y2="66" />
+      <line x1="40" y1="76" x2="58" y2="76" />
+      <circle cx="56" cy="98" r="2.4" />
+    </g>
+  )}
+
+  {name === 'tune' && (
+    <g>
+      <line x1="30" y1="40" x2="90" y2="40" />
+      <line x1="30" y1="60" x2="90" y2="60" />
+      <line x1="30" y1="80" x2="90" y2="80" />
+      <circle cx="48" cy="40" r="6" class="accent" stroke="var(--accent)" />
+      <circle cx="74" cy="60" r="6" class="accent" stroke="var(--accent)" />
+      <circle cx="56" cy="80" r="6" class="accent" stroke="var(--accent)" />
+    </g>
+  )}
+
+  {name === 'wrench' && (
+    <g>
+      <path d="M78 30 a16 16 0 1 0 12 27 l16 16 a6 6 0 0 0 9 -9 l-16 -16 a16 16 0 0 0 -21 -18 l10 10 -6 12 -12 6 -10 -10 a16 16 0 0 0 8 -8z" />
+    </g>
+  )}
+
+  {name === 'check' && (
+    <g>
+      <circle cx="60" cy="60" r="34" />
+      <path d="M45 61 l11 12 l22 -28" class="accent" stroke="var(--accent)" />
+    </g>
+  )}
+
+  {name === 'compass' && (
+    <g>
+      <circle cx="60" cy="60" r="34" />
+      <path d="M60 34 l8 24 l-8 24 l-8 -24 z" class="accent" stroke="var(--accent)" />
+      <circle cx="60" cy="60" r="2.5" />
+    </g>
+  )}
+</svg>

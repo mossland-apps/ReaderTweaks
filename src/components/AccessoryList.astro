@@ -1,0 +1,95 @@
+---
+import type { Accessory, Device } from '../lib/types';
+
+interface Props {
+  accessories: Accessory[];
+  devices: Device[];
+  showDisclosure?: boolean;
+}
+const { accessories, devices, showDisclosure = true } = Astro.props;
+
+const deviceName = (slug: string) => devices.find((d) => d.slug === slug)?.shortName ?? slug;
+
+const categoryLabel: Record<string, string> = {
+  case: 'Cases & covers',
+  stylus: 'Styluses',
+  'reading-light': 'Reading lights',
+  'screen-protector': 'Screen protectors',
+  stand: 'Stands',
+  charger: 'Charging',
+  other: 'Other',
+};
+const order = Object.keys(categoryLabel);
+const groups = order
+  .map((key) => ({
+    key,
+    label: categoryLabel[key],
+    items: accessories.filter((a) => a.category === key),
+  }))
+  .filter((g) => g.items.length > 0);
+---
+
+<div class="acc">
+  {showDisclosure && (
+    <p class="acc__disclosure">
+      Some links below are affiliate links — buying through them may earn
+      ReaderTweaks a small commission at no cost to you.
+    </p>
+  )}
+
+  {groups.map((g) => (
+    <section class="acc__group">
+      <h2>{g.label}</h2>
+      <ul>
+        {g.items.map((a) => (
+          <li class="acc__item">
+            <div class="acc__body">
+              <h3>{a.name}</h3>
+              <p>{a.blurb}</p>
+              <p class="acc__fits">
+                {a.devices.length > 0
+                  ? `Fits: ${a.devices.map(deviceName).join(', ')}`
+                  : 'Universal'}
+                {a.priceBand && <span> · {a.priceBand}</span>}
+              </p>
+            </div>
+            {a.affiliateUrl && (
+              <a
+                class="btn btn--ghost"
+                href={a.affiliateUrl}
+                rel="nofollow sponsored noopener"
+                target="_blank"
+              >
+                View
+              </a>
+            )}
+          </li>
+        ))}
+      </ul>
+    </section>
+  ))}
+</div>
+
+<style>
+  .acc__disclosure { font-size: 0.82rem; color: var(--ink-faint); margin: 1.5rem 0 0; }
+  .acc__group { margin-top: 2rem; }
+  .acc__group h2 { font-size: var(--step-1); margin-bottom: 0.9rem; }
+  .acc__group ul { list-style: none; margin: 0; padding: 0; display: grid; gap: 0.85rem; }
+  .acc__item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1.5rem;
+    padding: 1.1rem 1.25rem;
+    background: var(--card);
+    border: 1px solid var(--rule);
+    border-radius: var(--radius);
+  }
+  .acc__body h3 { font-size: 1.05rem; margin-bottom: 0.3rem; }
+  .acc__body p { margin: 0; font-size: 0.92rem; color: var(--ink-soft); }
+  .acc__fits { font-family: var(--font-sans); font-size: 0.8rem; color: var(--ink-faint); margin-top: 0.5rem !important; }
+  .acc__item .btn { flex: none; }
+  @media (max-width: 600px) {
+    .acc__item { flex-direction: column; align-items: flex-start; gap: 1rem; }
+  }
+</style>

@@ -1,0 +1,5 @@
+# Cloudflare Pages project config.
+# Deploy from a local build with:  npx wrangler pages deploy
+name = "readertweaks"
+pages_build_output_dir = "dist"
+compatibility_date = "2024-11-01"

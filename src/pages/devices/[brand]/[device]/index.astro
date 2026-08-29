@@ -1,0 +1,245 @@
+---
+import BaseLayout from '../../../../layouts/BaseLayout.astro';
+import Illo from '../../../../components/Illo.astro';
+import Breadcrumbs from '../../../../components/Breadcrumbs.astro';
+import {
+  loadBrands,
+  loadDevices,
+  loadArticles,
+  loadAccessories,
+  loadComparisons,
+  loadTroubleshooting,
+} from '../../../../lib/content';
+import { SECTIONS } from '../../../../lib/sections';
+import {
+  deviceHref,
+  sectionHref,
+  deviceStatusLabel,
+  articlesForSection,
+  overviewArticle,
+  relatedComparisons,
+} from '../../../../lib/devices';
+import { deviceTrail } from '../../../../lib/breadcrumbs';
+import { specRows } from '../../../../lib/format';
+import { breadcrumbJsonLd, deviceProductJsonLd } from '../../../../lib/seo';
+
+export async function getStaticPaths() {
+  const devices = await loadDevices();
+  const brands = await loadBrands();
+  return devices.map((device) => ({
+    params: { brand: device.brand, device: device.slug },
+    props: { device, brand: brands.find((b) => b.slug === device.brand)! },
+  }));
+}
+
+const { device, brand } = Astro.props;
+const articles = await loadArticles();
+const comparisons = await loadComparisons();
+const troubleshooting = (await loadTroubleshooting()).filter((t) => t.device === device.slug);
+const accessories = (await loadAccessories()).filter(
+  (a) => a.devices.length === 0 || a.devices.includes(device.slug),
+);
+const rows = specRows(device);
+const related = relatedComparisons(comparisons, device.slug);
+const trail = deviceTrail(brand, device);
+
+// Returns { count, kind } — kind picks the wording on the section card.
+function sectionInfo(slug: string): { count: number; kind: 'articles' | 'ready' } {
+  const list = articlesForSection(articles, device.slug, slug as any);
+  const hasOverview = !!overviewArticle(articles, device.slug, slug as any);
+  if (slug === 'troubleshooting') {
+    return { count: list.length + troubleshooting.length + (hasOverview ? 1 : 0), kind: 'articles' };
+  }
+  if (slug === 'accessories') {
+    return { count: accessories.length + (hasOverview ? 1 : 0), kind: 'ready' };
+  }
+  if (slug === 'comparisons') {
+    return { count: hasOverview || device.status === 'complete' ? 1 : 0, kind: 'ready' };
+  }
+  return { count: list.length + (hasOverview ? 1 : 0), kind: 'articles' };
+}
+
+const koreaderLabel: Record<string, string> = {
+  official: 'Official support',
+  community: 'Community build',
+  experimental: 'Experimental',
+  none: 'Not available',
+};
+---
+
+<BaseLayout
+  title={device.name}
+  description={device.summary}
+  path={deviceHref(device)}
+  activeNav="devices"
+  jsonLd={[breadcrumbJsonLd(trail), deviceProductJsonLd(device, brand.name)]}
+>
+  <article class="section device-hub">
+    <div class="wrap">
+      <Breadcrumbs trail={trail} />
+
+      <header class="hub-head">
+        <div class="hub-head__text">
+          <p class="eyebrow">{brand.name}</p>
+          <h1>{device.name}</h1>
+          <p class="lede">{device.summary}</p>
+          <p class="hub-head__meta">
+            {device.status === 'complete' ? (
+              <span class="chip">Full guides</span>
+            ) : (
+              <span class="chip chip--progress">{deviceStatusLabel(device.status)}</span>
+            )}
+            <span class="chip">KOReader: {koreaderLabel[device.koreaderSupport ?? 'community']}</span>
+          </p>
+        </div>
+        <div class="hub-head__illo" aria-hidden="true">
+          <Illo name={device.illustration ?? 'reader-plain'} />
+        </div>
+      </header>
+
+      {device.status === 'in-progress' && (
+        <p class="notice">
+          The full guide set for the {device.shortName} is still being written.
+          The sections below are in place — check back, or read the
+          <a href="/guides/"> cross-device guides</a> in the meantime.
+        </p>
+      )}
+
+      <h2 class="sr-head">Sections</h2>
+      <ul class="section-cards">
+        {SECTIONS.map((s) => {
+          const { count, kind } = sectionInfo(s.slug);
+          const label =
+            count === 0
+              ? 'Planned'
+              : kind === 'ready'
+                ? 'Ready'
+                : `${count} article${count === 1 ? '' : 's'}`;
+          return (
+            <li>
+              <a href={sectionHref(device, s.slug)}>
+                <span class="section-cards__name">{s.label}</span>
+                <span class="section-cards__blurb">{s.blurb}</span>
+                <span class="section-cards__count">{label}</span>
+              </a>
+            </li>
+          );
+        })}
+      </ul>
+
+      <div class="hub-cols">
+        <section>
+          <h2>Specifications</h2>
+          <table class="spec-table">
+            <tbody>
+              {rows.map((r) => (
+                <tr>
+                  <th scope="row">{r.label}</th>
+                  <td>{r.value}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+          {device.aliases && device.aliases.length > 0 && (
+            <p class="aliases">Also known as: {device.aliases.join(', ')}</p>
+          )}
+        </section>
+
+        <aside>
+          <h2>Comparisons</h2>
+          {related.length > 0 ? (
+            <ul class="cmp-list">
+              {related.map((c) => (
+                <li><a href={`/devices/${brand.slug}/${device.slug}/comparisons/`}>{c.title}</a></li>
+              ))}
+            </ul>
+          ) : (
+            <p class="muted">
+              The <a href={sectionHref(device, 'comparisons')}>comparisons section</a>
+              has a side-by-side spec table and a short overview. Fuller
+              head-to-head write-ups are being added.
+            </p>
+          )}
+        </aside>
+      </div>
+    </div>
+  </article>
+</BaseLayout>
+
+<style>
+  .crumbs { font-family: var(--font-sans); font-size: 0.85rem; color: var(--ink-faint); margin-bottom: 1.5rem; }
+  .crumbs a { color: var(--ink-soft); }
+
+  .hub-head {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 2rem;
+    align-items: start;
+    padding-bottom: 2rem;
+    border-bottom: 1px solid var(--rule);
+  }
+  .hub-head h1 { font-size: var(--step-3); }
+  .hub-head__meta { display: flex; flex-wrap: wrap; gap: 0.5rem; margin: 1rem 0 0; }
+  .hub-head__illo { width: 120px; color: var(--ink); }
+  .hub-head__illo :global(svg) { width: 120px; height: 120px; }
+
+  .notice {
+    margin: 1.5rem 0 0;
+    padding: 1rem 1.15rem;
+    background: var(--accent-tint);
+    border: 1px solid var(--accent);
+    border-radius: var(--radius);
+    font-size: 0.95rem;
+    color: var(--ink-soft);
+  }
+
+  .sr-head, .hub-cols h2 { font-size: var(--step-1); margin-top: 2.5rem; }
+  .sr-head { margin-bottom: 1rem; }
+
+  .section-cards {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0.85rem;
+  }
+  .section-cards a {
+    display: flex;
+    flex-direction: column;
+    gap: 0.3rem;
+    height: 100%;
+    padding: 1rem 1.1rem;
+    background: var(--card);
+    border: 1px solid var(--rule);
+    border-radius: var(--radius);
+    text-decoration: none;
+    color: var(--ink);
+    transition: border-color 0.15s, transform 0.15s;
+  }
+  .section-cards a:hover { border-color: var(--accent); transform: translateY(-2px); }
+  .section-cards__name { font-family: var(--font-serif); font-weight: 600; font-size: 1.05rem; }
+  .section-cards__blurb { font-size: 0.85rem; color: var(--ink-soft); flex: 1; }
+  .section-cards__count {
+    font-family: var(--font-sans);
+    font-size: 0.72rem;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    color: var(--ink-faint);
+  }
+
+  .hub-cols { display: grid; grid-template-columns: 2fr 1fr; gap: 2.5rem; }
+  .spec-table { width: 100%; border-collapse: collapse; font-size: 0.92rem; }
+  .spec-table th, .spec-table td { text-align: left; padding: 0.55rem 0.5rem; border-bottom: 1px solid var(--rule); vertical-align: top; }
+  .spec-table th { width: 42%; color: var(--ink-soft); font-weight: 500; }
+  .aliases { margin-top: 1rem; font-size: 0.85rem; color: var(--ink-faint); }
+  .cmp-list { padding-left: 1.1rem; margin: 0; }
+  .muted { color: var(--ink-faint); font-size: 0.9rem; }
+
+  @media (max-width: 900px) {
+    .hub-head { grid-template-columns: 1fr; }
+    .hub-head__illo { display: none; }
+    .section-cards { grid-template-columns: 1fr; }
+    .hub-cols { grid-template-columns: 1fr; gap: 1.5rem; }
+  }
+</style>

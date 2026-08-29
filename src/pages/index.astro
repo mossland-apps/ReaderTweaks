@@ -1,0 +1,242 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import DeviceGrid from '../components/DeviceGrid.astro';
+import Illo from '../components/Illo.astro';
+import { loadBrands, loadDevices, loadLearn } from '../lib/content';
+import { formatMonthYear } from '../lib/format';
+import { SITE } from '../lib/seo';
+import { breadcrumbJsonLd } from '../lib/seo';
+
+const brands = await loadBrands();
+const devices = await loadDevices();
+const learn = (await loadLearn()).slice(0, 4);
+
+const completeCount = devices.filter((d) => d.status === 'complete').length;
+
+const categoryLabel: Record<string, string> = {
+  concepts: 'Concept',
+  software: 'Software',
+  formats: 'Formats',
+  buying: 'Buying',
+};
+
+const principles = [
+  {
+    illo: 'compass',
+    title: 'Device-first, always',
+    body: 'Every guide is written for a specific model. No "most e-readers" hand-waving — the buttons, menus and quirks are the ones on your device.',
+  },
+  {
+    illo: 'check',
+    title: 'Tried before it is written',
+    body: 'Steps are walked through on the actual hardware and dated. When firmware changes something, the page says so.',
+  },
+  {
+    illo: 'tune',
+    title: 'No login, no fluff',
+    body: 'No account, no pop-ups, no 800-word preamble before the instructions. Read it, do it, close the tab.',
+  },
+];
+
+const jsonLd = [
+  {
+    '@context': 'https://schema.org',
+    '@type': 'WebSite',
+    name: SITE.name,
+    url: `${SITE.url}/`,
+    description: SITE.description,
+  },
+  {
+    '@context': 'https://schema.org',
+    '@type': 'Organization',
+    name: SITE.name,
+    url: `${SITE.url}/`,
+  },
+  breadcrumbJsonLd([{ name: 'Home', path: '/' }]),
+];
+---
+
+<BaseLayout
+  title="Get more out of your e-reader"
+  description={SITE.description}
+  path="/"
+  jsonLd={jsonLd}
+>
+  <section class="hero">
+    <div class="wrap hero__inner">
+      <div class="hero__text">
+        <p class="eyebrow">Kobo · Kindle · BOOX · PocketBook · reMarkable</p>
+        <h1>Get more out of your e-reader.</h1>
+        <p class="lede">
+          Plain, tested setup guides, fixes and customization — organised by the
+          exact device on your nightstand.
+        </p>
+        <div class="hero__actions">
+          <a href="#devices" class="btn">Start with your device</a>
+          <a href="/guides/" class="btn btn--ghost">Browse the guides</a>
+        </div>
+      </div>
+      <div class="hero__art" aria-hidden="true">
+        <Illo name="hero-reader" />
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="devices">
+    <div class="wrap">
+      <div class="section-head">
+        <h2>Start with your device</h2>
+        <p class="section-head__sub">
+          Each model has a permanent home: guides, KOReader, Calibre,
+          customization, troubleshooting, accessories and comparisons.
+        </p>
+      </div>
+      <DeviceGrid brands={brands} devices={devices} />
+    </div>
+  </section>
+
+  <section class="section section--sunk">
+    <div class="wrap">
+      <div class="section-head">
+        <h2>How this site works</h2>
+      </div>
+      <ul class="principles">
+        {principles.map((p) => (
+          <li class="principle">
+            <span class="principle__illo"><Illo name={p.illo} /></span>
+            <h3>{p.title}</h3>
+            <p>{p.body}</p>
+          </li>
+        ))}
+      </ul>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="wrap">
+      <div class="section-head section-head--row">
+        <div>
+          <h2>From the guides</h2>
+          <p class="section-head__sub">Background reading that applies across every device.</p>
+        </div>
+        <a href="/guides/" class="btn btn--ghost">All guides</a>
+      </div>
+      <ul class="learn-cards">
+        {learn.map((a) => (
+          <li>
+            <a class="learn-card" href={`/guides/${a.slug}/`}>
+              <span class="learn-card__cat">{categoryLabel[a.category] ?? a.category}</span>
+              <span class="learn-card__title">{a.title}</span>
+              <span class="learn-card__summary">{a.summary}</span>
+              <span class="learn-card__date">Updated {formatMonthYear(a.lastUpdated)}</span>
+            </a>
+          </li>
+        ))}
+      </ul>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .hero {
+    border-bottom: 1px solid var(--rule);
+    background:
+      radial-gradient(60% 120% at 85% 0%, var(--accent-tint) 0%, transparent 60%);
+  }
+  .hero__inner {
+    display: grid;
+    grid-template-columns: 1.6fr 1fr;
+    gap: 2.5rem;
+    align-items: center;
+    padding-block: clamp(2.75rem, 7vw, 5rem);
+  }
+  .hero h1 {
+    font-size: var(--step-4);
+    margin-bottom: 0.4em;
+  }
+  .hero__actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+    margin-top: 1.75rem;
+  }
+  .hero__art {
+    color: var(--ink);
+    justify-self: center;
+    width: min(240px, 70%);
+  }
+  .hero__art :global(svg) { width: 100%; height: auto; display: block; }
+
+  .section-head { margin-bottom: 2rem; max-width: 60ch; }
+  .section-head--row {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    gap: 1.5rem;
+    max-width: none;
+  }
+  .section-head__sub { color: var(--ink-soft); font-size: var(--step--1); margin: 0.4rem 0 0; }
+
+  .principles {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+  }
+  .principle__illo { display: block; width: 46px; height: 46px; color: var(--ink); margin-bottom: 0.75rem; }
+  .principle__illo :global(svg) { width: 46px; height: 46px; }
+  .principle h3 { font-size: var(--step-1); margin-bottom: 0.35em; }
+  .principle p { margin: 0; color: var(--ink-soft); font-size: 0.95rem; }
+
+  .learn-cards {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+  }
+  .learn-card {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    height: 100%;
+    padding: 1.4rem;
+    background: var(--card);
+    border: 1px solid var(--rule);
+    border-radius: var(--radius);
+    text-decoration: none;
+    color: var(--ink);
+    transition: border-color 0.15s, transform 0.15s, box-shadow 0.15s;
+  }
+  .learn-card:hover {
+    border-color: var(--accent);
+    transform: translateY(-2px);
+    box-shadow: var(--shadow);
+  }
+  .learn-card__cat {
+    font-family: var(--font-sans);
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--accent-deep);
+  }
+  .learn-card__title { font-size: 1.2rem; font-weight: 600; letter-spacing: -0.01em; }
+  .learn-card__summary { font-size: 0.92rem; color: var(--ink-soft); flex: 1; }
+  .learn-card__date {
+    font-family: var(--font-sans);
+    font-size: 0.78rem;
+    color: var(--ink-faint);
+  }
+
+  @media (max-width: 900px) {
+    .hero__inner { grid-template-columns: 1fr; }
+    .hero__art { display: none; }
+    .principles { grid-template-columns: 1fr; gap: 1.75rem; }
+    .learn-cards { grid-template-columns: 1fr; }
+    .section-head--row { flex-direction: column; align-items: flex-start; }
+  }
+</style>

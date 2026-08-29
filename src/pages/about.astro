@@ -1,0 +1,68 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { breadcrumbJsonLd } from '../lib/seo';
+---
+
+<BaseLayout
+  title="About"
+  description="What ReaderTweaks is, how the guides are made, and how the site pays for itself."
+  path="/about/"
+  activeNav="about"
+  jsonLd={breadcrumbJsonLd([
+    { name: 'Home', path: '/' },
+    { name: 'About', path: '/about/' },
+  ])}
+>
+  <section class="section">
+    <div class="wrap narrow prose">
+      <p class="eyebrow">About</p>
+      <h1>ReaderTweaks</h1>
+      <p class="lede">
+        A practical reference for getting more out of e-ink readers — organised by
+        the exact device you own.
+      </p>
+
+      <h2>What this is</h2>
+      <p>
+        Every e-reader has a permanent hub here, and under each one the same seven
+        sections: Guides, KOReader, Calibre, Customization, Troubleshooting,
+        Accessories and Comparisons. The aim is that when you search for a
+        specific problem on a specific device, the page you land on is written for
+        that device and nothing else.
+      </p>
+
+      <h2>How the guides are made</h2>
+      <p>
+        Steps are walked through on the actual hardware and dated. E-reader
+        firmware changes often, so when a step depends on a firmware version the
+        page says which one. If something here is wrong or out of date, that is a
+        bug — see contact below.
+      </p>
+
+      <h2 id="disclosure">Affiliate disclosure</h2>
+      <p>
+        Some links to accessories are affiliate links. If you buy through one,
+        ReaderTweaks may earn a small commission at no extra cost to you. It does
+        not change which products get recommended — picks are based on fit and
+        reliability, not commission.
+      </p>
+
+      <h2 id="contact">Contact</h2>
+      <p>
+        Corrections and suggestions: <a href="mailto:hello@readertweaks.com">hello@readertweaks.com</a>.
+      </p>
+
+      <h2>Independence</h2>
+      <p>
+        ReaderTweaks is independent and not affiliated with Kobo, Amazon, Onyx,
+        PocketBook, reMarkable or any other manufacturer. Product names are used
+        for identification only.
+      </p>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .narrow { max-width: 720px; }
+  .prose h1 { font-size: var(--step-3); }
+</style>

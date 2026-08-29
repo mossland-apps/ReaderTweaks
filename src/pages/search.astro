@@ -1,0 +1,153 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { buildSearchDocs } from '../lib/search-index';
+
+const docs = await buildSearchDocs();
+const initial = Astro.url.searchParams.get('q') ?? '';
+---
+
+<BaseLayout
+  title="Search"
+  description="Search ReaderTweaks — devices, software, guides and fixes."
+  path="/search/"
+  noindex
+>
+  <section class="section">
+    <div class="wrap narrow">
+      <p class="eyebrow">Search</p>
+      <h1>Search</h1>
+      <p class="lede">Devices, software, plugins, guides and fixes — all in one place.</p>
+
+      <form class="search-field" role="search" onsubmit="return false">
+        <label class="visually-hidden" for="q">Search</label>
+        <input
+          id="q"
+          type="search"
+          value={initial}
+          placeholder="Try: Libra Colour Calibre sync"
+          autocomplete="off"
+          autofocus
+        />
+      </form>
+
+      <p id="status" class="status" aria-live="polite"></p>
+      <ul id="results" class="results"></ul>
+      <div id="empty" class="empty" hidden>
+        <p>Nothing matched that. Try fewer or more specific words — a device name plus what you are trying to do.</p>
+      </div>
+    </div>
+  </section>
+
+  <script id="search-docs" type="application/json" set:html={JSON.stringify(docs)} />
+
+  <script>
+    import { rankDocs, type SearchDoc } from '../lib/search';
+
+    const raw = document.getElementById('search-docs')?.textContent ?? '[]';
+    const docs = JSON.parse(raw) as SearchDoc[];
+    const input = document.getElementById('q') as HTMLInputElement;
+    const results = document.getElementById('results') as HTMLUListElement;
+    const status = document.getElementById('status') as HTMLParagraphElement;
+    const empty = document.getElementById('empty') as HTMLDivElement;
+
+    const typeLabel: Record<string, string> = {
+      device: 'Device',
+      section: 'Section',
+      guide: 'Guide',
+      troubleshooting: 'Fix',
+      software: 'Software',
+      accessory: 'Accessory',
+      learn: 'Guide',
+    };
+
+    function render(query: string) {
+      const q = query.trim();
+      if (q === '') {
+        results.innerHTML = '';
+        status.textContent = '';
+        empty.hidden = true;
+        return;
+      }
+      const ranked = rankDocs(q, docs, 40);
+      status.textContent = `${ranked.length} result${ranked.length === 1 ? '' : 's'}`;
+      empty.hidden = ranked.length !== 0;
+      results.innerHTML = ranked
+        .map(
+          (r) => `
+        <li>
+          <a href="${r.url}">
+            <span class="results__kind">${typeLabel[r.type] ?? r.type}</span>
+            <span class="results__title">${escapeHtml(r.title)}</span>
+            ${r.summary ? `<span class="results__sub">${escapeHtml(r.summary)}</span>` : ''}
+          </a>
+        </li>`,
+        )
+        .join('');
+    }
+
+    function escapeHtml(s: string) {
+      return s.replace(/[&<>"']/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c] as string));
+    }
+
+    // Pre-fill from ?q= so shared links land on results.
+    const urlQ = new URLSearchParams(location.search).get('q');
+    if (urlQ && !input.value) input.value = urlQ;
+
+    let t: number | undefined;
+    input.addEventListener('input', () => {
+      window.clearTimeout(t);
+      t = window.setTimeout(() => render(input.value), 80);
+    });
+
+    // Keep the URL shareable.
+    input.addEventListener('change', () => {
+      const u = new URL(location.href);
+      if (input.value) u.searchParams.set('q', input.value);
+      else u.searchParams.delete('q');
+      history.replaceState(null, '', u);
+    });
+
+    render(input.value);
+  </script>
+</BaseLayout>
+
+<style>
+  .narrow { max-width: 720px; }
+  .narrow h1 { font-size: var(--step-3); }
+  .search-field { margin-top: 1rem; }
+  .search-field input {
+    width: 100%;
+    font-family: var(--font-sans);
+    font-size: 1rem;
+    padding: 0.8rem 1rem;
+    border: 1px solid var(--rule-strong);
+    border-radius: var(--radius);
+    background: var(--card);
+    color: var(--ink);
+  }
+  .search-field input:focus-visible { outline: 2px solid var(--accent); outline-offset: 1px; }
+  .status { font-family: var(--font-sans); font-size: 0.82rem; color: var(--ink-faint); margin: 0.9rem 0 0; }
+  .empty { color: var(--ink-soft); font-size: 0.95rem; margin-top: 1rem; }
+
+  .results { list-style: none; margin: 1rem 0 0; padding: 0; display: grid; gap: 0.55rem; }
+  .results :global(a) {
+    display: block;
+    padding: 0.9rem 1.1rem;
+    background: var(--card);
+    border: 1px solid var(--rule);
+    border-radius: var(--radius);
+    text-decoration: none;
+    color: var(--ink);
+  }
+  .results :global(a:hover) { border-color: var(--accent); }
+  .results :global(.results__kind) {
+    font-family: var(--font-sans);
+    font-size: 0.68rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--accent-deep);
+  }
+  .results :global(.results__title) { display: block; font-weight: 600; margin-top: 0.1rem; }
+  .results :global(.results__sub) { display: block; font-size: 0.88rem; color: var(--ink-soft); margin-top: 0.15rem; }
+</style>

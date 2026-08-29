@@ -1,0 +1,197 @@
+---
+import { getCollection, render } from 'astro:content';
+import BaseLayout from '../../../../../layouts/BaseLayout.astro';
+import Breadcrumbs from '../../../../../components/Breadcrumbs.astro';
+import GuideMeta from '../../../../../components/GuideMeta.astro';
+import GuideSteps from '../../../../../components/GuideSteps.astro';
+import TroubleshootingArticle from '../../../../../components/TroubleshootingArticle.astro';
+import { loadBrands, loadDevices, toArticle, toTroubleshooting } from '../../../../../lib/content';
+import { getSection } from '../../../../../lib/sections';
+import { deviceHref, sectionHref } from '../../../../../lib/devices';
+import { deviceTrail } from '../../../../../lib/breadcrumbs';
+import { articleJsonLd, breadcrumbJsonLd, canonical } from '../../../../../lib/seo';
+import { howToJsonLd } from '../../../../../lib/guide';
+
+export async function getStaticPaths() {
+  const devices = await loadDevices();
+  const brands = await loadBrands();
+  const guideEntries = await getCollection(
+    'articles',
+    ({ data }) => !data.draft && data.type !== 'overview',
+  );
+  const tsEntries = await getCollection('troubleshooting', ({ data }) => !data.draft);
+
+  const paths = [];
+
+  for (const entry of guideEntries) {
+    const device = devices.find((d) => d.slug === entry.data.device.slug);
+    if (!device) continue;
+    const brand = brands.find((b) => b.slug === device.brand)!;
+    paths.push({
+      params: {
+        brand: device.brand,
+        device: device.slug,
+        section: entry.data.section,
+        slug: entry.data.pageSlug ?? entry.slug,
+      },
+      props: { kind: 'guide' as const, entry, device, brand },
+    });
+  }
+
+  for (const entry of tsEntries) {
+    const device = devices.find((d) => d.slug === entry.data.device.slug);
+    if (!device) continue;
+    const brand = brands.find((b) => b.slug === device.brand)!;
+    paths.push({
+      params: {
+        brand: device.brand,
+        device: device.slug,
+        section: 'troubleshooting',
+        slug: entry.data.pageSlug ?? entry.slug,
+      },
+      props: { kind: 'troubleshooting' as const, entry, device, brand },
+    });
+  }
+
+  return paths;
+}
+
+const { kind, entry, device, brand } = Astro.props;
+const sectionSlug = kind === 'guide' ? entry.data.section : 'troubleshooting';
+const section = getSection(sectionSlug)!;
+const pageSlug = entry.data.pageSlug ?? entry.slug;
+const path = `${sectionHref(device, sectionSlug)}${pageSlug}/`;
+const { Content } = await render(entry);
+
+const trail = deviceTrail(brand, device, sectionSlug, { name: entry.data.title, path });
+
+let jsonLd: object[] = [breadcrumbJsonLd(trail)];
+let guide = null;
+let testedDevice = undefined;
+
+if (kind === 'guide') {
+  guide = toArticle(entry);
+  testedDevice = guide.testedDevice
+    ? (await loadDevices()).find((d) => d.slug === guide!.testedDevice)
+    : undefined;
+  const howTo = howToJsonLd(guide, path);
+  jsonLd.push(
+    howTo ??
+      articleJsonLd({
+        title: guide.title,
+        description: guide.summary,
+        path,
+        lastUpdated: guide.lastUpdated,
+      }),
+  );
+} else {
+  const ts = toTroubleshooting(entry);
+  jsonLd.push({
+    '@context': 'https://schema.org',
+    '@type': 'TechArticle',
+    headline: ts.title,
+    description: ts.summary,
+    mainEntityOfPage: canonical(path),
+    dateModified: ts.lastUpdated.toISOString(),
+    proficiencyLevel: ts.difficulty,
+  });
+}
+
+const tsEntry = kind === 'troubleshooting' ? toTroubleshooting(entry) : null;
+---
+
+<BaseLayout title={entry.data.title} description={entry.data.summary} path={path} activeNav="devices" jsonLd={jsonLd}>
+  <article class="section">
+    <div class="wrap narrow">
+      <Breadcrumbs trail={trail} />
+
+      <header class="art-head">
+        <p class="eyebrow">{device.name} · {section.label}</p>
+        <h1>{entry.data.title}</h1>
+        <p class="lede">{entry.data.summary}</p>
+      </header>
+
+      {kind === 'guide' && guide && (
+        <>
+          <GuideMeta guide={guide} device={device} testedDevice={testedDevice} />
+
+          {guide.body.trim().length > 0 && (
+            <div class="prose art-intro"><Content /></div>
+          )}
+
+          {guide.prerequisites && guide.prerequisites.length > 0 && (
+            <div class="prereq">
+              <h2>Before you begin</h2>
+              <ul>
+                {guide.prerequisites.map((p) => (
+                  <li><a href={p.href}>{p.text}</a></li>
+                ))}
+              </ul>
+            </div>
+          )}
+
+          {guide.steps && guide.steps.length > 0 && <GuideSteps steps={guide.steps} />}
+
+          {guide.nextStep && (
+            <a class="nextstep" href={guide.nextStep.href}>
+              <span class="nextstep__label">Next</span>
+              <span class="nextstep__text">{guide.nextStep.text}</span>
+              <span aria-hidden="true">→</span>
+            </a>
+          )}
+
+          {guide.related && guide.related.length > 0 && (
+            <div class="related">
+              <h2>Related</h2>
+              <ul>
+                {guide.related.map((r) => (
+                  <li><a href={r.href}>{r.text}</a></li>
+                ))}
+              </ul>
+            </div>
+          )}
+        </>
+      )}
+
+      {kind === 'troubleshooting' && tsEntry && (
+        <>
+          <TroubleshootingArticle entry={tsEntry} />
+          {tsEntry.body.trim().length > 0 && (
+            <div class="prose art-intro"><Content /></div>
+          )}
+        </>
+      )}
+    </div>
+  </article>
+</BaseLayout>
+
+<style>
+  .narrow { max-width: 760px; }
+  .art-head { padding-bottom: 1.5rem; border-bottom: 1px solid var(--rule); margin-bottom: 1.5rem; }
+  .art-head h1 { font-size: var(--step-3); }
+  .art-intro { margin-top: 1.5rem; }
+
+  .prereq, .related { margin-top: 2rem; }
+  .prereq h2, .related h2 { font-size: var(--step-1); margin-bottom: 0.6rem; }
+  .prereq ul, .related ul { padding-left: 1.2rem; }
+  .prereq li, .related li { margin-top: 0.3rem; }
+
+  .nextstep {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    margin-top: 2.5rem;
+    padding: 1rem 1.2rem;
+    border: 1px solid var(--rule-strong);
+    border-radius: var(--radius);
+    background: var(--card);
+    text-decoration: none;
+    color: var(--ink);
+  }
+  .nextstep:hover { border-color: var(--accent); background: var(--accent-tint); }
+  .nextstep__label {
+    font-family: var(--font-sans); font-size: 0.7rem; font-weight: 700;
+    letter-spacing: 0.08em; text-transform: uppercase; color: var(--ink-faint);
+  }
+  .nextstep__text { flex: 1; font-weight: 600; }
+</style>

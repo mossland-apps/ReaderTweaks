@@ -1,0 +1,69 @@
+---
+interface Props {
+  kind: 'warning' | 'tip' | 'note';
+  class?: string;
+}
+const { kind, class: className } = Astro.props;
+const label = { warning: 'Warning', tip: 'Tip', note: 'Note' }[kind];
+---
+
+<aside class={`callout callout--${kind} ${className ?? ''}`}>
+  <span class="callout__label">
+    <span class="callout__mark" aria-hidden="true">
+      {kind === 'warning' && (
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3 2 20h20L12 3Z"/><line x1="12" y1="9" x2="12" y2="14"/><line x1="12" y1="17.5" x2="12" y2="17.5"/></svg>
+      )}
+      {kind === 'tip' && (
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18h6"/><path d="M10 21h4"/><path d="M12 3a6 6 0 0 0-4 10c.7.7 1 1.5 1 2h6c0-.5.3-1.3 1-2a6 6 0 0 0-4-10Z"/></svg>
+      )}
+      {kind === 'note' && (
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><line x1="12" y1="11" x2="12" y2="16"/><line x1="12" y1="8" x2="12" y2="8"/></svg>
+      )}
+    </span>
+    {label}
+  </span>
+  <div class="callout__body"><slot /></div>
+</aside>
+
+<style>
+  .callout {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: 0.35rem 0.75rem;
+    padding: 0.9rem 1.1rem;
+    border: 1px solid var(--rule-strong);
+    border-left-width: 3px;
+    border-radius: var(--radius);
+    background: var(--bg-sunk);
+    margin: 1rem 0;
+    font-size: 0.94rem;
+  }
+  .callout__label {
+    grid-column: 1 / -1;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    font-family: var(--font-sans);
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--ink-faint);
+  }
+  .callout__mark { width: 15px; height: 15px; display: inline-block; }
+  .callout__mark svg { width: 15px; height: 15px; }
+  .callout__body { grid-column: 1 / -1; color: var(--ink-soft); }
+  .callout__body :global(p) { margin: 0; }
+  .callout__body :global(p + p) { margin-top: 0.5rem; }
+
+  .callout--warning { border-left-color: #9a3412; }
+  .callout--warning .callout__label { color: #9a3412; }
+  .callout--tip { border-left-color: var(--accent); }
+  .callout--tip .callout__label { color: var(--accent-deep); }
+  .callout--note { border-left-color: var(--rule-strong); }
+
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme='light']) .callout--warning { border-left-color: #f0a67d; }
+    :root:not([data-theme='light']) .callout--warning .callout__label { color: #f0a67d; }
+  }
+</style>

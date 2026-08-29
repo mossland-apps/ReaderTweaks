@@ -1,0 +1,82 @@
+---
+import { compareRows } from '../lib/compare';
+import { deviceHref } from '../lib/devices';
+import type { Device } from '../lib/types';
+
+interface Props {
+  devices: Device[]; // first entry is the subject device
+}
+const { devices } = Astro.props;
+const rows = compareRows(devices);
+---
+
+<div class="cmp-wrap">
+  <table class="cmp">
+    <thead>
+      <tr>
+        <th scope="col"><span class="visually-hidden">Specification</span></th>
+        {devices.map((d, i) => (
+          <th scope="col" class={i === 0 ? 'cmp__subject' : ''}>
+            <a href={deviceHref(d)}>{d.shortName}</a>
+            <span class="cmp__brand">{d.brand}</span>
+          </th>
+        ))}
+      </tr>
+    </thead>
+    <tbody>
+      {rows.map((row) => (
+        <tr class={row.differs ? 'cmp__diff' : ''}>
+          <th scope="row">{row.label}</th>
+          {row.values.map((v, i) => (
+            <td class={i === 0 ? 'cmp__subject' : ''}>{v}</td>
+          ))}
+        </tr>
+      ))}
+    </tbody>
+  </table>
+</div>
+
+<style>
+  .cmp-wrap { overflow-x: auto; margin: 1.5rem 0 0; border: 1px solid var(--rule); border-radius: var(--radius); }
+  .cmp {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.9rem;
+    min-width: 480px;
+  }
+  .cmp th,
+  .cmp td {
+    text-align: left;
+    padding: 0.6rem 0.9rem;
+    border-bottom: 1px solid var(--rule);
+    vertical-align: top;
+    white-space: nowrap;
+  }
+  .cmp tbody th { white-space: normal; }
+  .cmp thead th {
+    font-family: var(--font-sans);
+    font-size: 0.9rem;
+    font-weight: 600;
+    background: var(--bg-sunk);
+    border-bottom: 1px solid var(--rule-strong);
+  }
+  .cmp thead th a { color: var(--ink); text-decoration: none; }
+  .cmp thead th a:hover { color: var(--accent); }
+  .cmp__brand {
+    display: block;
+    font-weight: 400;
+    font-size: 0.72rem;
+    text-transform: capitalize;
+    color: var(--ink-faint);
+  }
+  .cmp tbody th {
+    font-weight: 500;
+    color: var(--ink-soft);
+    width: 34%;
+  }
+  .cmp tbody tr:last-child th,
+  .cmp tbody tr:last-child td { border-bottom: 0; }
+  .cmp__subject { background: color-mix(in srgb, var(--accent-tint) 55%, transparent); }
+  .cmp__diff th[scope='row'] { color: var(--ink); font-weight: 600; }
+  .cmp__diff td { font-weight: 600; }
+</style>

@@ -1,0 +1,57 @@
+---
+import { formatMonthYear } from '../lib/format';
+import type { Article, Device } from '../lib/types';
+
+interface Props {
+  guide: Article;
+  device: Device;
+  testedDevice?: Device;
+}
+const { guide, device, testedDevice } = Astro.props;
+const tested = testedDevice ?? device;
+
+const rows: { label: string; value: string }[] = [];
+rows.push({ label: 'Tested on', value: tested.name });
+if (guide.software) {
+  rows.push({
+    label: 'Software',
+    value: guide.softwareVersion ? `${guide.software} ${guide.softwareVersion}` : guide.software,
+  });
+}
+if (guide.difficulty) rows.push({ label: 'Difficulty', value: guide.difficulty });
+if (guide.estimatedTime) rows.push({ label: 'Estimated time', value: guide.estimatedTime });
+if (guide.lastTested) rows.push({ label: 'Last tested', value: formatMonthYear(guide.lastTested) });
+rows.push({ label: 'Last updated', value: formatMonthYear(guide.lastUpdated) });
+---
+
+<dl class="guide-meta">
+  {rows.map((r) => (
+    <div>
+      <dt>{r.label}</dt>
+      <dd>{r.value}</dd>
+    </div>
+  ))}
+</dl>
+
+<style>
+  .guide-meta {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 0.9rem 1.5rem;
+    margin: 1.5rem 0 0;
+    padding: 1.1rem 1.25rem;
+    border: 1px solid var(--rule);
+    border-radius: var(--radius);
+    background: var(--card);
+  }
+  .guide-meta div { display: flex; flex-direction: column; gap: 0.15rem; }
+  .guide-meta dt {
+    font-family: var(--font-sans);
+    font-size: 0.7rem;
+    font-weight: 700;
+    letter-spacing: 0.07em;
+    text-transform: uppercase;
+    color: var(--ink-faint);
+  }
+  .guide-meta dd { margin: 0; font-size: 0.95rem; color: var(--ink); }
+</style>

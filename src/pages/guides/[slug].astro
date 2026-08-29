@@ -1,0 +1,56 @@
+---
+import { getCollection, render } from 'astro:content';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { formatMonthYear } from '../../lib/format';
+import { articleJsonLd, breadcrumbJsonLd } from '../../lib/seo';
+
+export async function getStaticPaths() {
+  const entries = await getCollection('learn', ({ data }) => !data.draft);
+  return entries.map((entry) => ({ params: { slug: entry.slug }, props: { entry } }));
+}
+
+const { entry } = Astro.props;
+const { Content } = await render(entry);
+const d = entry.data;
+const path = `/guides/${entry.slug}/`;
+---
+
+<BaseLayout
+  title={d.title}
+  description={d.summary}
+  path={path}
+  activeNav="guides"
+  jsonLd={[
+    breadcrumbJsonLd([
+      { name: 'Home', path: '/' },
+      { name: 'Guides', path: '/guides/' },
+      { name: d.title, path },
+    ]),
+    articleJsonLd({ title: d.title, description: d.summary, path, lastUpdated: d.lastUpdated }),
+  ]}
+>
+  <article class="section">
+    <div class="wrap narrow">
+      <nav class="crumbs" aria-label="Breadcrumb">
+        <a href="/guides/">Guides</a>
+      </nav>
+      <header class="art-head">
+        <h1>{d.title}</h1>
+        <p class="lede">{d.summary}</p>
+        <p class="art-date">Last updated {formatMonthYear(d.lastUpdated)}</p>
+      </header>
+      <div class="prose">
+        <Content />
+      </div>
+    </div>
+  </article>
+</BaseLayout>
+
+<style>
+  .narrow { max-width: 720px; }
+  .crumbs { font-family: var(--font-sans); font-size: 0.85rem; color: var(--ink-faint); margin-bottom: 1.5rem; }
+  .crumbs a { color: var(--ink-soft); }
+  .art-head { padding-bottom: 1.5rem; border-bottom: 1px solid var(--rule); margin-bottom: 2rem; }
+  .art-head h1 { font-size: var(--step-3); }
+  .art-date { font-family: var(--font-sans); font-size: 0.82rem; color: var(--ink-faint); margin: 1rem 0 0; }
+</style>

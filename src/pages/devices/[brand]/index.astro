@@ -1,0 +1,51 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import DeviceGrid from '../../../components/DeviceGrid.astro';
+import { loadBrands, loadDevices } from '../../../lib/content';
+import { breadcrumbJsonLd } from '../../../lib/seo';
+
+export async function getStaticPaths() {
+  const brands = await loadBrands();
+  const devices = await loadDevices();
+  return brands.map((brand) => ({
+    params: { brand: brand.slug },
+    props: { brand, devices: devices.filter((d) => d.brand === brand.slug) },
+  }));
+}
+
+const { brand, devices } = Astro.props;
+const allBrands = await loadBrands();
+---
+
+<BaseLayout
+  title={`${brand.name} e-readers`}
+  description={`${brand.name} e-readers we cover, with a permanent hub for each model. ${brand.blurb}`}
+  path={`/devices/${brand.slug}/`}
+  activeNav="devices"
+  jsonLd={breadcrumbJsonLd([
+    { name: 'Home', path: '/' },
+    { name: 'Devices', path: '/devices/' },
+    { name: brand.name, path: `/devices/${brand.slug}/` },
+  ])}
+>
+  <section class="section">
+    <div class="wrap">
+      <nav class="crumbs" aria-label="Breadcrumb">
+        <a href="/devices/">Devices</a> <span aria-hidden="true">/</span> {brand.name}
+      </nav>
+      <div class="section-head">
+        <p class="eyebrow">{brand.name}</p>
+        <h1>{brand.name} e-readers</h1>
+        <p class="lede">{brand.blurb}</p>
+      </div>
+      <DeviceGrid brands={allBrands.filter((b) => b.slug === brand.slug)} devices={devices} />
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .crumbs { font-family: var(--font-sans); font-size: 0.85rem; color: var(--ink-faint); margin-bottom: 1.5rem; }
+  .crumbs a { color: var(--ink-soft); }
+  .section-head { margin-bottom: 2.5rem; max-width: 55ch; }
+  .section-head h1 { font-size: var(--step-3); }
+</style>

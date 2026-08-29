@@ -1,0 +1,82 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { loadLearn } from '../../lib/content';
+import { formatMonthYear } from '../../lib/format';
+import { breadcrumbJsonLd } from '../../lib/seo';
+
+const learn = await loadLearn();
+const categories = [
+  { key: 'concepts', label: 'Concepts' },
+  { key: 'software', label: 'Software' },
+  { key: 'formats', label: 'Formats' },
+  { key: 'buying', label: 'Buying' },
+] as const;
+---
+
+<BaseLayout
+  title="Guides"
+  description="Cross-device guides for e-reader owners — how KOReader and Calibre work, e-ink explained, file formats and what to buy."
+  path="/guides/"
+  activeNav="guides"
+  jsonLd={breadcrumbJsonLd([
+    { name: 'Home', path: '/' },
+    { name: 'Guides', path: '/guides/' },
+  ])}
+>
+  <section class="section">
+    <div class="wrap">
+      <div class="section-head">
+        <p class="eyebrow">Guides</p>
+        <h1>Background that applies to any e-reader</h1>
+        <p class="lede">
+          The concepts and tools behind the device-specific pages. Start here if
+          you are new to KOReader, Calibre or e-ink in general.
+        </p>
+      </div>
+
+      {categories.map((cat) => {
+        const items = learn.filter((a) => a.category === cat.key);
+        if (items.length === 0) return null;
+        return (
+          <div class="cat" id={cat.key}>
+            <h2>{cat.label}</h2>
+            <ul class="learn-cards">
+              {items.map((a) => (
+                <li>
+                  <a class="learn-card" href={`/guides/${a.slug}/`}>
+                    <span class="learn-card__title">{a.title}</span>
+                    <span class="learn-card__summary">{a.summary}</span>
+                    <span class="learn-card__date">Updated {formatMonthYear(a.lastUpdated)}</span>
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </div>
+        );
+      })}
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .section-head { margin-bottom: 2.5rem; max-width: 58ch; }
+  .section-head h1 { font-size: var(--step-3); }
+  .cat { margin-top: 2.5rem; }
+  .cat h2 { font-size: var(--step-1); margin-bottom: 1rem; }
+  .learn-cards {
+    list-style: none; margin: 0; padding: 0;
+    display: grid; grid-template-columns: repeat(2, 1fr); gap: 1rem;
+  }
+  .learn-card {
+    display: flex; flex-direction: column; gap: 0.5rem; height: 100%;
+    padding: 1.4rem; background: var(--card);
+    border: 1px solid var(--rule); border-radius: var(--radius);
+    text-decoration: none; color: var(--ink);
+    transition: border-color 0.15s, transform 0.15s;
+  }
+  .learn-card:hover { border-color: var(--accent); transform: translateY(-2px); }
+  .learn-card__title { font-size: 1.2rem; font-weight: 600; letter-spacing: -0.01em; }
+  .learn-card__summary { font-size: 0.92rem; color: var(--ink-soft); flex: 1; }
+  .learn-card__date { font-family: var(--font-sans); font-size: 0.78rem; color: var(--ink-faint); }
+  @media (max-width: 760px) { .learn-cards { grid-template-columns: 1fr; } }
+</style>

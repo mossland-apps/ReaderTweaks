@@ -1,0 +1,96 @@
+---
+import Callout from './Callout.astro';
+import type { GuideStep } from '../lib/types';
+
+interface Props {
+  steps: GuideStep[];
+}
+const { steps } = Astro.props;
+---
+
+<ol class="steps">
+  {steps.map((step, i) => (
+    <li class="step">
+      <div class="step__num" aria-hidden="true">{i + 1}</div>
+      <div class="step__content">
+        <p class="step__instruction">{step.instruction}</p>
+        {step.detail && <p class="step__detail">{step.detail}</p>}
+
+        {step.image && (
+          <figure class="step__figure">
+            <img src={step.image} alt={step.imageAlt ?? ''} loading="lazy" />
+          </figure>
+        )}
+
+        {step.command && (
+          <figure class="step__command">
+            <pre><code>{step.command}</code></pre>
+            {step.commandCaption && <figcaption>{step.commandCaption}</figcaption>}
+          </figure>
+        )}
+
+        {step.warning && <Callout kind="warning"><p>{step.warning}</p></Callout>}
+        {step.tip && <Callout kind="tip"><p>{step.tip}</p></Callout>}
+      </div>
+    </li>
+  ))}
+</ol>
+
+<style>
+  .steps { list-style: none; margin: 2rem 0 0; padding: 0; counter-reset: step; }
+  .step {
+    display: grid;
+    grid-template-columns: 2rem 1fr;
+    gap: 1rem;
+    padding: 1.5rem 0;
+    border-top: 1px solid var(--rule);
+  }
+  .step:first-child { border-top: 0; padding-top: 0.5rem; }
+  .step__num {
+    width: 2rem;
+    height: 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 999px;
+    border: 1.5px solid var(--accent);
+    color: var(--accent-deep);
+    font-family: var(--font-sans);
+    font-weight: 700;
+    font-size: 0.9rem;
+  }
+  .step__content { min-width: 0; }
+  .step__instruction { font-weight: 600; font-size: 1.08rem; margin: 0.2rem 0 0; }
+  .step__detail { margin: 0.5rem 0 0; color: var(--ink-soft); }
+  .step__figure { margin: 0.9rem 0 0; }
+  .step__figure img {
+    width: 100%;
+    border: 1px solid var(--rule);
+    border-radius: var(--radius);
+    background: var(--card);
+  }
+  .step__command { margin: 0.9rem 0 0; }
+  .step__command pre {
+    background: var(--bg-sunk);
+    border: 1px solid var(--rule);
+    border-radius: var(--radius);
+    padding: 0.85rem 1rem;
+    overflow-x: auto;
+    margin: 0;
+  }
+  .step__command code {
+    font-family: ui-monospace, "SFMono-Regular", Menlo, Consolas, monospace;
+    font-size: 0.86rem;
+  }
+  .step__command figcaption {
+    font-family: var(--font-sans);
+    font-size: 0.78rem;
+    color: var(--ink-faint);
+    margin-top: 0.4rem;
+  }
+
+  @media (max-width: 560px) {
+    .step { grid-template-columns: 1.6rem 1fr; gap: 0.75rem; }
+    .step__num { width: 1.6rem; height: 1.6rem; font-size: 0.8rem; }
+  }
+</style>

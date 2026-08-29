@@ -1,0 +1,161 @@
+---
+import Illo from './Illo.astro';
+import { deviceHref, deviceStatusLabel, groupDevicesByBrand } from '../lib/devices';
+import type { Brand, Device } from '../lib/types';
+
+interface Props {
+  brands: Brand[];
+  devices: Device[];
+  headingLevel?: 2 | 3;
+}
+const { brands, devices, headingLevel = 2 } = Astro.props;
+const groups = groupDevicesByBrand(devices, brands);
+const Heading = `h${headingLevel}` as 'h2' | 'h3';
+---
+
+<div class="device-grid">
+  {groups.map(({ brand, devices }) => (
+    <section class="brand-band" id={brand.slug}>
+      <div class="brand-band__head">
+        <Heading class="brand-band__name">
+          <a href={`/devices/${brand.slug}/`}>{brand.name}</a>
+        </Heading>
+        <p class="brand-band__blurb">{brand.blurb}</p>
+      </div>
+      <ul class="device-cards">
+        {devices.map((device) => (
+          <li>
+            <a class="device-card" href={deviceHref(device)}>
+              <span class="device-card__illo">
+                <Illo name={device.illustration ?? 'reader-plain'} />
+              </span>
+              <span class="device-card__body">
+                <span class="device-card__name">{device.shortName}</span>
+                <span class="device-card__summary">{device.summary}</span>
+                <span class="device-card__meta">
+                  {device.status === 'in-progress' ? (
+                    <span class="chip chip--progress">{deviceStatusLabel(device.status)}</span>
+                  ) : (
+                    <span class="chip">Full guides</span>
+                  )}
+                  <span class="device-card__year">{device.releaseYear}</span>
+                </span>
+              </span>
+            </a>
+          </li>
+        ))}
+        {Array.from({ length: (3 - (devices.length % 3)) % 3 }).map(() => (
+          <li aria-hidden="true">
+            <span class="device-card device-card--ghost">
+              <span class="device-card__ghost-text">More {brand.name} models being added</span>
+            </span>
+          </li>
+        ))}
+      </ul>
+    </section>
+  ))}
+</div>
+
+<style>
+  .device-grid { display: grid; gap: clamp(2rem, 5vw, 3.25rem); }
+  .brand-band__head {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    gap: 0.4rem 1rem;
+    padding-bottom: 0.9rem;
+    margin-bottom: 1.25rem;
+    border-bottom: 1px solid var(--rule-strong);
+  }
+  .brand-band__name { margin: 0; font-size: var(--step-2); }
+  .brand-band__name a { color: var(--ink); text-decoration: none; }
+  .brand-band__name a:hover { color: var(--accent); }
+  .brand-band__blurb {
+    margin: 0;
+    color: var(--ink-faint);
+    font-size: var(--step--1);
+    max-width: 62ch;
+  }
+
+  .device-cards {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1rem;
+  }
+  .device-card {
+    display: flex;
+    gap: 1rem;
+    height: 100%;
+    padding: 1.1rem;
+    background: var(--card);
+    border: 1px solid var(--rule);
+    border-radius: var(--radius);
+    text-decoration: none;
+    color: var(--ink);
+    transition: border-color 0.15s, transform 0.15s, box-shadow 0.15s;
+  }
+  .device-card:hover {
+    border-color: var(--accent);
+    transform: translateY(-2px);
+    box-shadow: var(--shadow);
+  }
+  .device-card__illo {
+    flex: none;
+    width: 52px;
+    height: 52px;
+    color: var(--ink);
+  }
+  .device-card__illo :global(svg) { width: 52px; height: 52px; }
+  .device-card__body { display: flex; flex-direction: column; gap: 0.3rem; }
+  .device-card__name {
+    font-family: var(--font-serif);
+    font-weight: 600;
+    font-size: 1.1rem;
+    letter-spacing: -0.01em;
+  }
+  .device-card__summary {
+    font-size: 0.9rem;
+    line-height: 1.5;
+    color: var(--ink-soft);
+  }
+  .device-card__meta {
+    margin-top: auto;
+    padding-top: 0.5rem;
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+  }
+  .device-card__year {
+    font-family: var(--font-sans);
+    font-size: 0.78rem;
+    color: var(--ink-faint);
+  }
+
+  .device-card--ghost {
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    border-style: dashed;
+    border-color: var(--rule-strong);
+    background: transparent;
+    box-shadow: none;
+  }
+  .device-card--ghost:hover { transform: none; }
+  .device-card__ghost-text {
+    font-family: var(--font-sans);
+    font-size: 0.82rem;
+    color: var(--ink-faint);
+    max-width: 18ch;
+  }
+
+  @media (max-width: 900px) {
+    .device-cards { grid-template-columns: repeat(2, 1fr); }
+    .device-card--ghost { display: none; }
+  }
+  @media (max-width: 560px) {
+    .device-cards { grid-template-columns: 1fr; }
+  }
+</style>
