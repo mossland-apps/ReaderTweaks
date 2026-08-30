@@ -2,13 +2,14 @@
 name: BOOX Go Color 7
 shortName: Go Color 7
 brand: boox
-status: in-progress
+status: complete
 order: 1
 releaseYear: 2024
-summary: A 7-inch Android colour e-ink reader with page-turn buttons — flexible enough to run any reading app, at the cost of more setup.
+summary: A 7-inch Android colour e-ink reader with page-turn buttons and a microSD slot — it runs any reading app from the Play Store, at the cost of more setup.
 aliases:
   - Onyx BOOX Go Color 7
   - BOOX Go Color 7 Gen II
+  - Go Color 7
 koreaderSupport: official
 illustration: reader-android
 specs:
@@ -38,8 +39,12 @@ specs:
   dimensions: 156 x 137 x 6.4 mm
 ---
 
-The Go Color 7 runs Android, so KOReader, the Kindle app, Kobo app and almost
-anything else install directly. The work is in the settings: refresh modes,
-per-app optimisation and battery behaviour that keep the e-ink experience clean.
+The Go Color 7 runs full Android 13 with the Google Play Store. KOReader, the
+Kindle app, the Kobo app, Libby and almost anything else install directly, and
+there is no ecosystem lock-in. It has physical page-turn buttons, a colour
+screen, a microSD slot, and a speaker.
 
-Full guides for this device are being written.
+The trade-off is setup. Android apps are built for fast LCD screens, so getting
+them to look and feel right on e-ink means learning the refresh modes, the
+per-app optimisation dialog, and which background behaviour to allow. These pages
+cover that, plus KOReader, Calibre, customization and the problems that come up.

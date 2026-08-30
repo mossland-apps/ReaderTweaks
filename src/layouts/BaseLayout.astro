@@ -18,6 +18,10 @@ const fullTitle = path === '/' ? `${SITE.name} — ${SITE.tagline}` : `${title} 
 const desc = truncateMeta(description);
 const url = canonical(path);
 const ldBlocks = jsonLd ? (Array.isArray(jsonLd) ? jsonLd : [jsonLd]) : [];
+
+// Cloudflare Web Analytics — privacy-friendly, cookieless. The beacon only
+// loads when PUBLIC_CF_BEACON_TOKEN is set in the Cloudflare Pages project.
+const cfBeaconToken = (import.meta.env.PUBLIC_CF_BEACON_TOKEN as string | undefined)?.trim();
 ---
 
 <!doctype html>
@@ -58,5 +62,13 @@ const ldBlocks = jsonLd ? (Array.isArray(jsonLd) ? jsonLd : [jsonLd]) : [];
       <slot />
     </main>
     <SiteFooter />
+
+    {cfBeaconToken && (
+      <script
+        defer
+        src="https://static.cloudflareinsights.com/beacon.min.js"
+        data-cf-beacon={JSON.stringify({ token: cfBeaconToken })}
+      />
+    )}
   </body>
 </html>

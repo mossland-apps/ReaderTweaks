@@ -1,0 +1,27 @@
+---
+/**
+ * Standard one-line disclosure for any page that carries monetised product
+ * links. Do not place it on pages that have no affiliate or sponsored links.
+ */
+interface Props {
+  class?: string;
+}
+const { class: className } = Astro.props;
+---
+
+<p class={`affiliate-note ${className ?? ''}`}>
+  ReaderTweaks may earn a commission from purchases made through links on this
+  page. It does not change what we recommend — see our
+  <a href="/about/#funding">editorial policy</a>.
+</p>
+
+<style>
+  .affiliate-note {
+    font-family: var(--font-sans);
+    font-size: 0.82rem;
+    color: var(--ink-faint);
+    margin: 1.5rem 0 0;
+  }
+  .affiliate-note a { color: var(--ink-faint); text-decoration: underline; }
+  .affiliate-note a:hover { color: var(--accent); }
+</style>

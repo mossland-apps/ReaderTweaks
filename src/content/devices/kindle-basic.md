@@ -2,7 +2,7 @@
 name: Kindle (11th generation)
 shortName: Basic
 brand: kindle
-status: in-progress
+status: complete
 order: 3
 releaseYear: 2024
 summary: The smallest, cheapest current Kindle — a 6-inch 300 ppi screen with no waterproofing and no warm light.
@@ -36,9 +36,11 @@ specs:
   dimensions: 157.8 x 108.6 x 8.0 mm
 ---
 
-The entry Kindle is small and light with the same sharp screen as the
-Paperwhite, minus the warm light and water resistance. It is a good, plain
-reader, and the guides here are the same library and troubleshooting workflow
-as the rest of the Kindle line.
+The entry Kindle is small and light with the same sharp 300 ppi screen as the
+Paperwhite, minus the warm light and the water resistance, and with a smaller
+6-inch page. It is a genuinely good plain reader for the price.
 
-Full guides for this device are being written.
+Like every Kindle it is a closed device, so the work is around it: getting your
+own EPUB books on with Send to Kindle or Calibre, deciding what to do about the
+lock-screen ads, and fixing the Wi-Fi, sync and battery problems that come up.
+Running KOReader is possible but involved. These pages cover all of that.

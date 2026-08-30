@@ -1,24 +1,12 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
+import AccessoryList from '../../components/AccessoryList.astro';
+import AffiliateNote from '../../components/AffiliateNote.astro';
 import { loadAccessories, loadDevices } from '../../lib/content';
 import { breadcrumbJsonLd } from '../../lib/seo';
 
 const accessories = await loadAccessories();
 const devices = await loadDevices();
-const deviceName = (slug: string) => devices.find((d) => d.slug === slug)?.shortName ?? slug;
-
-const categoryLabel: Record<string, string> = {
-  case: 'Cases & covers',
-  stylus: 'Styluses',
-  'reading-light': 'Reading lights',
-  'screen-protector': 'Screen protectors',
-  stand: 'Stands',
-  charger: 'Charging',
-  other: 'Other',
-};
-const grouped = Object.entries(categoryLabel)
-  .map(([key, label]) => ({ key, label, items: accessories.filter((a) => a.category === key) }))
-  .filter((g) => g.items.length > 0);
 ---
 
 <BaseLayout
@@ -40,38 +28,10 @@ const grouped = Object.entries(categoryLabel)
           Short, opinionated picks. Device-specific accessories also appear on
           each device's own Accessories tab.
         </p>
-        <p class="disclosure">
-          Some links are affiliate links — buying through them may earn us a small
-          commission at no cost to you.
-        </p>
+        <AffiliateNote />
       </div>
 
-      {grouped.map((g) => (
-        <div class="cat">
-          <h2>{g.label}</h2>
-          <ul class="acc-list">
-            {g.items.map((a) => (
-              <li class="acc">
-                <div class="acc__body">
-                  <h3>{a.name}</h3>
-                  <p>{a.blurb}</p>
-                  <p class="acc__fits">
-                    {a.devices.length > 0
-                      ? `Fits: ${a.devices.map(deviceName).join(', ')}`
-                      : 'Universal'}
-                    {a.priceBand && <span class="acc__price"> · {a.priceBand}</span>}
-                  </p>
-                </div>
-                {a.affiliateUrl && (
-                  <a class="btn btn--ghost" href={a.affiliateUrl} rel="nofollow sponsored noopener" target="_blank">
-                    View
-                  </a>
-                )}
-              </li>
-            ))}
-          </ul>
-        </div>
-      ))}
+      <AccessoryList accessories={accessories} devices={devices} showDisclosure={false} />
     </div>
   </section>
 </BaseLayout>
@@ -79,18 +39,4 @@ const grouped = Object.entries(categoryLabel)
 <style>
   .section-head { margin-bottom: 2.5rem; max-width: 58ch; }
   .section-head h1 { font-size: var(--step-3); }
-  .disclosure { font-size: 0.82rem; color: var(--ink-faint); margin-top: 0.75rem; }
-  .cat { margin-top: 2.5rem; }
-  .cat h2 { font-size: var(--step-1); margin-bottom: 1rem; }
-  .acc-list { list-style: none; margin: 0; padding: 0; display: grid; gap: 0.85rem; }
-  .acc {
-    display: flex; align-items: center; justify-content: space-between; gap: 1.5rem;
-    padding: 1.2rem 1.3rem; background: var(--card);
-    border: 1px solid var(--rule); border-radius: var(--radius);
-  }
-  .acc__body h3 { font-size: 1.1rem; margin-bottom: 0.3rem; }
-  .acc__body p { margin: 0; font-size: 0.92rem; color: var(--ink-soft); }
-  .acc__fits { font-family: var(--font-sans); font-size: 0.8rem; color: var(--ink-faint); margin-top: 0.5rem !important; }
-  .acc .btn { flex: none; }
-  @media (max-width: 620px) { .acc { flex-direction: column; align-items: flex-start; gap: 1rem; } }
 </style>

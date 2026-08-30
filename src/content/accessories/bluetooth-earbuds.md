@@ -6,6 +6,8 @@ devices:
   - pocketbook-verse-pro
   - scribe
   - paperwhite
+  - kindle-basic
+  - boox-go-color-7
 vendor: amazon
 priceBand: $
 blurb: Any well-reviewed Bluetooth earbuds or headphones. Readers with no speaker or headphone jack rely on wireless audio for audiobooks and text-to-speech.

@@ -1,0 +1,134 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { breadcrumbJsonLd } from '../lib/seo';
+
+const updated = 'August 2026';
+---
+
+<BaseLayout
+  title="Privacy"
+  description="What data ReaderTweaks collects, why, and your choices. Short version: as little as possible."
+  path="/privacy/"
+  jsonLd={breadcrumbJsonLd([
+    { name: 'Home', path: '/' },
+    { name: 'Privacy', path: '/privacy/' },
+  ])}
+>
+  <section class="section">
+    <div class="wrap narrow prose">
+      <p class="eyebrow">Privacy</p>
+      <h1>Privacy policy</h1>
+      <p class="lede">
+        The short version: ReaderTweaks collects as little as it can. There are no
+        accounts, we do not sell or share your data for marketing, and any
+        advertising the site carries is handled without profiling you across the
+        web.
+      </p>
+      <p class="updated">Last updated: {updated}</p>
+
+      <h2>What we collect</h2>
+      <p>Only two things, and only when you choose to take part.</p>
+      <ul>
+        <li>
+          <strong>Newsletter email address.</strong> If you sign up for the
+          newsletter, your email address is stored by our email provider,
+          <a href="https://kit.com" rel="noopener" target="_blank">Kit</a> (formerly
+          ConvertKit), so we can send you the newsletter. We ask you to confirm
+          the address by email before anything is sent. You can unsubscribe from
+          the link in any issue, which removes you from the list.
+        </li>
+        <li>
+          <strong>Anonymous traffic statistics.</strong> We use
+          <a href="https://www.cloudflare.com/web-analytics/" rel="noopener" target="_blank">
+            Cloudflare Web Analytics</a>, which counts page views and referrers
+          without cookies and without building a profile of you. It does not
+          identify individual visitors.
+        </li>
+      </ul>
+      <p>
+        We do not use Google Analytics or social-media tracking pixels.
+      </p>
+
+      <h2>Advertising and sponsorships</h2>
+      <p>
+        ReaderTweaks is a commercial publication and may carry advertising and
+        clearly labelled sponsorships, including in the newsletter. It does not
+        currently run display advertising. If it does in future, any ad or
+        sponsor slot will be labelled, and we will not add third-party ad
+        networks that track you from site to site without updating this page to
+        say what they collect and giving you a choice where the law requires one.
+        How advertising relates to what we recommend is covered in the
+        <a href="/about/#funding">editorial policy</a>.
+      </p>
+
+      <h2>Affiliate links</h2>
+      <p>
+        Some links to accessories go to Amazon and include our Amazon Associates
+        tag. If you buy something after clicking one, Amazon pays us a small
+        commission at no extra cost to you. Amazon may set its own cookie when
+        you follow the link; that is governed by
+        <a href="https://www.amazon.com/gp/help/customer/display.html?nodeId=468496" rel="noopener" target="_blank">
+          Amazon's privacy notice</a>, not ours. We never see who clicked or what
+        they bought — only an aggregate commission total. As set out in the
+        <a href="/about/#funding">editorial policy</a>, affiliate income does not
+        decide which products we recommend.
+      </p>
+
+      <h2>Cookies</h2>
+      <p>
+        ReaderTweaks itself sets no cookies. Cloudflare may set a strictly
+        functional cookie to keep the site secure and fast. If you interact with
+        an embedded service — following an Amazon link, or submitting the
+        newsletter form — that service may set its own cookies under its own
+        policy.
+      </p>
+
+      <h2>Where the site is hosted</h2>
+      <p>
+        The site is served by Cloudflare Pages. Your request reaches Cloudflare's
+        network, which processes connection data such as your IP address to
+        deliver the page and block abuse. Cloudflare acts as our data processor
+        for this.
+      </p>
+
+      <h2>Your choices and rights</h2>
+      <ul>
+        <li>Unsubscribe from the newsletter at any time using the link in any email.</li>
+        <li>
+          Ask us to delete your email address from our list, or to tell you what
+          we hold, by writing to the address below.
+        </li>
+        <li>
+          Depending on where you live (for example the EU, UK, or California) you
+          may have additional rights to access, correct, or delete your data. We
+          will honour those requests.
+        </li>
+      </ul>
+
+      <h2>Children</h2>
+      <p>
+        ReaderTweaks is a technical reference for adults and is not directed at
+        children under 13. We do not knowingly collect information from them.
+      </p>
+
+      <h2>Changes</h2>
+      <p>
+        If this policy changes, the date at the top will change with it. Material
+        changes will be noted in the newsletter.
+      </p>
+
+      <h2>Contact</h2>
+      <p>
+        Questions or requests:
+        <a href="mailto:hello@readertweaks.com">hello@readertweaks.com</a>.
+      </p>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .narrow { max-width: 720px; }
+  .prose h1 { font-size: var(--step-3); }
+  .prose h2 { margin-top: 2rem; }
+  .updated { font-family: var(--font-sans); font-size: 0.82rem; color: var(--ink-faint); margin-top: 0.5rem; }
+</style>

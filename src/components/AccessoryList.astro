@@ -1,5 +1,7 @@
 ---
 import type { Accessory, Device } from '../lib/types';
+import { amazonSearch, withAmazonTag } from '../lib/affiliate';
+import AffiliateNote from './AffiliateNote.astro';
 
 interface Props {
   accessories: Accessory[];
@@ -7,6 +9,11 @@ interface Props {
   showDisclosure?: boolean;
 }
 const { accessories, devices, showDisclosure = true } = Astro.props;
+
+// Prefer a specific product link if one is set; otherwise a tagged Amazon
+// search for the item's name. Either way the associate tag is applied.
+const buyLink = (a: Accessory) =>
+  a.affiliateUrl ? withAmazonTag(a.affiliateUrl) : amazonSearch(a.name);
 
 const deviceName = (slug: string) => devices.find((d) => d.slug === slug)?.shortName ?? slug;
 
@@ -30,12 +37,7 @@ const groups = order
 ---
 
 <div class="acc">
-  {showDisclosure && (
-    <p class="acc__disclosure">
-      Some links below are affiliate links — buying through them may earn
-      ReaderTweaks a small commission at no cost to you.
-    </p>
-  )}
+  {showDisclosure && <AffiliateNote />}
 
   {groups.map((g) => (
     <section class="acc__group">
@@ -53,16 +55,14 @@ const groups = order
                 {a.priceBand && <span> · {a.priceBand}</span>}
               </p>
             </div>
-            {a.affiliateUrl && (
-              <a
-                class="btn btn--ghost"
-                href={a.affiliateUrl}
-                rel="nofollow sponsored noopener"
-                target="_blank"
-              >
-                View
-              </a>
-            )}
+            <a
+              class="btn btn--ghost"
+              href={buyLink(a)}
+              rel="nofollow sponsored noopener"
+              target="_blank"
+            >
+              Find on Amazon
+            </a>
           </li>
         ))}
       </ul>
@@ -71,7 +71,6 @@ const groups = order
 </div>
 
 <style>
-  .acc__disclosure { font-size: 0.82rem; color: var(--ink-faint); margin: 1.5rem 0 0; }
   .acc__group { margin-top: 2rem; }
   .acc__group h2 { font-size: var(--step-1); margin-bottom: 0.9rem; }
   .acc__group ul { list-style: none; margin: 0; padding: 0; display: grid; gap: 0.85rem; }

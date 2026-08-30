@@ -5,7 +5,7 @@ import { breadcrumbJsonLd } from '../lib/seo';
 
 <BaseLayout
   title="About"
-  description="What ReaderTweaks is, how the guides are made, and how the site pays for itself."
+  description="What ReaderTweaks is, how the guides are tested, and how the site is funded — including advertising, affiliate links and review hardware."
   path="/about/"
   activeNav="about"
   jsonLd={breadcrumbJsonLd([
@@ -19,7 +19,9 @@ import { breadcrumbJsonLd } from '../lib/seo';
       <h1>ReaderTweaks</h1>
       <p class="lede">
         A practical reference for getting more out of e-ink readers — organised by
-        the exact device you own.
+        the exact device you own. It is an independent publication, and it is a
+        commercial one: advertising, affiliate links and other partnerships help
+        pay for it, but they do not buy our conclusions.
       </p>
 
       <h2>What this is</h2>
@@ -31,32 +33,100 @@ import { breadcrumbJsonLd } from '../lib/seo';
         that device and nothing else.
       </p>
 
-      <h2>How the guides are made</h2>
+      <h2 id="testing">How the guides are tested</h2>
       <p>
         Steps are walked through on the actual hardware and dated. E-reader
         firmware changes often, so when a step depends on a firmware version the
         page says which one. If something here is wrong or out of date, that is a
         bug — see contact below.
       </p>
-
-      <h2 id="disclosure">Affiliate disclosure</h2>
       <p>
-        Some links to accessories are affiliate links. If you buy through one,
-        ReaderTweaks may earn a small commission at no extra cost to you. It does
-        not change which products get recommended — picks are based on fit and
-        reliability, not commission.
+        The hardware we test on is a mix: devices we have bought, devices
+        supplied or loaned by manufacturers or retailers, and accessories sent
+        for evaluation. We do not commit to buying every device independently.
+        What a supplied unit does not come with is a promise of coverage, a
+        positive verdict, or any right to see a piece before it goes up. We write
+        the same way whether we own the device or borrowed it.
       </p>
 
-      <h2 id="contact">Contact</h2>
+      <h2 id="funding">How ReaderTweaks is funded</h2>
       <p>
-        Corrections and suggestions: <a href="mailto:hello@readertweaks.com">hello@readertweaks.com</a>.
+        ReaderTweaks is a commercial publication. The following pay, or may in
+        future pay, for the work:
       </p>
 
-      <h2>Independence</h2>
+      <h3>Affiliate links</h3>
       <p>
-        ReaderTweaks is independent and not affiliated with Kobo, Amazon, Onyx,
-        PocketBook, reMarkable or any other manufacturer. Product names are used
-        for identification only.
+        Accessory links go to Amazon and carry our Amazon Associates tag. If you
+        buy through one, we may earn a small commission at no extra cost to you.
+        We recommend the accessory because it is the right one, and disclose the
+        link because you should know it earns us something — those two facts sit
+        together fine. The <a href="/privacy/">privacy policy</a> covers the data
+        side.
+      </p>
+
+      <h3>Advertising and sponsorships</h3>
+      <p>
+        We may run ordinary display advertising and clearly labelled
+        sponsorships, including in the newsletter. Anything paid for is marked as
+        such and is kept visually distinct from independent editorial content.
+        Buying ad space or a sponsor slot gets you exactly that. It does not get
+        a better review, a higher ranking, softened troubleshooting advice, or a
+        guaranteed recommendation, and we will say so to anyone who asks for one.
+      </p>
+
+      <h3>Review units and loaned hardware</h3>
+      <p>
+        We accept free review products, manufacturer-supplied and loaned devices,
+        and accessories provided for testing. Where a supplied or loaned product
+        is central to an article or review, we say so on that page. Providing the
+        hardware does not earn a review, favourable coverage, editorial approval
+        rights, or a veto. If a device is disappointing, we will write that.
+      </p>
+
+      <h3>Commercial and referral partnerships</h3>
+      <p>
+        We may enter direct advertising deals, referral arrangements and other
+        commercial partnerships with retailers, manufacturers and
+        software makers. The same line applies to all of them: a partnership can
+        fund the site, but it cannot decide what we conclude about a product.
+      </p>
+
+      <h2 id="boundaries">What we will not do</h2>
+      <p>No amount of money buys any of the following:</p>
+      <ul>
+        <li>A positive review, or guaranteed favourable coverage.</li>
+        <li>A ranking, or the top spot in an independent comparison.</li>
+        <li>A change to troubleshooting advice.</li>
+        <li>A recommendation that is not disclosed as sponsored.</li>
+        <li>
+          Manufacturer control over an editorial conclusion, pre-approval of an
+          independent review, or a veto over legitimate criticism.
+        </li>
+      </ul>
+
+      <h2 id="contact">Media, advertising and partnerships</h2>
+      <p>
+        Advertisers, manufacturers, retailers, PR and media contacts, and
+        potential partners are welcome to get in touch:
+        <a href="mailto:hello@readertweaks.com">hello@readertweaks.com</a>. We are
+        happy to talk about ad placements, sponsorships, review units and
+        partnerships.
+      </p>
+      <p>
+        We do not sell positive reviews, guaranteed verdicts, or placement in a
+        ranking. If that is what you are after, we are not the right site.
+      </p>
+      <p>
+        Corrections and reader suggestions go to the same address.
+      </p>
+
+      <h2 id="independence">Independence and ownership</h2>
+      <p>
+        ReaderTweaks is independently owned and not affiliated with Kobo, Amazon,
+        Onyx, PocketBook, reMarkable or any other manufacturer. Product names are
+        used for identification only. No manufacturer or advertiser has a stake
+        in the site or a say in what it publishes.
       </p>
     </div>
   </section>
@@ -65,4 +135,6 @@ import { breadcrumbJsonLd } from '../lib/seo';
 <style>
   .narrow { max-width: 720px; }
   .prose h1 { font-size: var(--step-3); }
+  .prose h2 { margin-top: 2.25rem; }
+  .prose h3 { margin-top: 1.5rem; }
 </style>

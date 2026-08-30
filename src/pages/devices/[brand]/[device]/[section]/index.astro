@@ -109,8 +109,10 @@ const hasContent =
         <>
           <CompareTable devices={compareDevices} />
           <p class="cmp-note">
-            Specifications only. Fuller head-to-head write-ups are being added —
-            for now, each device's own hub has the detail.
+            Specifications only, drawn from each device's data. Fuller head-to-head
+            write-ups are being added — for now, each device's own hub has the
+            detail. Comparisons and rankings here are independent and never paid
+            for; see our <a href="/about/#funding">editorial policy</a>.
           </p>
         </>
       )}
@@ -204,5 +206,7 @@ const hasContent =
     font-size: 0.76rem;
     color: var(--ink-faint);
   }
-  .cmp-note { font-size: 0.82rem; color: var(--ink-faint); margin-top: 0.9rem; }
+  .cmp-note { font-size: 0.82rem; color: var(--ink-faint); margin-top: 0.9rem; line-height: 1.6; }
+  .cmp-note a { color: var(--ink-faint); text-decoration: underline; }
+  .cmp-note a:hover { color: var(--accent); }
 </style>
