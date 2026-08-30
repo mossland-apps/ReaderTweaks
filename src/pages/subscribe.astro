@@ -3,19 +3,41 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 ---
 
 <BaseLayout
-  title="Newsletter"
-  description="The ReaderTweaks newsletter."
+  title="Confirm your subscription"
+  description="One more step to join the ReaderTweaks newsletter."
   path="/subscribe/"
   noindex
 >
   <section class="section">
     <div class="wrap narrow prose">
       <p class="eyebrow">Newsletter</p>
-      <h1>Almost there</h1>
-      <p>
-        The newsletter is being connected to its mailing service. Once it is live,
-        this page will confirm your subscription. Nothing has been sent yet.
+      <h1>Check your inbox</h1>
+      <p class="lede">
+        We've sent you a confirmation email. Click the link in it to finish
+        signing up — you will not receive anything until you do.
       </p>
+
+      <h2>Not seeing it?</h2>
+      <ul>
+        <li>Give it a few minutes — it can be slow to arrive.</li>
+        <li>Check your spam or promotions folder.</li>
+        <li>
+          Add <strong>hello@readertweaks.com</strong> to your contacts so future
+          issues land in your inbox.
+        </li>
+        <li>
+          Still nothing? Email
+          <a href="mailto:hello@readertweaks.com">hello@readertweaks.com</a> and we
+          will sort it out.
+        </li>
+      </ul>
+
+      <h2>What to expect</h2>
+      <p>
+        One email when a new device guide or a worthwhile firmware note goes up —
+        no more than twice a month. Every issue has a one-click unsubscribe link.
+      </p>
+
       <p><a href="/">Back to the homepage</a></p>
     </div>
   </section>
@@ -24,4 +46,5 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 <style>
   .narrow { max-width: 640px; }
   .prose h1 { font-size: var(--step-3); }
+  .prose h2 { margin-top: 2rem; }
 </style>

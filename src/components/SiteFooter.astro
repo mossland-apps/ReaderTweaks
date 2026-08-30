@@ -16,18 +16,26 @@ const year = new Date().getFullYear();
           twice a month, unsubscribe in one click.
         </p>
       </div>
-      <form class="newsletter__form" action="/subscribe/" method="post">
-        <label for="nl-email" class="visually-hidden">Email address</label>
-        <input
-          id="nl-email"
-          type="email"
-          name="email"
-          placeholder="you@example.com"
-          autocomplete="email"
-          required
-        />
-        <button type="submit" class="btn">Subscribe</button>
-      </form>
+      <div class="newsletter__signup">
+        <form
+          class="newsletter__form"
+          action="https://app.kit.com/forms/9860502/subscriptions"
+          method="post"
+          data-newsletter
+        >
+          <label for="nl-email" class="visually-hidden">Email address</label>
+          <input
+            id="nl-email"
+            type="email"
+            name="email_address"
+            placeholder="you@example.com"
+            autocomplete="email"
+            required
+          />
+          <button type="submit" class="btn">Subscribe</button>
+        </form>
+        <p class="newsletter__msg" data-newsletter-msg role="status" aria-live="polite" hidden></p>
+      </div>
     </div>
 
     <nav class="footer-cols" aria-label="Footer">
@@ -75,6 +83,78 @@ const year = new Date().getFullYear();
   </div>
 </footer>
 
+<script>
+  // Progressive enhancement for the Kit (ConvertKit) newsletter form.
+  // Without JS the form posts straight to Kit and Kit shows its own
+  // "check your email" page; with JS we keep the visitor on the site.
+  const form = document.querySelector<HTMLFormElement>('form[data-newsletter]');
+  const msg = document.querySelector<HTMLParagraphElement>('[data-newsletter-msg]');
+
+  if (form && msg) {
+    const button = form.querySelector('button');
+    const buttonLabel = button?.textContent ?? 'Subscribe';
+
+    const show = (text: string, ok: boolean) => {
+      msg.textContent = text;
+      msg.hidden = false;
+      msg.classList.toggle('is-error', !ok);
+    };
+
+    form.addEventListener('submit', async (event) => {
+      event.preventDefault();
+      msg.hidden = true;
+      if (button) {
+        button.disabled = true;
+        button.textContent = 'Subscribing…';
+      }
+
+      try {
+        const res = await fetch(form.action, {
+          method: 'POST',
+          body: new FormData(form),
+          headers: { Accept: 'application/json' },
+        });
+        let data: {
+          status?: string;
+          message?: string;
+          errors?: { messages?: string[] };
+        } = {};
+        try {
+          data = await res.json();
+        } catch {
+          /* Kit occasionally returns an empty body */
+        }
+
+        if (data.status === 'success') {
+          form.hidden = true;
+          show(
+            "Almost there — we've sent a confirmation email. Click the link in it to finish subscribing.",
+            true,
+          );
+          return;
+        }
+
+        show(
+          data.errors?.messages?.[0] ||
+            data.message ||
+            'That did not go through. Check the address and try again.',
+          false,
+        );
+      } catch {
+        show(
+          'Could not reach the mailing service. Try again in a moment, or email hello@readertweaks.com.',
+          false,
+        );
+      }
+
+      if (button) {
+        button.disabled = false;
+        button.textContent = buttonLabel;
+      }
+    });
+  }
+</script>
+
 <style>
   .site-footer {
     background: var(--bg-sunk);
@@ -92,6 +172,7 @@ const year = new Date().getFullYear();
   }
   .newsletter h2 { font-size: var(--step-2); max-width: 22ch; }
   .newsletter__sub { color: var(--ink-soft); font-size: var(--step--1); max-width: 44ch; margin: 0; }
+  .newsletter__signup { align-self: end; }
   .newsletter__form { display: flex; gap: 0.6rem; }
   .newsletter__form input {
     flex: 1;
@@ -105,6 +186,18 @@ const year = new Date().getFullYear();
     color: var(--ink);
   }
   .newsletter__form input:focus-visible { outline: 2px solid var(--accent); outline-offset: 1px; }
+  .newsletter__form button[disabled] { opacity: 0.6; cursor: default; }
+  .newsletter__msg {
+    margin: 0.75rem 0 0;
+    font-family: var(--font-sans);
+    font-size: 0.88rem;
+    line-height: 1.5;
+    color: var(--accent-deep);
+  }
+  .newsletter__msg.is-error { color: #9a3412; }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme='light']) .newsletter__msg.is-error { color: #f0a67d; }
+  }
 
   .footer-cols {
     display: grid;
