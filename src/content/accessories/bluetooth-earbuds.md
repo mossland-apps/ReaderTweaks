@@ -12,6 +12,9 @@ devices:
   - boox-go-6
   - boox-palma-2
   - boox-note-air-4-c
+  - pocketbook-era
+  - pocketbook-inkpad-4
+  - pocketbook-inkpad-color-3
 vendor: amazon
 priceBand: $
 blurb: Any well-reviewed Bluetooth earbuds or headphones. Readers with no speaker or headphone jack rely on wireless audio for audiobooks and text-to-speech.
