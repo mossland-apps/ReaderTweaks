@@ -8,6 +8,10 @@ devices:
   - paperwhite
   - kindle-basic
   - boox-go-color-7
+  - boox-page
+  - boox-go-6
+  - boox-palma-2
+  - boox-note-air-4-c
 vendor: amazon
 priceBand: $
 blurb: Any well-reviewed Bluetooth earbuds or headphones. Readers with no speaker or headphone jack rely on wireless audio for audiobooks and text-to-speech.
