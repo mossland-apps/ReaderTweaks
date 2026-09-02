@@ -44,13 +44,6 @@ const Heading = `h${headingLevel}` as 'h2' | 'h3';
             </a>
           </li>
         ))}
-        {Array.from({ length: (3 - (devices.length % 3)) % 3 }).map(() => (
-          <li aria-hidden="true">
-            <span class="device-card device-card--ghost">
-              <span class="device-card__ghost-text">More {brand.name} models being added</span>
-            </span>
-          </li>
-        ))}
       </ul>
     </section>
   ))}
@@ -134,26 +127,8 @@ const Heading = `h${headingLevel}` as 'h2' | 'h3';
     color: var(--ink-faint);
   }
 
-  .device-card--ghost {
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-    border-style: dashed;
-    border-color: var(--rule-strong);
-    background: transparent;
-    box-shadow: none;
-  }
-  .device-card--ghost:hover { transform: none; }
-  .device-card__ghost-text {
-    font-family: var(--font-sans);
-    font-size: 0.82rem;
-    color: var(--ink-faint);
-    max-width: 18ch;
-  }
-
   @media (max-width: 900px) {
     .device-cards { grid-template-columns: repeat(2, 1fr); }
-    .device-card--ghost { display: none; }
   }
   @media (max-width: 560px) {
     .device-cards { grid-template-columns: 1fr; }
