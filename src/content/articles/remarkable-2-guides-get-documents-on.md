@@ -54,7 +54,7 @@ steps:
   - instruction: Method D — the local USB web interface
     detail: >-
       The reMarkable 2 has a hidden local upload page. Connect it by USB, enable
-      "USB web interface" in Settings, then open http://10.11.99.1 in a browser
+      "USB web interface" in Settings, then open 10.11.99.1 in a browser
       on the computer and drag files onto that page. It works offline and does
       not touch your cloud sync — handy for a quick transfer or when Wi-Fi is
       awkward.

@@ -314,3 +314,67 @@ p { margin: 0 0 1em; }
     scroll-behavior: auto !important;
   }
 }
+
+/* ---- Outbound links ---- */
+/* A small ↗ after any link that leaves the site. Skipped on button-styled
+   links, where it would look out of place; those still get the leaving-site
+   prompt. */
+a.is-external:not(.btn)::after {
+  content: "\2197";
+  display: inline-block;
+  margin-left: 0.12em;
+  font-size: 0.8em;
+  line-height: 1;
+  vertical-align: baseline;
+  color: var(--ink-faint);
+  text-decoration: none;
+}
+a.is-external:not(.btn):hover::after {
+  color: inherit;
+}
+
+/* ---- "You're leaving ReaderTweaks" confirmation ---- */
+dialog.leaving {
+  padding: 0;
+  border: 1px solid var(--rule-strong);
+  border-radius: var(--radius);
+  background: var(--card);
+  color: var(--ink);
+  max-width: min(28rem, calc(100vw - 2rem));
+  box-shadow: var(--shadow);
+}
+dialog.leaving::backdrop {
+  background: rgba(20, 18, 14, 0.5);
+}
+:root[data-theme="dark"] dialog.leaving::backdrop {
+  background: rgba(0, 0, 0, 0.6);
+}
+.leaving__box {
+  margin: 0;
+  padding: 1.5rem;
+  font-family: var(--font-serif);
+}
+.leaving__title {
+  font-size: var(--step-1);
+  margin: 0 0 0.6rem;
+}
+.leaving__body {
+  margin: 0 0 0.4rem;
+}
+.leaving__host {
+  font-family: var(--font-sans);
+  font-weight: 600;
+  word-break: break-all;
+  margin: 0 0 0.7rem;
+}
+.leaving__note {
+  font-size: var(--step--1);
+  color: var(--ink-soft);
+  margin: 0 0 1.25rem;
+}
+.leaving__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+  justify-content: flex-end;
+}

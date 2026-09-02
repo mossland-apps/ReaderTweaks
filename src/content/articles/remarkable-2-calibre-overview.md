@@ -27,7 +27,7 @@ drive mode, and Calibre has no built-in driver for it.
 
 - The **reMarkable desktop or mobile app** — the normal route. Add files there
   and they sync to the device.
-- The **local USB web interface** at http://10.11.99.1 — enable it in Settings,
+- The **local USB web interface** at the address `10.11.99.1` — enable it in Settings,
   connect USB, and drag files onto the page in a browser. Offline, no cloud
   involved.
 - A community **Calibre plugin** for the reMarkable (search Calibre's plugin

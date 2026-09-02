@@ -2,6 +2,7 @@
 import Callout from './Callout.astro';
 import DecisionTree from './DecisionTree.astro';
 import { formatMonthYear } from '../lib/format';
+import { externalLinkAttrs } from '../lib/links';
 import type { TroubleshootingEntry } from '../lib/types';
 
 interface Props {
@@ -87,7 +88,7 @@ meta.push({ label: 'Last updated', value: formatMonthYear(entry.lastUpdated) });
       <h2 id="related">Related guides</h2>
       <ul class="ts__related">
         {entry.related.map((r) => (
-          <li><a href={r.href}>{r.text}</a></li>
+          <li><a href={r.href} {...externalLinkAttrs(r.href)}>{r.text}</a></li>
         ))}
       </ul>
     </section>

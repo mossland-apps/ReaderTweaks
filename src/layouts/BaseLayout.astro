@@ -63,6 +63,118 @@ const cfBeaconToken = (import.meta.env.PUBLIC_CF_BEACON_TOKEN as string | undefi
     </main>
     <SiteFooter />
 
+    <dialog id="leaving-site" class="leaving" aria-labelledby="leaving-title">
+      <div class="leaving__box">
+        <h2 id="leaving-title" class="leaving__title">You&rsquo;re leaving ReaderTweaks</h2>
+        <p class="leaving__body">This link opens another website in a new tab:</p>
+        <p class="leaving__host"><span data-leaving-host></span></p>
+        <p class="leaving__note">
+          We don&rsquo;t run that site and can&rsquo;t vouch for its content. This page stays
+          open in your current tab.
+        </p>
+        <div class="leaving__actions">
+          <button type="button" class="btn btn--ghost" data-leaving-cancel autofocus>Stay here</button>
+          <button type="button" class="btn" data-leaving-continue>Continue to site</button>
+        </div>
+      </div>
+    </dialog>
+
+    <script>
+      (() => {
+        const dialog = document.getElementById('leaving-site');
+        if (!dialog || dialog.dataset.wired === '1') return;
+        dialog.dataset.wired = '1';
+
+        const hostEl = dialog.querySelector('[data-leaving-host]');
+
+        const isInternalHost = (h) =>
+          h === location.host || h === 'readertweaks.com' || h === 'www.readertweaks.com';
+
+        function outboundUrl(a) {
+          const href = a.getAttribute('href');
+          if (!href) return null;
+          let u;
+          try {
+            u = new URL(href, location.href);
+          } catch {
+            return null;
+          }
+          if (u.protocol !== 'http:' && u.protocol !== 'https:') return null;
+          if (isInternalHost(u.host)) return null;
+          return u;
+        }
+
+        // Belt-and-braces: make sure every outbound link opens in a new tab, has
+        // a safe rel and carries the marker — including hardcoded template links
+        // the build step doesn't rewrite.
+        document.querySelectorAll('a[href]').forEach((a) => {
+          if (a.dataset.external !== undefined) return;
+          if (!outboundUrl(a)) return;
+          a.dataset.external = '';
+          a.target = '_blank';
+          const rel = new Set((a.getAttribute('rel') || '').split(/\s+/).filter(Boolean));
+          rel.add('noopener');
+          rel.add('noreferrer');
+          rel.add('nofollow');
+          a.setAttribute('rel', [...rel].join(' '));
+          a.classList.add('is-external');
+        });
+
+        function openInNewTab(url) {
+          window.open(url, '_blank', 'noopener,noreferrer');
+        }
+
+        function closeDialog() {
+          dialog.dataset.url = '';
+          if (dialog.open) dialog.close();
+        }
+
+        function confirmLeave(u) {
+          if (typeof dialog.showModal !== 'function') {
+            if (window.confirm('You are leaving ReaderTweaks to visit ' + u.host + '. Continue?')) {
+              openInNewTab(u.href);
+            }
+            return;
+          }
+          dialog.dataset.url = u.href;
+          if (hostEl) hostEl.textContent = u.host;
+          dialog.showModal();
+        }
+
+        document.addEventListener('click', (e) => {
+          if (e.defaultPrevented || e.button !== 0) return;
+          if (e.metaKey || e.ctrlKey || e.shiftKey || e.altKey) return;
+          const a = e.target.closest && e.target.closest('a[href]');
+          if (!a || dialog.contains(a)) return;
+          const u = outboundUrl(a);
+          if (!u) return;
+          e.preventDefault();
+          confirmLeave(u);
+        });
+
+        dialog.querySelector('[data-leaving-continue]').addEventListener('click', () => {
+          const url = dialog.dataset.url;
+          closeDialog();
+          if (url) openInNewTab(url);
+        });
+        dialog.querySelector('[data-leaving-cancel]').addEventListener('click', closeDialog);
+
+        // Esc and a click on the backdrop both just close.
+        dialog.addEventListener('cancel', () => {
+          dialog.dataset.url = '';
+        });
+        dialog.addEventListener('keydown', (e) => {
+          if (e.key === 'Escape') {
+            e.preventDefault();
+            closeDialog();
+          }
+        });
+        dialog.addEventListener('click', (e) => {
+          if (e.target === dialog) closeDialog();
+        });
+      })();
+    </script>
+
     {cfBeaconToken && (
       <script
         defer

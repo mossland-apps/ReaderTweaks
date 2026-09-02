@@ -80,7 +80,7 @@ fixes:
         may be damaged — re-save or re-export it and add it again.
       - >-
         As an offline alternative, enable the USB web interface in Settings,
-        connect USB, open http://10.11.99.1, and drop the file there directly.
+        connect USB, open 10.11.99.1, and drop the file there directly.
       - >-
         Put the device on a strong Wi-Fi connection and leave it awake. Very
         large PDFs can take several minutes to arrive.

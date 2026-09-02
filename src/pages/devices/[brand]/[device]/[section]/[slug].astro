@@ -8,6 +8,7 @@ import TroubleshootingArticle from '../../../../../components/TroubleshootingArt
 import { loadBrands, loadDevices, toArticle, toTroubleshooting } from '../../../../../lib/content';
 import { getSection } from '../../../../../lib/sections';
 import { deviceHref, sectionHref } from '../../../../../lib/devices';
+import { externalLinkAttrs } from '../../../../../lib/links';
 import { deviceTrail } from '../../../../../lib/breadcrumbs';
 import { articleJsonLd, breadcrumbJsonLd, canonical } from '../../../../../lib/seo';
 import { howToJsonLd } from '../../../../../lib/guide';
@@ -124,7 +125,7 @@ const tsEntry = kind === 'troubleshooting' ? toTroubleshooting(entry) : null;
               <h2>Before you begin</h2>
               <ul>
                 {guide.prerequisites.map((p) => (
-                  <li><a href={p.href}>{p.text}</a></li>
+                  <li><a href={p.href} {...externalLinkAttrs(p.href)}>{p.text}</a></li>
                 ))}
               </ul>
             </div>
@@ -133,7 +134,7 @@ const tsEntry = kind === 'troubleshooting' ? toTroubleshooting(entry) : null;
           {guide.steps && guide.steps.length > 0 && <GuideSteps steps={guide.steps} />}
 
           {guide.nextStep && (
-            <a class="nextstep" href={guide.nextStep.href}>
+            <a class="nextstep" href={guide.nextStep.href} {...externalLinkAttrs(guide.nextStep.href, { class: 'nextstep' })}>
               <span class="nextstep__label">Next</span>
               <span class="nextstep__text">{guide.nextStep.text}</span>
               <span aria-hidden="true">→</span>
@@ -145,7 +146,7 @@ const tsEntry = kind === 'troubleshooting' ? toTroubleshooting(entry) : null;
               <h2>Related</h2>
               <ul>
                 {guide.related.map((r) => (
-                  <li><a href={r.href}>{r.text}</a></li>
+                  <li><a href={r.href} {...externalLinkAttrs(r.href)}>{r.text}</a></li>
                 ))}
               </ul>
             </div>

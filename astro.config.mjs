@@ -1,5 +1,6 @@
 import { defineConfig } from 'astro/config';
 import sitemap from '@astrojs/sitemap';
+import rehypeExternalLinks from './src/lib/rehype-external-links.mjs';
 
 // https://astro.build
 export default defineConfig({
@@ -9,6 +10,9 @@ export default defineConfig({
     format: 'directory',
   },
   compressHTML: true,
+  markdown: {
+    rehypePlugins: [rehypeExternalLinks],
+  },
   integrations: [
     sitemap({
       filter: (page) => !page.includes('/search/') && !page.includes('/subscribe/'),

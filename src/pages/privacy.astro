@@ -1,6 +1,7 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import { breadcrumbJsonLd } from '../lib/seo';
+import { externalLinkAttrs } from '../lib/links';
 
 const updated = 'August 2026';
 ---
@@ -32,14 +33,14 @@ const updated = 'August 2026';
         <li>
           <strong>Newsletter email address.</strong> If you sign up for the
           newsletter, your email address is stored by our email provider,
-          <a href="https://kit.com" rel="noopener" target="_blank">Kit</a> (formerly
+          <a href="https://kit.com" {...externalLinkAttrs("https://kit.com")}>Kit</a> (formerly
           ConvertKit), so we can send you the newsletter. We ask you to confirm
           the address by email before anything is sent. You can unsubscribe from
           the link in any issue, which removes you from the list.
         </li>
         <li>
           <strong>Anonymous traffic statistics.</strong> We use
-          <a href="https://www.cloudflare.com/web-analytics/" rel="noopener" target="_blank">
+          <a href="https://www.cloudflare.com/web-analytics/" {...externalLinkAttrs("https://www.cloudflare.com/web-analytics/")}>
             Cloudflare Web Analytics</a>, which counts page views and referrers
           without cookies and without building a profile of you. It does not
           identify individual visitors.
@@ -67,7 +68,7 @@ const updated = 'August 2026';
         tag. If you buy something after clicking one, Amazon pays us a small
         commission at no extra cost to you. Amazon may set its own cookie when
         you follow the link; that is governed by
-        <a href="https://www.amazon.com/gp/help/customer/display.html?nodeId=468496" rel="noopener" target="_blank">
+        <a href="https://www.amazon.com/gp/help/customer/display.html?nodeId=468496" {...externalLinkAttrs("https://www.amazon.com/gp/help/customer/display.html?nodeId=468496")}>
           Amazon's privacy notice</a>, not ours. We never see who clicked or what
         they bought — only an aggregate commission total. As set out in the
         <a href="/about/#funding">editorial policy</a>, affiliate income does not

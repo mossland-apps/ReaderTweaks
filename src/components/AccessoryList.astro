@@ -1,6 +1,7 @@
 ---
 import type { Accessory, Device } from '../lib/types';
 import { amazonSearch, withAmazonTag } from '../lib/affiliate';
+import { externalLinkAttrs } from '../lib/links';
 import AffiliateNote from './AffiliateNote.astro';
 
 interface Props {
@@ -56,10 +57,8 @@ const groups = order
               </p>
             </div>
             <a
-              class="btn btn--ghost"
               href={buyLink(a)}
-              rel="nofollow sponsored noopener"
-              target="_blank"
+              {...externalLinkAttrs(buyLink(a), { rel: 'sponsored', class: 'btn btn--ghost' })}
             >
               Find on Amazon
             </a>

@@ -58,7 +58,7 @@ steps:
     detail: >-
       Easiest: open the reMarkable desktop app, sign in, and drag the file in; it
       syncs on the next connection. Offline alternative: enable the USB web
-      interface in Settings, connect USB, open http://10.11.99.1 in a browser,
+      interface in Settings, connect USB, open 10.11.99.1 in a browser,
       and drop the file there. Or use the community Calibre reMarkable plugin's
       "send to device" action.
   - instruction: Confirm it arrived and looks right
