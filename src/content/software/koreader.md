@@ -5,7 +5,7 @@ summary: A free, open-source document reader for e-ink devices, with fine typogr
 aliases:
   - ko reader
   - koreader.rocks
-currentVersion: "2024.11"
+currentVersion: "2026.07.1"
 homepage: https://koreader.rocks
 ---
 

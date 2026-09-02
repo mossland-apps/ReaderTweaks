@@ -9,7 +9,7 @@ summary: Copy KOReader's application file into the InkPad 4's applications folde
 lastUpdated: 2026-09-01
 datePublished: 2026-09-01
 software: KOReader
-softwareVersion: "2024.11"
+softwareVersion: "2026.07.1"
 difficulty: Easy
 estimatedTime: 10 minutes
 lastTested: 2026-08-30

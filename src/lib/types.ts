@@ -170,7 +170,7 @@ export interface LearnArticle {
   slug: string;
   title: string;
   summary: string;
-  category: 'concepts' | 'software' | 'formats' | 'buying';
+  category: 'koreader' | 'concepts' | 'software' | 'formats' | 'buying';
   lastUpdated: Date;
   order: number;
   body: string;

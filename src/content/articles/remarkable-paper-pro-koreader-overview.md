@@ -7,7 +7,7 @@ summary: KOReader can run on the Paper Pro through developer mode and a communit
 lastUpdated: 2026-08-30
 order: 0
 software: KOReader
-softwareVersion: "2024.11"
+softwareVersion: "2026.07.1"
 ---
 
 The Paper Pro's stock EPUB reading is weak, and KOReader fixes that. Unlike a

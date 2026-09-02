@@ -7,7 +7,7 @@ summary: What KOReader adds on the Sage, how it sits alongside the stock reader,
 lastUpdated: 2026-08-30
 order: 0
 software: KOReader
-softwareVersion: "2024.11"
+softwareVersion: "2026.07.1"
 ---
 
 KOReader is a separate reading application that runs on the Sage without removing

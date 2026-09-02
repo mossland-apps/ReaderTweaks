@@ -173,7 +173,7 @@ const learn = defineCollection({
   schema: z.object({
     title: z.string(),
     summary: z.string(),
-    category: z.enum(['concepts', 'software', 'formats', 'buying']),
+    category: z.enum(['koreader', 'concepts', 'software', 'formats', 'buying']),
     lastUpdated: z.coerce.date(),
     order: z.number().default(0),
     draft: z.boolean().default(false),

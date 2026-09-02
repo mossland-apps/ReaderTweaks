@@ -1,9 +1,9 @@
 ---
 title: "What is KOReader, and should you install it?"
 summary: "KOReader is a free, open-source reading app that runs on almost every e-reader. Here is what it does, what it does not, and who it is for."
-category: software
-lastUpdated: 2026-08-20
-order: 1
+category: koreader
+lastUpdated: 2026-09-02
+order: 10
 relatedDevices:
   - libra-colour
   - clara-bw
@@ -37,3 +37,22 @@ instead of — the software your reader shipped with.
 If you like adjusting how a page looks, or you own more than one reader, KOReader
 is worth the setup time. If you just want to open a book and read, the stock
 software is probably fine.
+
+## Where to go next
+
+- **Installing it:** the how-to lives on each device's page —
+  [Kobo](/devices/kobo/libra-colour/koreader/),
+  [Kindle](/guides/koreader-on-kindle-2026/) (harder, needs a jailbreak),
+  [PocketBook](/devices/pocketbook/pocketbook-verse/koreader/),
+  [BOOX](/devices/boox/boox-go-color-7/koreader/) and
+  [reMarkable](/devices/remarkable/remarkable-2/koreader/).
+- **Setting it up well:** [gestures](/guides/koreader-gestures/),
+  [fonts](/guides/best-koreader-fonts/),
+  [dictionaries](/guides/koreader-dictionaries/),
+  [PDF settings](/guides/koreader-pdf-settings/) and
+  [manga settings](/guides/koreader-for-manga/).
+- **Connecting it up:** [sync your position between devices](/guides/koreader-sync-between-devices/),
+  [Calibre](/guides/koreader-calibre-sync/) and
+  [Wallabag](/guides/koreader-wallabag/).
+- **Deciding:** [KOReader vs Nickel on a Kobo](/guides/koreader-vs-nickel/),
+  [KOReader vs the Kindle reader](/guides/koreader-vs-kindle-reader/).

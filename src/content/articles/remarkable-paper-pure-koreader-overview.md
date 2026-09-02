@@ -7,7 +7,7 @@ summary: KOReader can run on the Paper Pure through developer mode, but because 
 lastUpdated: 2026-09-01
 order: 0
 software: KOReader
-softwareVersion: "2024.11"
+softwareVersion: "2026.07.1"
 ---
 
 The Paper Pure's stock EPUB reading is weak, and KOReader is the usual fix. Like

@@ -7,7 +7,7 @@ summary: KOReader runs on the Verse Pro without a jailbreak — you copy one fil
 lastUpdated: 2026-08-28
 order: 0
 software: KOReader
-softwareVersion: "2024.11"
+softwareVersion: "2026.07.1"
 ---
 
 PocketBook is one of the platforms KOReader supports directly. There is no

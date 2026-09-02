@@ -9,7 +9,7 @@ summary: Enable developer mode, connect over SSH, and install KOReader through t
 lastUpdated: 2026-09-01
 datePublished: 2026-09-01
 software: KOReader
-softwareVersion: "2024.11"
+softwareVersion: "2026.07.1"
 difficulty: Advanced
 estimatedTime: 60 minutes
 lastTested: 2026-08-27

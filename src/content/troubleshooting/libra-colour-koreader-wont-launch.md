@@ -3,14 +3,14 @@ title: KOReader won't launch on the Kobo Libra Colour
 pageSlug: koreader-wont-launch
 device: libra-colour
 software: KOReader
-softwareVersion: "2024.11"
+softwareVersion: "2026.07.1"
 summary: >-
   The KOReader icon does nothing, never appeared, or the app opens and closes
   straight away. Almost always this is where the installer files were copied.
 difficulty: Moderate
 estimatedTime: 15 to 30 minutes
 lastTested: 2026-08-22
-lastUpdated: 2026-08-24
+lastUpdated: 2026-09-02
 searchTerms:
   - crash
   - crashes
@@ -40,11 +40,12 @@ beforeYouStart:
   - Have the USB-C cable and the computer you installed with nearby.
   - Know that none of the fixes below touch your books, your highlights or your Kobo settings.
 mostCommonCause: >-
-  On the Libra Colour the usual reason is that the installer files were copied
-  into a folder on the device instead of to the top level of the drive. The Kobo
-  software only looks for the launcher and the "koreader" folder at the drive's
-  root. If a folder named something like "KOReader-2024.11-kobo" ended up on the
-  device, the install quietly did nothing.
+  Two things account for most cases on the Libra Colour. The first is the wrong
+  package: the Libra Colour needs the KOReader build with "kobov5" in the file
+  name, and the plain "koreader-kobo" package will not run on it. The second is
+  files copied into a folder on the device instead of to the top level of the
+  drive — the Kobo software only looks for the launcher and the "koreader" folder
+  at the drive's root, so a folder named after the zip quietly does nothing.
 decisionTree:
   question: What happens when you tap KOReader?
   branches:
@@ -61,22 +62,28 @@ decisionTree:
       hint: Note the wording — it points to a specific cause
       href: "#fix-3"
 fixes:
-  - title: Put the installer files where the Kobo can find them
+  - title: Use the "kobov5" package and put the files at the drive root
     rationale: >-
-      The launcher and the "koreader" folder have to sit at the very top of the
-      drive. If they are one level down, inside a folder, the Kobo skips the
-      install without any warning.
+      The Libra Colour is a 2024-generation Kobo on a newer platform. It needs
+      the "kobov5" KOReader build, and the launcher and "koreader" folder have to
+      sit at the very top of the drive — one level down, inside a folder, and the
+      Kobo skips the install without any warning.
     steps:
+      - >-
+        Check which package you used. On the KOReader releases page, the Libra
+        Colour's file has "kobov5" in the name (such as
+        "koreader-kobov5-v2026.07.1.zip"). If you installed the plain
+        "koreader-kobo" package, that is the problem — download the "kobov5" one.
       - Connect the Libra Colour and open the KOBOeReader drive on your computer.
       - >-
         Turn on "show hidden files" so you can see folders whose names start with
         a dot. On Windows, use View, then Hidden items. On macOS, press
         Command-Shift-period.
       - >-
-        Look for a folder named like "KOReader-2024.11-kobo" in the drive root.
-        If it is there, open it, select everything inside, and move those items
-        up into the drive root so that ".adds" and ".kobo" sit directly in the
-        drive.
+        Look for a folder named after the zip (something like
+        "koreader-kobov5-v2026.07.1") in the drive root. If it is there, open it,
+        select everything inside, and move those items up into the drive root so
+        that ".adds" and ".kobo" sit directly in the drive.
       - >-
         Confirm the drive root now contains a ".adds" folder with a "koreader"
         folder inside it, and a ".kobo" folder that contains a file called

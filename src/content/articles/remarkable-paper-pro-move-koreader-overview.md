@@ -7,7 +7,7 @@ summary: KOReader can run on the Move through developer mode, but the newer reMa
 lastUpdated: 2026-09-01
 order: 0
 software: KOReader
-softwareVersion: "2024.11"
+softwareVersion: "2026.07.1"
 ---
 
 The Move's stock EPUB reading is weak, and KOReader is the usual fix. Like every

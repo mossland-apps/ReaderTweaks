@@ -7,7 +7,7 @@ summary: KOReader runs on the Page as a normal Android app — install it from t
 lastUpdated: 2026-08-31
 order: 0
 software: KOReader
-softwareVersion: "2024.11"
+softwareVersion: "2026.07.1"
 ---
 
 The Page runs Android, so KOReader is just an app. You install it from the Google

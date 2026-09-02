@@ -6,10 +6,10 @@ section: koreader
 type: guide
 order: 1
 summary: Add KOReader to the Clara BW by copying one package to the device. This keeps the stock Kobo reader intact and adds a KOReader icon to the home screen.
-lastUpdated: 2026-08-27
+lastUpdated: 2026-09-02
 datePublished: 2026-08-27
 software: KOReader
-softwareVersion: "2024.11"
+softwareVersion: "2026.07.1"
 difficulty: Easy
 estimatedTime: 15 minutes
 lastTested: 2026-08-25
@@ -44,15 +44,18 @@ steps:
       a badly out-of-date system can mishandle that step. On the device, go to
       the home screen, open the menu, then Settings, then Device information, and
       let it check for and apply any update before you continue.
-  - instruction: Download the KOReader package for Kobo
+  - instruction: Download the right KOReader package for the Clara BW
     detail: >-
-      On the KOReader releases page, download the file whose name looks like
-      "KOReader-2024.11-kobo.zip". The word "kobo" in the file name matters — the
-      Kindle and Android builds will not run on this device. The file is roughly
-      110 MB. The same Kobo package covers the Clara BW and the other 2024 Kobo
-      models.
-    tip: >-
-      Take the newest normal release, not a "nightly" or "pre-release" build.
+      On the KOReader releases page, take the newest normal release (dated, such
+      as v2026.07.1 — not a "nightly"). The Clara BW is one of the 2024 Kobos on
+      a newer hardware platform, so it needs the file with **"kobov5"** in the
+      name, such as "koreader-kobov5-v2026.07.1.zip" — the same package covers
+      the Clara Colour and Libra Colour. The plain "koreader-kobo" file is for
+      older Kobos and the Kindle and Android builds will not run here.
+    warning: >-
+      Installing the plain "koreader-kobo" package on a Clara BW is the most
+      common reason KOReader will not start on this model. Match the "kobov5"
+      file to the device.
   - instruction: Connect the Clara BW to your computer with the USB-C cable
     detail: >-
       When the Kobo asks what to do, choose "Connect". It appears on your
@@ -66,10 +69,10 @@ steps:
       asks, choose to merge them with the folders already on the drive. Do not
       copy the zip file itself onto the device.
     warning: >-
-      If your unzip tool creates a folder called "KOReader-2024.11-kobo" on the
-      drive, open it and move its contents up one level, so that ".adds" and
-      ".kobo" sit directly in the drive's root. The installer only runs when the
-      files are at the top level.
+      If your unzip tool creates a folder named after the zip (something like
+      "koreader-kobov5-v2026.07.1") on the drive, open it and move its contents
+      up one level, so that ".adds" and ".kobo" sit directly in the drive's root.
+      The installer only runs when the files are at the top level.
   - instruction: Eject the drive safely, then unplug the cable
     detail: >-
       Use your operating system's "eject" or "safely remove" option before you

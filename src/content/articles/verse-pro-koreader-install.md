@@ -9,7 +9,7 @@ summary: Copy KOReader's application file into the Verse Pro's applications fold
 lastUpdated: 2026-08-28
 datePublished: 2026-08-28
 software: KOReader
-softwareVersion: "2024.11"
+softwareVersion: "2026.07.1"
 difficulty: Easy
 estimatedTime: 10 minutes
 lastTested: 2026-08-26

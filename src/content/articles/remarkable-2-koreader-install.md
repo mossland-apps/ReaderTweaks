@@ -9,7 +9,7 @@ summary: Enable developer mode, connect over SSH, install the Toltec package man
 lastUpdated: 2026-09-01
 datePublished: 2026-09-01
 software: KOReader
-softwareVersion: "2024.11"
+softwareVersion: "2026.07.1"
 difficulty: Advanced
 estimatedTime: 45 minutes
 lastTested: 2026-08-27

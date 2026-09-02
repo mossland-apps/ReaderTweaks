@@ -7,7 +7,7 @@ summary: KOReader runs on the Era without a jailbreak — you copy one file to a
 lastUpdated: 2026-09-01
 order: 0
 software: KOReader
-softwareVersion: "2024.11"
+softwareVersion: "2026.07.1"
 ---
 
 PocketBook is one of the platforms KOReader supports directly. There is no

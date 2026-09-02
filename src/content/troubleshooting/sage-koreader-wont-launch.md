@@ -3,14 +3,14 @@ title: KOReader won't launch on the Kobo Sage
 pageSlug: koreader-wont-launch
 device: sage
 software: KOReader
-softwareVersion: "2024.11"
+softwareVersion: "2026.07.1"
 summary: >-
   The KOReader icon does nothing, never appeared, or the app opens and closes
   straight away. Almost always this is where the installer files were copied.
 difficulty: Moderate
 estimatedTime: 15 to 30 minutes
 lastTested: 2026-08-28
-lastUpdated: 2026-08-30
+lastUpdated: 2026-09-02
 searchTerms:
   - crash
   - crashes
@@ -37,8 +37,9 @@ mostCommonCause: >-
   On the Sage the usual reason is that the installer files were copied into a
   folder on the device instead of to the top level of the drive. The Kobo
   software only looks for the launcher and the "koreader" folder at the drive's
-  root. If a folder named something like "KOReader-2024.11-kobo" ended up on the
-  device, the install quietly did nothing.
+  root. If a folder named after the zip (something like
+  "koreader-kobo-v2026.07.1") ended up on the device, the install quietly did
+  nothing.
 decisionTree:
   question: What happens when you tap KOReader?
   branches:
@@ -67,10 +68,10 @@ fixes:
         a dot. On Windows, use View, then Hidden items. On macOS, press
         Command-Shift-period.
       - >-
-        Look for a folder named like "KOReader-2024.11-kobo" in the drive root.
-        If it is there, open it, select everything inside, and move those items up
-        into the drive root so that ".adds" and ".kobo" sit directly in the
-        drive.
+        Look for a folder named after the zip (something like
+        "koreader-kobo-v2026.07.1") in the drive root. If it is there, open it,
+        select everything inside, and move those items up into the drive root so
+        that ".adds" and ".kobo" sit directly in the drive.
       - >-
         Confirm the drive root now contains a ".adds" folder with a "koreader"
         folder inside it, and a ".kobo" folder that contains a file called

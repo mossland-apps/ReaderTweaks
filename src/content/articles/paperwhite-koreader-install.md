@@ -5,108 +5,109 @@ device: paperwhite
 section: koreader
 type: guide
 order: 1
-summary: The KOReader-specific steps for a jailbroken Paperwhite — installing the hotfix, KUAL and the KOReader package — plus how to protect it from firmware updates.
-lastUpdated: 2026-08-26
+summary: The 2026 method — a browser-based jailbreak, then KOReader through Kindle Package Manager (KPM). No computer needed. Plus how to keep it working through firmware updates.
+lastUpdated: 2026-09-02
 datePublished: 2026-08-26
 software: KOReader
-softwareVersion: "2024.11"
+softwareVersion: "2026.07.1"
 difficulty: Advanced
-estimatedTime: 1 hour
-lastTested: 2026-08-20
+estimatedTime: 30 minutes
+lastTested: 2026-09-01
 whatYouNeed:
-  - Kindle Paperwhite, already jailbroken for its firmware version
-  - A computer
-  - A USB-C data cable
-  - The KOReader Kindle package, the KUAL package and the update hotfix
+  - Kindle Paperwhite on a firmware version a current jailbreak supports
+  - A Wi-Fi network
+  - No computer or cable for the KOReader part
 prerequisites:
   - text: "KOReader on the Kindle Paperwhite — what jailbreaking involves and the risks"
     href: /devices/kindle/paperwhite/koreader/
-  - text: "Jailbreak the device first using the current community method for your firmware (MobileRead)"
-    href: https://www.mobileread.com/forums/forumdisplay.php?f=150
-searchTerms:
-  - koreader kindle
-  - jailbreak paperwhite
-  - kual
-  - mrpi
-  - hotfix
-  - block kindle updates
-  - install koreader kindle
+  - text: "Installing KOReader on a Kindle in 2026: the KPM method"
+    href: /guides/koreader-on-kindle-2026/
+  - text: "Follow the current jailbreak wizard for your model and firmware (Kindle Modding)"
+    href: https://kindlemodding.org/
 related:
   - text: "KOReader won't launch on the Kindle Paperwhite"
     href: /devices/kindle/paperwhite/troubleshooting/koreader-wont-launch/
   - text: "What is KOReader, and should you install it?"
     href: /guides/what-is-koreader/
+searchTerms:
+  - koreader kindle
+  - kpm
+  - kindle package manager
+  - jailbreak paperwhite 2026
+  - nosebleed
+  - winterbreak
+  - block kindle updates
+  - install koreader kindle
 steps:
-  - instruction: Confirm the Kindle is already jailbroken
+  - instruction: Check your firmware version and stop automatic updates
     detail: >-
-      This guide starts after the jailbreak. If you have not done that, stop here
-      and follow the current method for your exact firmware version on the
-      MobileRead forums — it changes over time and per firmware, which is why it
-      is not reproduced here. You can check your firmware under Settings, then
-      Device Options, then Device Info.
-  - instruction: Put the Kindle in airplane mode and turn off automatic updates
-    detail: >-
-      From the quick settings, enable Airplane Mode. A firmware update can remove
-      the jailbreak, so most people keep Wi-Fi off except for brief, deliberate
-      syncs. Installing the update-blocking hotfix in the next step makes this
-      safer.
+      On the Paperwhite, open Settings, then Device Options, then Device Info, and
+      note the firmware number. Then turn on Airplane Mode. A firmware update is
+      the most common way a working jailbreak breaks, and some methods only cover
+      a specific firmware range.
     warning: >-
-      If the Kindle updates its firmware before the jailbreak is protected, you
-      may have to start the whole process again, and on the newest firmware there
-      may be no jailbreak available at all.
-  - instruction: Download the three packages on your computer
+      If the Kindle is already on the newest firmware (broadly the 5.19 series, or
+      5.18.1.1.1, at the time of writing) there is no jailbreak for it yet. Keep
+      it in Airplane Mode and check the Kindle Modding wizard again in a few
+      weeks.
+  - instruction: Run the jailbreak from the Kindle's browser
     detail: >-
-      From the KOReader releases page, get the file named like
-      "koreader-kindle-2024.11.zip". From MobileRead, get the current "KUAL"
-      package and the "Kindle update-blocking hotfix" (often called the update
-      hotfix or "Prevent OTA"). Keep the zip files as they are for now.
-  - instruction: Connect the Kindle and copy the packages across
-    detail: >-
-      Connect by USB and open the Kindle drive. Extract each zip and copy the
-      resulting folders into the "extensions" folder and the "documents" folder
-      as each package's own readme specifies — KUAL and the hotfix go where their
-      instructions say, and the KOReader package is usually placed in the root or
-      the "koreader" folder created by its installer.
+      The jailbreak in 2026 runs on the device itself — no computer. On
+      kindlemodding.org, use the jailbreak wizard: it asks for your model and
+      firmware and sends you to the right method (commonly NoseBleed, WinterBreak
+      or AdBreak). You open that page in the Kindle's own web browser and let the
+      script run; the screen flashes a few times.
     tip: >-
-      Follow the readme inside each zip rather than guessing. The exact folder
-      names differ slightly between packages and firmware.
-  - instruction: Eject the Kindle and open KUAL
+      Follow the wizard's page exactly, top to bottom. The steps and file names
+      differ per method and change over time, which is why they are not
+      reproduced here.
+  - instruction: Finish every post-jailbreak step
     detail: >-
-      Eject the drive safely and unplug. On the Kindle, open the Library — KUAL
-      appears as an item called "KUAL" or "Kindle Unified Application Launcher".
-      Open it to get its menu.
-  - instruction: Install the update hotfix from KUAL
+      After the jailbreak the wizard has a short checklist — it installs the
+      launcher, blocks over-the-air firmware updates properly, and clears the
+      temporary files the exploit used. Do all of it. The update block is what
+      keeps the jailbreak alive; Airplane Mode alone is not enough long term.
+  - instruction: Install KOReader with KPM
     detail: >-
-      In the KUAL menu, run the hotfix installer. This stops the Kindle from
-      downloading and applying firmware updates on its own, which is what
-      protects the jailbreak going forward. You can then turn Wi-Fi back on when
-      you need it.
-  - instruction: Install KOReader from KUAL
-    detail: >-
-      Still in KUAL, choose the "Install or update KOReader" action, sometimes
-      shown as "MRPI" (the package installer). It unpacks the KOReader package
-      you copied over. When it finishes, back out of KUAL.
+      Turn Wi-Fi back on. In the Kindle's search bar (the magnifying glass on the
+      home screen) type ";kpm update" and press enter, then ";kpm install
+      koreader". Wait a minute or two. When it finishes you are returned to the
+      home screen and a new launcher — a "scriptlet" — has appeared.
   - instruction: Launch KOReader
     detail: >-
-      Open KUAL again and choose "KOReader" to start it, or use the KOReader
-      launcher item if the installer added one to the Library. The first launch
-      takes 15 to 30 seconds. To leave KOReader, use its top menu and choose
-      exit, which returns you to the Kindle interface.
-  - instruction: Set KOReader as the reader you land in, if you want
+      Tap the new scriptlet on the home screen, or type ";kpm launch koreader" in
+      the search bar. The first start takes 15 to 30 seconds. To leave KOReader,
+      open its top menu and choose exit, which returns you to the normal Kindle
+      interface.
+  - instruction: Set your Wi-Fi habit
     detail: >-
-      KOReader can be set to start automatically instead of the Kindle reader.
-      This lives in KOReader's own settings under "Start with" or in a KUAL
-      "autostart" action. Leave it off at first so you can get back to the normal
-      interface easily while you learn KOReader.
+      With updates blocked you can leave Wi-Fi on, but many people still keep the
+      Paperwhite in Airplane Mode except for deliberate syncs, as a second layer
+      of protection against an update slipping through.
+  - instruction: Update KOReader when you want to
+    detail: >-
+      Run ";kpm update" then ";kpm install koreader" again. KPM fetches the
+      current build. There is no need to touch a computer.
+  - instruction: "Optional: make KOReader the reader you land in"
+    detail: >-
+      KOReader can start automatically instead of the Kindle reader, set in
+      KOReader's own settings or through a KPM option. Leave it off at first so
+      the normal interface is easy to get back to while you learn KOReader.
 ---
 
-Everything hard about KOReader on a Kindle is the jailbreak and keeping firmware
-under control; the KOReader part itself is a few actions in a menu. This guide
-covers only the KOReader-specific steps and assumes the device is already
-jailbroken for its firmware — the jailbreak method is firmware-specific and
-maintained by the community, so the right source for it is the MobileRead
-forums, linked above.
+In 2026 the hard, risky part of putting KOReader on a Kindle is the jailbreak and
+keeping firmware under control. The KOReader install itself is now two commands
+in the search bar — Kindle Package Manager does the rest, with no computer
+involved.
 
-The single most important habit afterwards is the update hotfix plus airplane
-mode. A Kindle that quietly updates itself is the usual reason a working
-KOReader setup breaks.
+This guide is deliberately light on the jailbreak specifics. Those are
+firmware-specific, they change every few months, and the Kindle Modding project
+maintains a wizard that walks you through the right one for your exact device.
+Follow that; use this page for the overall shape and the KPM steps. The
+[2026 Kindle KPM guide](/guides/koreader-on-kindle-2026/) has the full
+background.
+
+The one habit that matters afterwards is the over-the-air update block plus
+Airplane Mode. A Kindle that quietly updates itself is the usual reason a working
+KOReader setup breaks — and if it updates to firmware with no available
+jailbreak, KOReader is gone until a new method appears.

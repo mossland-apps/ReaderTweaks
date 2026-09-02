@@ -9,7 +9,7 @@ summary: Install KOReader from the Play Store or an APK on the Go Color 7, then 
 lastUpdated: 2026-08-30
 datePublished: 2026-08-30
 software: KOReader
-softwareVersion: "2024.11"
+softwareVersion: "2026.07.1"
 difficulty: Easy
 estimatedTime: 10 minutes
 lastTested: 2026-08-28

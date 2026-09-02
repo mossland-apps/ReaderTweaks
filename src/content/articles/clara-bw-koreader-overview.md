@@ -7,7 +7,7 @@ summary: What KOReader adds on the Clara BW, how it sits alongside the stock Kob
 lastUpdated: 2026-08-27
 order: 0
 software: KOReader
-softwareVersion: "2024.11"
+softwareVersion: "2026.07.1"
 ---
 
 KOReader is a separate reading application that runs on the Clara BW without

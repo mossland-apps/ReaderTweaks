@@ -9,7 +9,7 @@ summary: Install KOReader from the Play Store or an APK on the Go 6, then set it
 lastUpdated: 2026-08-31
 datePublished: 2026-08-31
 software: KOReader
-softwareVersion: "2024.11"
+softwareVersion: "2026.07.1"
 difficulty: Easy
 estimatedTime: 10 minutes
 lastTested: 2026-08-29

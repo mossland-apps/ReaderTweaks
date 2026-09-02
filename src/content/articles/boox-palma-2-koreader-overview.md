@@ -7,7 +7,7 @@ summary: KOReader runs on the Palma 2 as a normal Android app — install it fro
 lastUpdated: 2026-08-31
 order: 0
 software: KOReader
-softwareVersion: "2024.11"
+softwareVersion: "2026.07.1"
 ---
 
 The Palma 2 runs Android, so KOReader is just an app. You install it from the

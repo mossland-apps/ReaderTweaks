@@ -7,7 +7,7 @@ summary: The reMarkable 2 has the most mature KOReader setup of any e-ink device
 lastUpdated: 2026-09-01
 order: 0
 software: KOReader
-softwareVersion: "2024.11"
+softwareVersion: "2026.07.1"
 ---
 
 The reMarkable 2's stock EPUB reading is weak, and KOReader is the standard fix.

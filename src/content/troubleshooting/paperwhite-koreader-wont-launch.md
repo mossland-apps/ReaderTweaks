@@ -3,127 +3,127 @@ title: KOReader won't launch on the Kindle Paperwhite
 pageSlug: koreader-wont-launch
 device: paperwhite
 software: KOReader
-softwareVersion: "2024.11"
+softwareVersion: "2026.07.1"
 summary: >-
-  KOReader was installed on a jailbroken Paperwhite but will not start, the KUAL
-  entry is missing, or it stopped working after a firmware update.
+  KOReader was installed on a jailbroken Paperwhite but will not start, the
+  launcher scriptlet is missing, or it stopped working after a firmware update.
 difficulty: Advanced
 estimatedTime: 30 to 60 minutes
-lastTested: 2026-08-20
-lastUpdated: 2026-08-26
+lastTested: 2026-09-01
+lastUpdated: 2026-09-02
 searchTerms:
   - koreader wont start
-  - kual missing
+  - scriptlet missing
+  - kpm install koreader failed
   - koreader gone after update
   - jailbreak broken
-  - mrpi failed
+  - kual missing
   - koreader crash kindle
-  - hotfix
 symptoms:
-  - The KUAL "book" is missing from the Library.
-  - KUAL opens but has no KOReader entry, or the entry does nothing.
+  - The KOReader launcher scriptlet is missing from the home screen.
+  - The KPM install command runs but no scriptlet appears, or it errors.
   - KOReader worked before and disappeared after the Kindle updated its firmware.
   - Choosing KOReader shows a black screen, then returns to the Kindle.
 beforeYouStart:
   - Check the current firmware version — Settings, then Device Options, then Device Info.
-  - Have the computer, cable and the KOReader, KUAL and hotfix packages you used before.
+  - Have Wi-Fi available so KPM can reach its repository.
   - Know that this only concerns KOReader and the jailbreak; your Amazon books are untouched.
 mostCommonCause: >-
   By far the most common cause is a firmware update. A Kindle that updated itself
-  over Wi-Fi removes the jailbreak, and with it KUAL and KOReader, even though
-  the KOReader files may still be on the drive. The next most common cause is
-  files that were copied to the wrong folder, so KUAL never picked up the
-  KOReader action.
+  over Wi-Fi removes the jailbreak, and with it KPM and the KOReader launcher,
+  even though some KOReader files may still be on the device. The next most common
+  cause is a KPM install that did not finish — usually a Wi-Fi drop or the
+  repository being briefly unreachable.
 decisionTree:
   question: When did it stop working?
   branches:
-    - label: It never worked since I installed it
-      hint: Files are probably in the wrong place
-      href: "#fix-1"
     - label: It stopped after the Kindle updated
       hint: The jailbreak was removed and needs redoing
+      href: "#fix-1"
+    - label: The KPM install never produced a working scriptlet
+      hint: Re-run the KPM install on a stable connection
       href: "#fix-2"
-    - label: KUAL is there but KOReader will not start
-      hint: Reinstall the KOReader package
+    - label: The scriptlet is there but KOReader will not start
+      hint: Reinstall the KOReader package with KPM
       href: "#fix-3"
-    - label: I see an error message
-      hint: Note the wording; it usually names the cause
+    - label: I installed the old way with KUAL on an older model
+      hint: Check the files are where KUAL expects them
       href: "#fix-3"
 fixes:
-  - title: Check the files are where KUAL expects them
-    rationale: >-
-      KUAL only shows a KOReader action if the KOReader package and its KUAL
-      "extension" are in the exact folders the readme specifies. A folder one
-      level too deep is invisible to it.
-    steps:
-      - >-
-        Connect the Kindle and open its drive. Confirm there is an "extensions"
-        folder at the root, with a "koreader" (or similarly named) folder inside
-        it that contains a "menu.json" or "config.xml".
-      - >-
-        Confirm the KOReader program itself is where its installer put it —
-        usually a "koreader" folder at the root, or unpacked by the installer
-        from a package in "documents".
-      - >-
-        If anything is nested inside an extra folder such as
-        "koreader-kindle-2024.11", move its contents up to the correct level.
-      - Eject safely, unplug, and open KUAL again to see if the action appears.
-    note: >-
-      Re-read the readme files inside the KUAL and KOReader packages. The folder
-      names change slightly between versions.
   - title: Redo the jailbreak if a firmware update removed it
     rationale: >-
-      A firmware update disables the jailbreak. KUAL and KOReader vanish because
-      the system will no longer run unsigned software, even though the files
-      remain. There is no way around re-doing the jailbreak for the new firmware.
+      A firmware update disables the jailbreak. KPM and the KOReader launcher stop
+      working because the system will no longer run unsigned software, even though
+      files remain. There is no way around re-doing the jailbreak for the new
+      firmware.
     steps:
       - >-
         Check the firmware version. If it is higher than it was, the update is
         the cause.
       - >-
-        On the MobileRead forums, find the jailbreak method for this exact
-        firmware version. If one exists, follow it, then reinstall KUAL, the
-        update hotfix and KOReader as in the install guide.
+        Go to kindlemodding.org and run the jailbreak wizard for this exact model
+        and firmware. If a method exists, follow it and complete every
+        post-jailbreak step, including the over-the-air update block.
       - >-
-        Install the update hotfix again straight away, and keep the Kindle in
-        airplane mode except for deliberate syncs, so this does not recur.
+        Re-run ";kpm update" then ";kpm install koreader" to reinstall KOReader.
+      - >-
+        Keep the Kindle in Airplane Mode except for deliberate syncs so this does
+        not recur.
       - >-
         If no jailbreak exists yet for this firmware, KOReader cannot run until
-        one is released. Use the stock reader in the meantime.
+        one is released. Use the stock reader in the meantime and check the wizard
+        again in a few weeks.
     note: >-
-      This is the reason the install guide stresses the hotfix and airplane
-      mode. An unprotected jailbreak is temporary.
-  - title: Reinstall the KOReader package
+      This is why the install guide stresses the update block and Airplane Mode.
+      An unprotected jailbreak is temporary.
+  - title: Re-run the KPM install on a stable connection
     rationale: >-
-      If KUAL works and the jailbreak is intact but KOReader still will not
-      start, the KOReader files themselves are likely incomplete or damaged from
-      an interrupted copy.
+      If the jailbreak is intact but no working scriptlet ever appeared, the KPM
+      install probably did not complete — a Wi-Fi drop mid-download, or the
+      repository being briefly unavailable.
     steps:
-      - Download the current "koreader-kindle" package again, in full.
+      - Confirm Wi-Fi is connected and the browser can load a normal web page.
+      - In the search bar run ";kpm update" and wait for it to finish.
+      - Then run ";kpm install koreader" again. Leave the Kindle alone until it returns you to the home screen.
       - >-
-        Connect the Kindle, copy the package to the location its readme
-        specifies, replacing the old files.
+        If it still fails, run ";kpm upgrade" first (this refreshes KPM itself),
+        then ";kpm install koreader". Persistent failures are worth reporting on
+        the Kindle Modding Discord with your model and firmware.
+  - title: Reinstall KOReader, or check a legacy KUAL install
+    rationale: >-
+      If KPM works and the jailbreak is intact but KOReader still will not start,
+      the KOReader files are likely incomplete. On older non-touch models that
+      use the deprecated KUAL method, the usual problem is files in the wrong
+      folder instead.
+    steps:
       - >-
-        Eject, unplug, open KUAL and run "Install or update KOReader" (the MRPI
-        action).
+        With KPM: run ";kpm install koreader" once more to replace the files, then
+        launch from the scriptlet or ";kpm launch koreader". If it shows an error
+        naming a specific ".lua" file, the install is damaged — some KPM versions
+        offer ";kpm remove koreader" to clear it before reinstalling.
       - >-
-        Start KOReader from KUAL. If it now shows an error naming a specific
-        ".lua" file, delete the "koreader" folder entirely and reinstall from
-        scratch.
+        With the legacy KUAL method (Kindle 2, 3 or 4 Non-Touch): connect the
+        Kindle by USB and confirm the "extensions" folder at the drive root
+        contains a "koreader" folder, and that the KOReader program folder is
+        where its readme specifies — not nested one level too deep.
+      - >-
+        Re-read the readme inside the KUAL and KOReader packages; folder names
+        change slightly between versions.
+      - Eject, unplug, and open KUAL again to run its "Install or update KOReader" action.
 recovery: >-
-  To remove KOReader and the jailbreak and return the Paperwhite to stock:
-  install the "uninstall" actions from KUAL if present, then delete the
-  "koreader" and "extensions" folders and the KUAL document from the drive. A
-  firmware update or a full device Reset from Device Options also removes
-  everything and restores the stock software; a Reset erases downloaded books
-  but not Amazon purchases.
+  To remove KOReader with KPM, use ";kpm remove koreader" if your version offers
+  it, or delete the scriptlet and the "koreader" folder from the drive over USB.
+  A firmware update or a full device Reset from Device Options removes the
+  jailbreak, KPM and KOReader together and restores the stock software; a Reset
+  erases downloaded books but not Amazon purchases.
 related:
   - text: "Install KOReader on the Kindle Paperwhite"
     href: /devices/kindle/paperwhite/koreader/install/
-  - text: "KOReader on the Kindle Paperwhite"
-    href: /devices/kindle/paperwhite/koreader/
+  - text: "Installing KOReader on a Kindle in 2026: the KPM method"
+    href: /guides/koreader-on-kindle-2026/
 ---
 
 If KOReader stopped working, check the firmware version first — an update is the
-cause far more often than anything else, and Fix 2 is then the only real option.
-For a fresh install that never ran, Fix 1 covers the usual folder mistakes.
+cause far more often than anything else, and Fix 1 is then the only real option.
+For a fresh install that never produced a launcher, Fix 2 covers the usual
+interrupted-download case.

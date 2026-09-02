@@ -7,7 +7,7 @@ summary: What KOReader adds on the Libra Colour, how it sits alongside the stock
 lastUpdated: 2026-08-24
 order: 0
 software: KOReader
-softwareVersion: "2024.11"
+softwareVersion: "2026.07.1"
 ---
 
 KOReader is a separate reading application that runs on the Libra Colour without

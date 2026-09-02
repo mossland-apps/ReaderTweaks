@@ -4,9 +4,10 @@ device: scribe
 section: koreader
 type: overview
 summary: Running KOReader on the Scribe is not a practical option today. Here is why, and what it would cost you even if it worked.
-lastUpdated: 2026-08-29
+lastUpdated: 2026-09-02
 order: 0
 software: KOReader
+softwareVersion: "2026.07.1"
 ---
 
 Short version: there is no reliable way to run KOReader on a Kindle Scribe right
@@ -18,7 +19,9 @@ Scribe for.
 - **A jailbreak is required, and Scribe support lags.** Like any Kindle, the
   Scribe would have to be jailbroken first. Jailbreaks are tied to a specific
   firmware version and are released later for the Scribe than for the Paperwhite,
-  when they are released at all. For long stretches there is no current method.
+  when they are released at all. For long stretches there is no current method,
+  and the 2026 browser-based jailbreaks plus Kindle Package Manager (KPM) do not
+  change that for the Scribe's firmware.
 - **Firmware updates would undo it.** The Scribe updates itself often — its
   note-taking features are still being added to — so any jailbreak would be
   fragile unless you blocked those updates and stopped getting the new features.
@@ -34,6 +37,6 @@ Scribe for.
 - For **your own EPUB books**, use
   [Send to Kindle](/devices/kindle/scribe/guides/get-books-and-pdfs/) or
   [Calibre](/devices/kindle/scribe/calibre/).
-- If a maintained Scribe jailbreak appears for your firmware, the MobileRead
-  forums are where it will be documented. This page will be updated if the
-  situation changes.
+- If a maintained Scribe jailbreak appears for your firmware, the Kindle Modding
+  project (kindlemodding.org) is where it will be documented. This page will be
+  updated if the situation changes.

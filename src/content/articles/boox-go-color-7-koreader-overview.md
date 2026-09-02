@@ -7,7 +7,7 @@ summary: KOReader runs on the Go Color 7 as a normal Android app — install it 
 lastUpdated: 2026-08-30
 order: 0
 software: KOReader
-softwareVersion: "2024.11"
+softwareVersion: "2026.07.1"
 ---
 
 The Go Color 7 runs Android, so KOReader is just an app. You install it from the
