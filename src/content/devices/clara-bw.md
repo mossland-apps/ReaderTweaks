@@ -12,6 +12,7 @@ aliases:
   - Clara B&W
 koreaderSupport: community
 illustration: reader-compact
+amazonUrl: 'https://www.amazon.com/Kobo-Glare-Free-Touchscreen-ComfortLight-Audiobooks/dp/B0D1KV8J76?crid=35YDMQU5VZ103&dib=eyJ2IjoiMSJ9.uZgHjgxvxC7bXMdhjcalXiqV03RFzhmcC4joQwPrIIMYsaGJSFh72x0JkK4zQ4-BHtsW6CTo79ZSFmlAELve5_gkBuRL5RU5tkhgNLKdA92pAsRAUAYVbqm9exzwT4E4sftvbIqeBA3d2KR6I3bCGvKv_ZmBEWAlHgVgXBjRdJR2R5o5R1utkI27QNFwbTQqJut58OFZi2VOnIlwVJGo07P1GaewP1pKyIynWLdN4rk.VpbNWCogvSxNKZCcE7wZ9y3Rfm7MzZ3vWblNIyBvUHw&dib_tag=se&keywords=Kobo+Clara+BW&qid=1789491708&sprefix=kobo+clara+bw%2Caps%2C221&sr=8-3&linkCode=ll2&tag=rainpuddle-20&linkId=c27c43fdf34bdcd956088820ac85e1b6&language=en_US&gaOptInStatus=true&ref_=as_li_ss_tl'
 specs:
   screenSize: 6 in
   resolution: 1448 x 1072

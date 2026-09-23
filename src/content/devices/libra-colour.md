@@ -12,6 +12,7 @@ aliases:
   - Libra 3
 koreaderSupport: community
 illustration: reader-buttons
+amazonUrl: 'https://www.amazon.com/Kobo-Glare-Free-KaleidoTM-Audiobooks-Waterproof/dp/B0D1KTKVY3?crid=9RBJ6L69U26H&dib=eyJ2IjoiMSJ9.bHspET1Brs4LU2XJiwzIFIc5T_U8Jg9r0W7jKsFpF1Bs7_WwKRC_X2f0PDtYOgodjM9v9qb_rxRu-i4ZR8oSmlRyJMnIaRTKcZy-2CbqQ6FKprdCN4jtFF_aP6gRvRi3ePNMlD6azjCCP5mTDrpFCdYGFGbDcvKSfkUYqcQ3EMjLnQ6v1eadU5s9v2ycbK9-AvK5zFYclmkM7iuzcgiLwOBwsEwhnYRaL4ih0yC3lhs.qge23k3fk5W-88KVZN5Ev3hTtL7MLDDFip3xXKDr1EM&dib_tag=se&keywords=Kobo+Libra+Colour&qid=1789491567&sprefix=kobo+libra+colour%2Caps%2C234&sr=8-4&linkCode=ll2&tag=rainpuddle-20&linkId=b5353268fab7951068453619e8add11e&language=en_US&gaOptInStatus=true&ref_=as_li_ss_tl'
 specs:
   screenSize: 7 in
   resolution: 1680 x 1264

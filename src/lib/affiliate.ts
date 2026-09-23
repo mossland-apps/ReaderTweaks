@@ -39,3 +39,23 @@ export function withAmazonTag(url: string, tag: string = AMAZON_TAG): string {
     return url;
   }
 }
+
+export interface DeviceShopLink {
+  href: string;
+  label: string;
+}
+
+/**
+ * The "Shop {device} at Amazon" button for a device hub. The product link is
+ * used exactly as supplied (it was generated in Amazon Associates and already
+ * carries the tag), so it is not re-tagged. Returns null when the device has no
+ * Amazon listing, which hides the button.
+ */
+export function deviceShopLink(device: {
+  name: string;
+  amazonUrl?: string;
+}): DeviceShopLink | null {
+  const href = device.amazonUrl?.trim();
+  if (!href || !isAmazonUrl(href)) return null;
+  return { href, label: `Shop ${device.name} at Amazon` };
+}

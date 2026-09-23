@@ -11,6 +11,7 @@ aliases:
   - BOOX Go6
 koreaderSupport: official
 illustration: reader-compact
+amazonUrl: 'https://www.amazon.com/BOOX-Go-Gen-II-InkSense/dp/B0H2XZ869X?crid=SUC324REAKA4&dib=eyJ2IjoiMSJ9.8yIQYqHHORa-ExJyHxaykBMZc97KFR68KcR2PJfXFSgdB-9fAT5zYSkHPiE8Xnu7LpijYcR_-c6HzC2hZqL-Xe55BxJmCuhS1D4ySkmgSLpP2lJ3kTKXalLlyWDMqKzflBqUvgio_BmDrpXNrnBJesKzujvB530wdqSOHwHxy5VuzTfRGPBOGs00R_N5UGs4XZ9E3wr-sf9DVwFc2MPrC9lSlggP9cwbYKY_nRzgcPg.fq0ivzy_SrG0uPTf0GcxCEAEoifhscI4eJJYXB5U-Mw&dib_tag=se&keywords=BOOX%2BGo%2B6&qid=1789493336&sprefix=boox%2Bgo%2B6%2Caps%2C210&sr=8-1&th=1&linkCode=ll2&tag=rainpuddle-20&linkId=d8d9b6f3e1f2c5f1d2dfa031508de7f8&language=en_US&gaOptInStatus=true&ref_=as_li_ss_tl'
 specs:
   screenSize: 6 in
   resolution: 1448 x 1072

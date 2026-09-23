@@ -12,6 +12,7 @@ aliases:
   - Verse Pro
 koreaderSupport: community
 illustration: reader-buttons
+amazonUrl: 'https://www.amazon.com/PocketBook-Waterproof-Eye-Friendly-Touchscreen-Audio-Book/dp/B0CGVXN52X?crid=2N69BLFM2RO31&dib=eyJ2IjoiMSJ9.9a0UQaZTa31HIiF6byC500XnJx9b-mGTIZrN1BhIVFT1S3NrASNFpE8IGGOsNqmo6ZONjyc4D6IvpB_iuBZRGQOQFzdfh6gayoardh04CqRFYClbIkKTD6_DqHyNDesl9lP0jOb3kqG6ys6CnLiqzg1UvaGE1lLQa3u6W7wglcYspvJRFqBLRviJ0Tl6-uHgp3JgUTdlfBNO4VfHB1qqkNpDaVMLTr0VFVGEvXFRb98.CtCTiUnyv_mKBJ5I3NKzvMlQ7gzw8sQ5nAo-J-Vj2Rw&dib_tag=se&keywords=PocketBook+Verse+Pro&qid=1789493818&sprefix=pocketbook+verse+pro%2Caps%2C293&sr=8-3&linkCode=ll2&tag=rainpuddle-20&linkId=313a33fe31b3dc2b2777608f4797294e&language=en_US&gaOptInStatus=true&ref_=as_li_ss_tl'
 specs:
   screenSize: 6 in
   resolution: 1072 x 1448

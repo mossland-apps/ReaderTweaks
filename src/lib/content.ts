@@ -36,6 +36,7 @@ export function toDevice(entry: CollectionEntry<'devices'>): Device {
     aliases: entry.data.aliases,
     koreaderSupport: entry.data.koreaderSupport,
     illustration: entry.data.illustration,
+    amazonUrl: entry.data.amazonUrl,
   };
 }
 

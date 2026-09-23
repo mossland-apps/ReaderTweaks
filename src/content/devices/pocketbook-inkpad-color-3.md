@@ -12,6 +12,7 @@ aliases:
   - PocketBook 743 Color
 koreaderSupport: community
 illustration: reader-large
+amazonUrl: 'https://www.amazon.com/PocketBook-InkPad-Reader-Reader-Speech/dp/B0CLPFTFYD?crid=3KR17XOW72DC2&dib=eyJ2IjoiMSJ9.V6fqJAN0gNYjEMgiZ2u2jUBbHea-mDRZM0qBFQtvQG0duy1rD6qzah-1_v8I36cDb_2drRKHnDmedVafgJIfaKEobV0ZTJgufz4pHidFP1sUxJ81YyQ7ZKAlwuof8wJHZVWywOXl1IPk6DF4rnfhv5dGYFPFoAjSRwp54u-iIEbWHyZWoVCPK66KWwcC27haar2RKIIj2Xfe0aoViQCZeV3eD5DMEUfWiV1KMSqQgBY.r28o1WWJb2i-f24gBX1QFsU6awzlNFU7tJeUQoZ2DOs&dib_tag=se&keywords=PocketBook%2BInkPad%2BColor%2B3&qid=1789494132&sprefix=pocketbook%2Binkpad%2Bcolor%2B3%2Caps%2C239&sr=8-1-spons&sp_csd=d2lkZ2V0TmFtZT1zcF9hdGY&smid=A8XEMO0NM1HGE&th=1&linkCode=ll2&tag=rainpuddle-20&linkId=2bc477fd527f66425929b1d869aec463&language=en_US&gaOptInStatus=true&ref_=as_li_ss_tl'
 specs:
   screenSize: 7.8 in
   resolution: 1404 x 1872

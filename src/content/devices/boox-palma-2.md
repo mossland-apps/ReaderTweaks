@@ -12,6 +12,7 @@ aliases:
   - Palma 2
 koreaderSupport: official
 illustration: reader-mini
+amazonUrl: 'https://www.amazon.com/BOOX-Mobile-ePaper-Reader-Color/dp/B0FVFRZ1JN?crid=JRRA5XCKYBSK&dib=eyJ2IjoiMSJ9.fPV7i4KoPB3FJLZ3o_9K49JHDTVUWp-J8_H5WCX_jy9jSq8ZInvxi9FGoYKAW-Nz5p6Ldgzj70uTlr4A6pkmkZMwLhOcGAil9fOcLQVN7qbP99n5qUTZJ4vNouo_S4Vob4ySmmhGFqssSyZhCq-kTWU9uPJFnkfKYzYdNr6bWz2wea7EWpmt4U0Oaw1qbORRMo8fitVoGObSQOBjkGnFHkI7UL2-GXzWJNtsEno446g.ND5sKDBVAYTpSZc5yutK2qSLN4qA4CZERRiK9r4MLqM&dib_tag=se&keywords=boox%2Bpalma%2B2&qid=1789493405&sprefix=boox%2Bpalma%2B2%2Caps%2C210&sr=8-1&th=1&linkCode=ll2&tag=rainpuddle-20&linkId=f4cc047829aa249efbda26a97905b7d0&language=en_US&gaOptInStatus=true&ref_=as_li_ss_tl'
 specs:
   screenSize: 6.13 in
   resolution: 1648 x 824

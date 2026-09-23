@@ -61,6 +61,7 @@ export interface Device {
   aliases?: string[];
   koreaderSupport?: KoreaderSupport;
   illustration?: string;
+  amazonUrl?: string; // Associates product link; unset = not sold on Amazon
 }
 
 export type ArticleType = 'overview' | 'guide' | 'fix' | 'list';

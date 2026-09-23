@@ -12,6 +12,7 @@ aliases:
   - PocketBook 700
 koreaderSupport: community
 illustration: reader-buttons
+amazonUrl: 'https://www.amazon.com/PocketBook-Affordable-Reader-SMARTlight-Bluetooth/dp/B0H1S3LT1D?crid=6F91TBNCGOB0&dib=eyJ2IjoiMSJ9.LRw1gsLgQZKD6VToEk_TFS39zYPgOMfN0Obzb2AEOsUUdZiJpin9EZPFmeTmyT1bbc_pJUvbKX98ir9BJsesTKEkGPXFTKHHwQtpeWhh_7VAZA5v4WBulWuSvjzGgGFaIbasB5upGSRnFHmnE9U2d8vRIoPG5kAjENuia5ebdY92y5b1sj-uSzmTBQeSCrygvzcwJOYpEuSavXMQxDj08IdJqgtRqEs8Z7O4VynfRJQ.Oh_DWx90T5aqwceP4oT0XAEBf6s2WqYBHX41Sjnesk4&dib_tag=se&keywords=PocketBook%2BEra&qid=1789493992&sprefix=pocketbook%2Bera%2Caps%2C244&sr=8-1-spons&sp_csd=d2lkZ2V0TmFtZT1zcF9hdGY&th=1&linkCode=ll2&tag=rainpuddle-20&linkId=8946cf715fc77001f9c89bd18d46480b&language=en_US&gaOptInStatus=true&ref_=as_li_ss_tl'
 specs:
   screenSize: 7 in
   resolution: 1264 x 1680

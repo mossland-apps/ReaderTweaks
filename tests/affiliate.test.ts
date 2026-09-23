@@ -1,5 +1,5 @@
 import { describe, it, expect } from 'vitest';
-import { amazonSearch, withAmazonTag, isAmazonUrl } from '@lib/affiliate';
+import { amazonSearch, withAmazonTag, isAmazonUrl, deviceShopLink } from '@lib/affiliate';
 
 describe('isAmazonUrl', () => {
   it('recognises amazon storefronts', () => {
@@ -48,5 +48,27 @@ describe('withAmazonTag', () => {
     expect(withAmazonTag('https://www.amazon.com/dp/B0ABC', '')).toBe(
       'https://www.amazon.com/dp/B0ABC',
     );
+  });
+});
+
+describe('deviceShopLink', () => {
+  const url =
+    'https://www.amazon.com/Kobo-Glare-Free/dp/B0D1KTKVY3?crid=9RB&linkCode=ll2&tag=rainpuddle-20&linkId=b53';
+
+  it('builds the "Shop … at Amazon" label from the device name', () => {
+    expect(deviceShopLink({ name: 'Kobo Libra Colour', amazonUrl: url })).toEqual({
+      href: url,
+      label: 'Shop Kobo Libra Colour at Amazon',
+    });
+  });
+  it('keeps the product link exactly as supplied (its own tag and tracking)', () => {
+    expect(deviceShopLink({ name: 'Kobo Libra Colour', amazonUrl: url })?.href).toBe(url);
+  });
+  it('returns null when a device has no Amazon listing', () => {
+    expect(deviceShopLink({ name: 'Kobo Sage' })).toBeNull();
+    expect(deviceShopLink({ name: 'Kobo Sage', amazonUrl: '  ' })).toBeNull();
+  });
+  it('returns null for a link that is not an Amazon storefront', () => {
+    expect(deviceShopLink({ name: 'Kobo Sage', amazonUrl: 'https://kobo.com/sage' })).toBeNull();
   });
 });

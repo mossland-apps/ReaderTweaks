@@ -13,6 +13,7 @@ aliases:
   - Kindle 2022
 koreaderSupport: experimental
 illustration: reader-mini
+amazonUrl: 'https://www.amazon.com/Amazon-Kindle/dp/B0CNV9F72P?crid=15MYX7MB9OTMX&dib=eyJ2IjoiMSJ9.t0O2tD2XujDVOL4GkWsizByFXrtj5cfT_z4kQtaKSB4UVAbtbsXkHlvTYlubeT4Yhci01H3z3NbW7OeW4gH2rwvTS7n2LikUA-uPJO-Y1ihz8MlvegZ4rBFkFEoHVCT4zCOy3eBV4HPxiCb4suDOpSl9_tsBtMcge6DHt3iw7t1geGQTQjohpJvKO2o1ugu28y25KcaPgoD_Jt09So45MqE6yjNTmSjDb2u6mkATsAk.rjKWV_HjFazoRjKaRReJnjp7UdYcKP-f8iBOVSlgF0A&dib_tag=se&keywords=Kindle%2Bbasic%2B%2811th%2Bgeneration%29&qid=1789493110&sprefix=kindle%2Bbasic%2B11th%2Bgeneration%2B%2Caps%2C197&sr=8-1&ufe=app_do%3Aamzn1.fos.ed73e2ba-4d06-4781-aee7-c317fe036206&th=1&linkCode=ll2&tag=rainpuddle-20&linkId=e6dbe92f2aacf7c6da84f52fd65641f1&language=en_US&gaOptInStatus=true&ref_=as_li_ss_tl'
 specs:
   screenSize: 6 in
   resolution: 1448 x 1072

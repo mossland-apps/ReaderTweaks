@@ -12,6 +12,7 @@ aliases:
   - Paper Pro
 koreaderSupport: experimental
 illustration: reader-tablet
+amazonUrl: 'https://www.amazon.com/reMarkable-Paper-Pro-Bundle-Tablet/dp/B0DG9ZXWMK?crid=H5R7KCRATRMP&dib=eyJ2IjoiMSJ9.fYs0AxcabRmI7sEwTrlmbdWZ4xSLNpG3ZIFC1YGOFXL8xgaeC4fEMXiRiiE17eKGNEYL0gx52-xQrmIG4ZYtVyP5RDxKCWUlmgqsN8FSmiTYR61LHdi55rSMcMt3-xWLT9goSTYLmAnZdbrN4HjDf_7BGE8lu25t9Xpm43txme5Jj78qxFLUE2FEoWly78QhSGUHlKKuVB60ziVw8J86qhMRS_T6Bv3fpK1zinQjYSw.D4hcNjwSUP0aJALzGlk3L7SPQkc5TqKEOtBgmJADRMA&dib_tag=se&keywords=reMarkable+Paper+Pro&qid=1789494191&sprefix=remarkable+paper+pro%2Caps%2C257&sr=8-3&linkCode=ll2&tag=rainpuddle-20&linkId=7fea14f3bda1e62037f9eeaab706197c&language=en_US&gaOptInStatus=true&ref_=as_li_ss_tl'
 specs:
   screenSize: 11.8 in
   resolution: 2160 x 1620

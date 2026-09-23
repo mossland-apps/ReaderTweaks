@@ -47,6 +47,9 @@ const devices = defineCollection({
       .enum(['official', 'community', 'experimental', 'none'])
       .default('community'),
     illustration: z.string().optional(),
+    // Amazon Associates product link for the "Shop … at Amazon" button on the
+    // device hub. Leave unset when the device is not sold on Amazon.
+    amazonUrl: z.string().url().optional(),
   }),
 });
 

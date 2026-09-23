@@ -2,6 +2,7 @@
 import BaseLayout from '../../../../layouts/BaseLayout.astro';
 import Illo from '../../../../components/Illo.astro';
 import Breadcrumbs from '../../../../components/Breadcrumbs.astro';
+import AffiliateNote from '../../../../components/AffiliateNote.astro';
 import {
   loadBrands,
   loadDevices,
@@ -22,6 +23,8 @@ import {
 import { deviceTrail } from '../../../../lib/breadcrumbs';
 import { specRows } from '../../../../lib/format';
 import { breadcrumbJsonLd, deviceProductJsonLd } from '../../../../lib/seo';
+import { deviceShopLink } from '../../../../lib/affiliate';
+import { externalLinkAttrs } from '../../../../lib/links';
 
 export async function getStaticPaths() {
   const devices = await loadDevices();
@@ -42,6 +45,7 @@ const accessories = (await loadAccessories()).filter(
 const rows = specRows(device);
 const related = relatedComparisons(comparisons, device.slug);
 const trail = deviceTrail(brand, device);
+const shop = deviceShopLink(device);
 
 // Returns { count, kind } — kind picks the wording on the section card.
 function sectionInfo(slug: string): { count: number; kind: 'articles' | 'ready' } {
@@ -91,6 +95,17 @@ const koreaderLabel: Record<string, string> = {
             )}
             <span class="chip">KOReader: {koreaderLabel[device.koreaderSupport ?? 'community']}</span>
           </p>
+          {shop && (
+            <div class="hub-head__shop">
+              <a
+                href={shop.href}
+                {...externalLinkAttrs(shop.href, { rel: 'sponsored', class: 'btn' })}
+              >
+                {shop.label}
+              </a>
+              <AffiliateNote />
+            </div>
+          )}
         </div>
         <div class="hub-head__illo" aria-hidden="true">
           <Illo name={device.illustration ?? 'reader-plain'} />
@@ -180,6 +195,8 @@ const koreaderLabel: Record<string, string> = {
   }
   .hub-head h1 { font-size: var(--step-3); }
   .hub-head__meta { display: flex; flex-wrap: wrap; gap: 0.5rem; margin: 1rem 0 0; }
+  .hub-head__shop { margin-top: 1.25rem; }
+  .hub-head__shop :global(.affiliate-note) { margin-top: 0.6rem; max-width: 34rem; }
   .hub-head__illo { width: 120px; color: var(--ink); }
   .hub-head__illo :global(svg) { width: 120px; height: 120px; }
 
@@ -239,6 +256,7 @@ const koreaderLabel: Record<string, string> = {
   @media (max-width: 900px) {
     .hub-head { grid-template-columns: 1fr; }
     .hub-head__illo { display: none; }
+    .hub-head__shop .btn { width: 100%; justify-content: center; text-align: center; }
     .section-cards { grid-template-columns: 1fr; }
     .hub-cols { grid-template-columns: 1fr; gap: 1.5rem; }
   }

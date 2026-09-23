@@ -12,6 +12,7 @@ aliases:
   - Go Color 7
 koreaderSupport: official
 illustration: reader-android
+amazonUrl: 'https://www.amazon.com/BOOX-Go-Color-Gen-II/dp/B0F58ZHCX2?crid=3CDDMWYO1R9SX&dib=eyJ2IjoiMSJ9.6PaTzzjHm7gHVOlmyTAkwYljxtFFth62ExHIR2Pcis-pDgzsSzUXC0Dov6gySJ_cMr2GRjtpWofPDx2p8ZGfan_MjECFk1UURYJx7zND6Oqq8CayFIvDlfUfS81Z8seIjGF5S35O2IwOUPCIxNJCWb1e1dSlWCJlsPXvkwYXBmYukXCAmXUnYsZuNvKfxx2r2n7jrC7A8mI3o2alp6ZishRHuCz3YfZXL8cRdUNQCG0.5ngOpGszrSE_Ee9VLTudVbqxOXukDGC8DuXzl5q2xAs&dib_tag=se&keywords=BOOX%2BGo%2BColor%2B7&qid=1789493213&sprefix=boox%2Bgo%2Bcolor%2B7%2Caps%2C248&sr=8-1&th=1&linkCode=ll2&tag=rainpuddle-20&linkId=3dd3a4a2178da1cc29789e40f9ca8150&language=en_US&gaOptInStatus=true&ref_=as_li_ss_tl'
 specs:
   screenSize: 7 in
   resolution: 1680 x 1264 (black), 840 x 632 (colour)

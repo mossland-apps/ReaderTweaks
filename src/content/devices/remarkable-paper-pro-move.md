@@ -12,6 +12,7 @@ aliases:
   - Paper Pro Move
 koreaderSupport: experimental
 illustration: reader-tablet
+amazonUrl: 'https://www.amazon.com/reMarkable-Paper-Pro-Move-Ultraportable/dp/B0FMS56K28?crid=UDQN3MCGRMQ9&dib=eyJ2IjoiMSJ9.LV3U8p_EaHReUZYscDVH9OFYyjo9xSfRus75lZi6UNKYp4pzDJhYPGCYi0tTJ0AGld2q5rGFsCeHQtLZZhemE6D5GYbFs-lwkJNX_UrTzTTfRWQXZHTb2nz9h6svi3Sghfz7116ZlKlKxkxsaiNCb8g2k2qgHN4HMucpLV5melEVzBErGsmjZI6m_0pnwunMf9g8a6qEob5aI9AwrnB0wo3o4Hj94AuB6AhFYubM-Q4.p_x3MrcilNqbokkd8uC4eI4qjakpigQ4X_AdDDjQWE4&dib_tag=se&keywords=reMarkable%2BPaper%2BPro%2BMove&qid=1789494303&sprefix=remarkable%2Bpaper%2Bpro%2Bmove%2Caps%2C245&sr=8-4&th=1&linkCode=ll2&tag=rainpuddle-20&linkId=1dee7daabaf6175b895beb29697885ae&language=en_US&gaOptInStatus=true&ref_=as_li_ss_tl'
 specs:
   screenSize: 7.3 in
   resolution: 1696 x 954

@@ -12,6 +12,7 @@ aliases:
   - Paper Pure
 koreaderSupport: experimental
 illustration: reader-tablet
+amazonUrl: 'https://www.amazon.com/reMarkable-Paper-Pure-with-Marker/dp/B0GVKBLJK2?crid=1A24A4SHNVHIG&dib=eyJ2IjoiMSJ9.F0I-11aqUSO_3XNa4h7tRZfpejNc6FVsJ_b6U1Z7nmeYOZWB7iXUBg-g4kx8-8emguUX0hQSL62SN00yElLUR6mFTN1HMeAsbj72bDrc3kARUbEjuUaX3FtpAvbjUxe6_CwUeYNw0uP7FsEv17K6qARs2jgfVOfZkO0uGMYBnGRrhE3A6-HZWSzXdVAb671BpqEvDW90DGM0PlNP1R4Fjel72VsLvJxMYv0lf2bLTDI.BKOT47oK77WYxW_6pTtHGy_ilnhw_gyCDcrcZU5BaH4&dib_tag=se&keywords=reMarkable+Paper+Pure&qid=1789494377&sprefix=remarkable+paper+pure%2Caps%2C236&sr=8-1-spons&sp_csd=d2lkZ2V0TmFtZT1zcF9hdGY&psc=1&linkCode=ll2&tag=rainpuddle-20&linkId=f5e4272172d800a4f210b7f47caf9982&language=en_US&gaOptInStatus=true&ref_=as_li_ss_tl'
 specs:
   screenSize: 10.3 in
   resolution: 1872 x 1404

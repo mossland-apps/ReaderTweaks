@@ -12,6 +12,7 @@ aliases:
   - PocketBook 743
 koreaderSupport: community
 illustration: reader-large
+amazonUrl: 'https://www.amazon.com/PocketBook-Eye-Friendly-Anti-Scratch-Protection-Bluetooth%C2%AE/dp/B0C2QM93N5?crid=B4IOTOLKMUEU&dib=eyJ2IjoiMSJ9.P20wxtCa3nT3pE-Ob_ESYqsXzYndb3Fzb9knSuJwFskjtMHmOlOto47kBsm0PQmP-9Y2CinsfXMtdaMISHAm547PkRaf5H3ZIJ2wH9HK2CFB7AL5dO2H2hAy5RngGasIy3QBf8MhzNOtkU7-LOFwCPJQPTuIceflnot6zJ5_ZnX4jbgU7LAqPSmVNdVZOqQdaZfMar75XCuRIaLfZz4V2AAZXa6kB1JzO0F3KaR645E.dGzMOVCzVtSoWGaqDeiI0_FDFN4gvwbSUBAWk7bzJ6A&dib_tag=se&keywords=PocketBook+InkPad+4&qid=1789494080&sprefix=pocketbook+inkpad+4%2Caps%2C285&sr=8-1-spons&sp_csd=d2lkZ2V0TmFtZT1zcF9hdGY&psc=1&smid=A8XEMO0NM1HGE&linkCode=ll2&tag=rainpuddle-20&linkId=3981b698214f24fb98fbe9374ca194d6&language=en_US&gaOptInStatus=true&ref_=as_li_ss_tl'
 specs:
   screenSize: 7.8 in
   resolution: 1404 x 1872

@@ -12,6 +12,7 @@ aliases:
   - Scribe
 koreaderSupport: none
 illustration: reader-tablet
+amazonUrl: 'https://www.amazon.com/Amazon-Kindle-Scribe-Colorsoft-newest/dp/B0FC1WNVMX?crid=BMNJPF2WJJ8E&dib=eyJ2IjoiMSJ9.GVK46FPvDXmK_fFO_NWl-qVNxV_4W01V63HE8RmBGYBLoDbOagBPHDzzU_TnRScMLo_ZMCKeRfSpDPwn_tmcbDBWPRTg5NaNzELhNY-KlyleMTAyL222DUC44JGIvPkrNglBqtFldSLR68pqhC7kEvk6EYPrRj_bX68vnZgxm6-chHPoMQMHLxYwLzMPdSr3Sq_gYtH7P9yBo3Qya_4xl-bGCLWOjfvoH7uNcVPMXXo.H8d6FpcQbrexaY49n9wIijhDYsPlNPoZiJx2efAITt8&dib_tag=se&keywords=Kindle%2BScribe&qid=1789492923&sprefix=kindle%2Bscribe%2Caps%2C254&sr=8-4&ufe=app_do%3Aamzn1.fos.ed73e2ba-4d06-4781-aee7-c317fe036206&th=1&linkCode=ll2&tag=rainpuddle-20&linkId=be8629f617e3824e4536a50739fd1e5e&language=en_US&gaOptInStatus=true&ref_=as_li_ss_tl'
 specs:
   screenSize: 10.2 in
   resolution: 2480 x 1860
