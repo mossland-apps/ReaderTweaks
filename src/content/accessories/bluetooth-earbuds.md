@@ -7,6 +7,7 @@ devices:
   - scribe
   - paperwhite
   - kindle-basic
+  - colorsoft
   - boox-go-color-7
   - boox-page
   - boox-go-6

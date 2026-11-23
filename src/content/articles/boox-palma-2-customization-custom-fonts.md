@@ -21,8 +21,8 @@ prerequisites:
 related:
   - text: "Add your own fonts to the BOOX Palma 2 in KOReader"
     href: /devices/boox/boox-palma-2/koreader/
-  - text: "Good reading fonts, and why they matter on e-ink"
-    href: /guides/reading-fonts/
+  - text: "The best fonts for KOReader, and how to add your own"
+    href: /guides/best-koreader-fonts/
 searchTerms:
   - boox custom fonts
   - neoreader fonts

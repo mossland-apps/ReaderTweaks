@@ -6,7 +6,7 @@ section: guides
 type: guide
 order: 2
 summary: Use Send to Kindle for EPUB and documents, and understand how PDFs behave on the Scribe — they keep their layout and can be marked up, but do not reflow.
-lastUpdated: 2026-08-29
+lastUpdated: 2026-11-22
 datePublished: 2026-08-29
 software: Send to Kindle
 difficulty: Easy
@@ -49,7 +49,7 @@ steps:
       PDFs are delivered as-is — no conversion — and keep their exact layout,
       which is the point of the big screen. They do not reflow: text size is
       fixed by the page, so a document typeset for A4 or Letter shows at close to
-      full size on the 10.2-inch screen and is comfortable to read. Small-print
+      full size on the large screen (11 inches on the current model) and is comfortable to read. Small-print
       or two-column PDFs still need pinch-zoom and panning.
   - instruction: Mark up a PDF with the pen
     detail: >-

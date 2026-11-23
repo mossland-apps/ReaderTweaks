@@ -6,7 +6,7 @@ section: koreader
 type: guide
 order: 1
 summary: The 2026 method — a browser-based jailbreak, then KOReader through Kindle Package Manager (KPM). No computer needed. Plus how to keep it working through firmware updates.
-lastUpdated: 2026-09-02
+lastUpdated: 2026-11-22
 datePublished: 2026-08-26
 software: KOReader
 softwareVersion: "2026.07.1"
@@ -34,6 +34,7 @@ searchTerms:
   - kpm
   - kindle package manager
   - jailbreak paperwhite 2026
+  - vera jailbreak
   - nosebleed
   - winterbreak
   - block kindle updates
@@ -46,16 +47,18 @@ steps:
       the most common way a working jailbreak breaks, and some methods only cover
       a specific firmware range.
     warning: >-
-      If the Kindle is already on the newest firmware (broadly the 5.19 series, or
-      5.18.1.1.1, at the time of writing) there is no jailbreak for it yet. Keep
-      it in Airplane Mode and check the Kindle Modding wizard again in a few
-      weeks.
+      The current jailbreak, Véra, covers firmware up to 5.19.6. If the Kindle
+      has already updated to the 5.20 series, or it is the redesigned 2026
+      Paperwhite, we have not found a public jailbreak for it at the time of
+      writing. Keep it in Airplane Mode and check the Kindle Modding wizard again
+      in a few weeks.
   - instruction: Run the jailbreak from the Kindle's browser
     detail: >-
       The jailbreak in 2026 runs on the device itself — no computer. On
       kindlemodding.org, use the jailbreak wizard: it asks for your model and
-      firmware and sends you to the right method (commonly NoseBleed, WinterBreak
-      or AdBreak). You open that page in the Kindle's own web browser and let the
+      firmware and sends you to the right method (Véra for most firmware from
+      5.17.1 to 5.19.6; older methods such as NoseBleed or WinterBreak for older
+      firmware). You open that page in the Kindle's own web browser and let the
       script run; the screen flashes a few times.
     tip: >-
       Follow the wizard's page exactly, top to bottom. The steps and file names

@@ -3,25 +3,25 @@ title: KOReader on the Kindle Scribe
 device: scribe
 section: koreader
 type: overview
-summary: Running KOReader on the Scribe is not a practical option today. Here is why, and what it would cost you even if it worked.
-lastUpdated: 2026-09-02
+summary: Running KOReader on the Scribe is not a practical option today. Here is why, which Scribes a jailbreak covers, and what it would cost you even if it worked.
+lastUpdated: 2026-11-22
 order: 0
 software: KOReader
 softwareVersion: "2026.07.1"
 ---
 
-Short version: there is no reliable way to run KOReader on a Kindle Scribe right
-now, and even if there were, it would turn off the features you bought the
-Scribe for.
+Short version: on the current 11-inch Scribe there is no jailbreak we can point
+you to. On the older Scribes a jailbreak exists, but KOReader turns off the
+features you bought a Scribe for.
 
 ## Why it is not practical
 
-- **A jailbreak is required, and Scribe support lags.** Like any Kindle, the
-  Scribe would have to be jailbroken first. Jailbreaks are tied to a specific
-  firmware version and are released later for the Scribe than for the Paperwhite,
-  when they are released at all. For long stretches there is no current method,
-  and the 2026 browser-based jailbreaks plus Kindle Package Manager (KPM) do not
-  change that for the Scribe's firmware.
+- **It depends on which Scribe you have.** Like any Kindle, the Scribe has to be
+  jailbroken first. The **Véra** jailbreak (August 2026) covers the 2022 and
+  2024 Scribes on firmware up to 5.19.6. When it launched, the 11-inch 2025
+  Scribe models, including the Scribe Colorsoft, were not covered by any method.
+  We have not found a public jailbreak confirmed for the newer 5.20 firmware
+  either.
 - **Firmware updates would undo it.** The Scribe updates itself often — its
   note-taking features are still being added to — so any jailbreak would be
   fragile unless you blocked those updates and stopped getting the new features.

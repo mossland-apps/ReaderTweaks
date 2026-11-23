@@ -22,7 +22,7 @@ import {
 } from '../../../../lib/devices';
 import { deviceTrail } from '../../../../lib/breadcrumbs';
 import { specRows } from '../../../../lib/format';
-import { breadcrumbJsonLd, deviceProductJsonLd } from '../../../../lib/seo';
+import { breadcrumbJsonLd } from '../../../../lib/seo';
 import { deviceShopLink } from '../../../../lib/affiliate';
 import { externalLinkAttrs } from '../../../../lib/links';
 
@@ -76,7 +76,7 @@ const koreaderLabel: Record<string, string> = {
   description={device.summary}
   path={deviceHref(device)}
   activeNav="devices"
-  jsonLd={[breadcrumbJsonLd(trail), deviceProductJsonLd(device, brand.name)]}
+  jsonLd={[breadcrumbJsonLd(trail)]}
 >
   <article class="section device-hub">
     <div class="wrap">

@@ -4,7 +4,7 @@ device: clara-bw
 section: comparisons
 type: overview
 summary: Where the Clara BW sits against the Kobo Libra Colour, the basic Kindle and the Kindle Paperwhite, and which one to pick.
-lastUpdated: 2026-08-27
+lastUpdated: 2026-11-22
 order: 0
 compareWith:
   - libra-colour
@@ -20,13 +20,15 @@ and KOReader easily. Everything below trades one of those away.
   screen, physical page-turn buttons, waterproofing, stylus support and a colour
   panel. Same open ecosystem. Choose it if you want any of those features and do
   not mind the extra size and cost.
-- **Basic Kindle (11th generation).** The Clara BW's closest rival on price and
-  size — also a 6-inch reader. It has a warm light too now, but no
-  waterproofing, and it is tied to Amazon, so sideloading means conversion and
-  KOReader means jailbreaking. Choose the Clara BW to keep your library open;
-  choose the basic Kindle if you buy from Amazon and want that to be seamless.
+- **Basic Kindle.** The Clara BW's closest rival on price and size — also a
+  6-inch reader, redesigned in 2026 to be even smaller and lighter. But it has no
+  warm light and no waterproofing, both of which the Clara BW has, and it is tied
+  to Amazon, so sideloading means conversion and KOReader means jailbreaking
+  (not yet possible at all on the 2026 model). Choose the Clara BW to keep your
+  library open; choose the basic Kindle if you buy from Amazon and want that to
+  be seamless.
 - **Kindle Paperwhite.** A step up from the basic Kindle: 7-inch, waterproof,
-  more storage. Still black-and-white, still no buttons, still Amazon's closed
+  warm light. Still black-and-white, still no buttons, still Amazon's closed
   ecosystem. Compare it to the Libra Colour rather than the Clara BW if size and
   water resistance matter.
 

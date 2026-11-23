@@ -4,23 +4,24 @@ shortName: Scribe
 brand: kindle
 status: complete
 order: 2
-releaseYear: 2024
-summary: Amazon's 10.2-inch Kindle with an included pen — the large-format option for reading, handwritten notebooks and PDF markup inside the Kindle ecosystem.
+releaseYear: 2025
+summary: Amazon's 11-inch Kindle with an included pen, redesigned in late 2025 — thinner and lighter, for reading, handwritten notebooks and PDF markup inside the Kindle ecosystem.
 aliases:
+  - Kindle Scribe 2025
+  - Kindle Scribe without Front Light
   - Kindle Scribe 2024
   - Kindle Scribe 2nd generation
   - Scribe
 koreaderSupport: none
 illustration: reader-tablet
-amazonUrl: 'https://www.amazon.com/Amazon-Kindle-Scribe-Colorsoft-newest/dp/B0FC1WNVMX?crid=BMNJPF2WJJ8E&dib=eyJ2IjoiMSJ9.GVK46FPvDXmK_fFO_NWl-qVNxV_4W01V63HE8RmBGYBLoDbOagBPHDzzU_TnRScMLo_ZMCKeRfSpDPwn_tmcbDBWPRTg5NaNzELhNY-KlyleMTAyL222DUC44JGIvPkrNglBqtFldSLR68pqhC7kEvk6EYPrRj_bX68vnZgxm6-chHPoMQMHLxYwLzMPdSr3Sq_gYtH7P9yBo3Qya_4xl-bGCLWOjfvoH7uNcVPMXXo.H8d6FpcQbrexaY49n9wIijhDYsPlNPoZiJx2efAITt8&dib_tag=se&keywords=Kindle%2BScribe&qid=1789492923&sprefix=kindle%2Bscribe%2Caps%2C254&sr=8-4&ufe=app_do%3Aamzn1.fos.ed73e2ba-4d06-4781-aee7-c317fe036206&th=1&linkCode=ll2&tag=rainpuddle-20&linkId=be8629f617e3824e4536a50739fd1e5e&language=en_US&gaOptInStatus=true&ref_=as_li_ss_tl'
+amazonUrl: 'https://www.amazon.com/Amazon-Kindle-Scribe-newest-model/dp/B0FC1ZS9QZ?crid=3PSXSMW4IJSF9&dib=eyJ2IjoiMSJ9.BViiqaF2XBe_8YGA6xE5GoWNn4ehpvt_1mPHT8m9Fsql8k28N9ncHaGrisvTujVj_yDlIuutkVmcHBSw-lBekGJZppRZ3jyvax7uD-qPOvlRh-l-htIXBii0bl7ceCUWFnMocF7mogcCODAwuHEM8jZ4PWtbZKNBVqzbgwXSrP_QtwNFxPhuypMfZQkB5gdUa2FbiwbsMfhHt7zHXzguWIHYK2dix1XKjvB1MjbUR08.9SSQhlodPAkxXf5YythiOonbWAbzQ3FTY2kd7CxTW4g&dib_tag=se&keywords=amazon%2Bscribe&qid=1795467626&sprefix=amazon%2Bscr%2Caps%2C198&sr=8-1&ufe=app_do%3Aamzn1.fos.74097168-0c10-4b8a-b96b-8388a1a12daf&th=1&linkCode=ll2&tag=rainpuddle-20&linkId=816eec2fce51e7a97f4d7ba7483e9c92&language=en_US&gaOptInStatus=true&ref_=as_li_ss_tl'
 specs:
-  screenSize: 10.2 in
-  resolution: 2480 x 1860
+  screenSize: 11 in
   ppi: 300 ppi
   color: false
   frontlight: true
   warmLight: true
-  storage: 16 GB
+  storage: 32 GB or 64 GB
   waterproof: false
   physicalButtons: false
   stylusSupport: true
@@ -32,14 +33,22 @@ specs:
     - PDF
     - EPUB (via Send to Kindle conversion)
     - TXT
-  weight: 433 g
-  dimensions: 230 x 196 x 5.7 mm
+  weight: 400 g
+  dimensions: 245 x 189 x 5.4 mm
 ---
 
 The Scribe is the large Kindle built around a pen. Alongside normal Kindle
 reading it does handwritten notebooks, notes written straight onto book pages,
-and PDF markup on a 10.2-inch screen. Notebooks sync to the Kindle apps and can
+and PDF markup on an 11-inch screen. Notebooks sync to the Kindle apps and can
 be emailed as PDFs, with handwriting-to-text conversion.
+
+**Which Scribe is this?** Amazon redesigned the Scribe in late 2025: a larger
+11-inch screen, a 5.4 mm, 400 g body, a faster processor, a textured glass
+surface for more paper-like writing, and a new home screen with AI-assisted note
+search. The specifications above are for that model. It also comes as a cheaper
+**Scribe without Front Light** and a colour **Scribe Colorsoft**, which work the
+same way. The previous 10.2-inch model (2024) is still around, and almost
+everything on these pages applies to it too.
 
 Like every Kindle it is a closed device — you cannot change much on it — and it
 is not waterproof. There is no reliable way to run KOReader on it. So these

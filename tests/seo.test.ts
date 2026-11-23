@@ -1,6 +1,5 @@
 import { describe, it, expect } from 'vitest';
-import { SITE, canonical, truncateMeta, breadcrumbJsonLd, articleJsonLd, deviceProductJsonLd } from '@lib/seo';
-import type { Device } from '@lib/types';
+import { SITE, canonical, truncateMeta, breadcrumbJsonLd, articleJsonLd } from '@lib/seo';
 
 describe('site config', () => {
   it('knows its own origin and name', () => {
@@ -61,26 +60,5 @@ describe('articleJsonLd', () => {
     expect(ld.dateModified).toBe('2026-08-01T00:00:00.000Z');
     expect(ld.mainEntityOfPage).toBe('https://readertweaks.com/devices/kobo/libra-colour/koreader/install/');
     expect(ld.publisher.name).toBe('ReaderTweaks');
-  });
-});
-
-describe('deviceProductJsonLd', () => {
-  const libra: Device = {
-    slug: 'libra-colour',
-    name: 'Kobo Libra Colour',
-    shortName: 'Libra Colour',
-    brand: 'kobo',
-    status: 'complete',
-    order: 1,
-    releaseYear: 2024,
-    summary: 'Colour e-ink reader.',
-    specs: { screenSize: '7 in', color: true, waterproof: true },
-  };
-  it('describes the device as a Product with its brand', () => {
-    const ld = deviceProductJsonLd(libra, 'Kobo');
-    expect(ld['@type']).toBe('Product');
-    expect(ld.name).toBe('Kobo Libra Colour');
-    expect(ld.brand).toMatchObject({ '@type': 'Brand', name: 'Kobo' });
-    expect(ld.category).toBe('E-reader');
   });
 });
