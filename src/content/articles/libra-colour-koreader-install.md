@@ -6,7 +6,7 @@ section: koreader
 type: guide
 order: 1
 summary: Add KOReader to the Libra Colour by copying one package to the device. This keeps the stock Kobo reader intact and adds a KOReader icon to the home screen.
-lastUpdated: 2026-09-02
+lastUpdated: 2026-11-23
 datePublished: 2026-08-24
 software: KOReader
 softwareVersion: "2026.07.1"
@@ -45,6 +45,12 @@ steps:
       a badly out-of-date system can mishandle that step. On the device, go to
       the home screen, open the menu, then Settings, then Device information, and
       let it check for and apply any update before you continue.
+    warning: >-
+      Normal 4.x updates are fine. If the Kobo instead offers the optional
+      "beta 6.0" upgrade, tap Skip if you want KOReader to run smoothly.
+      KOReader runs on 6.0, but users have reported problems such as the
+      battery showing 0% and the device never going to sleep. Kobo also warns
+      that rolling back from 6.0 deletes highlights and sideloaded books.
   - instruction: Download the right KOReader package for the Libra Colour
     detail: >-
       On the KOReader releases page, take the newest normal release (dated, such

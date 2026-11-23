@@ -46,7 +46,7 @@ Bluetooth for audio — but no page-turn buttons and no speaker. It reads by tou
 only.
 
 What it keeps is the thing that makes a BOOX a BOOX: full Android 12 with the
-Google Play Store, so it runs the Kindle app, the Kobo app, Libby, KOReader and
-anything else. The trade-off, as on every BOOX, is the setup needed to make
+Google Play Store, so it runs the Kindle app, the Kobo app, Libby and almost anything else, and
+KOReader installs from F-Droid or its official APK. The trade-off, as on every BOOX, is the setup needed to make
 Android apps behave on e-ink. These pages cover that, plus KOReader, Calibre,
 customization and troubleshooting.

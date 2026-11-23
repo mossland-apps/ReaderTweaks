@@ -5,8 +5,8 @@ device: boox-palma-2
 section: koreader
 type: guide
 order: 1
-summary: Install KOReader from the Play Store or an APK on the Palma 2, then set its BOOX refresh mode, grant storage access, and map the volume keys to page turns. No jailbreak.
-lastUpdated: 2026-08-31
+summary: Install KOReader from F-Droid or the official APK on the Palma 2, then set its BOOX refresh mode, grant storage access, and map the volume keys to page turns. No jailbreak.
+lastUpdated: 2026-11-23
 datePublished: 2026-08-31
 software: KOReader
 softwareVersion: "2026.07.1"
@@ -14,7 +14,7 @@ difficulty: Easy
 estimatedTime: 10 minutes
 lastTested: 2026-08-29
 whatYouNeed:
-  - BOOX Palma 2 with the Play Store enabled, or the KOReader Android APK
+  - BOOX Palma 2 and either the F-Droid app or the KOReader Android APK
 prerequisites:
   - text: "KOReader on the BOOX Palma 2 — why and what to set"
     href: /devices/boox/boox-palma-2/koreader/
@@ -36,10 +36,11 @@ searchTerms:
 steps:
   - instruction: Install KOReader
     detail: >-
-      Open the Play Store, search for "KOReader", and install it. If you prefer
-      not to use Google, download the "koreader-android" APK from the KOReader
-      releases page in the device's browser and open it to install; allow
-      "install unknown apps" for the browser when prompted.
+      KOReader is not on the Google Play Store, so ignore look-alike listings
+      there. Either install the F-Droid app store and get KOReader from it, or
+      download the "koreader-android-arm" APK from the KOReader releases page on
+      GitHub in the device's browser and open it to install. You may need to
+      allow "install unknown apps" for the browser or F-Droid when prompted.
   - instruction: Open KOReader and grant file access
     detail: >-
       Launch KOReader. On first run it asks for permission to access storage —

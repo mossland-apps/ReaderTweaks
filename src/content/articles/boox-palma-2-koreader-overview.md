@@ -3,15 +3,14 @@ title: KOReader on the BOOX Palma 2
 device: boox-palma-2
 section: koreader
 type: overview
-summary: KOReader runs on the Palma 2 as a normal Android app — install it from the Play Store or an APK, no jailbreak. Here is why you might and what to set on the small screen.
-lastUpdated: 2026-08-31
+summary: KOReader runs on the Palma 2 as a normal Android app — install it from F-Droid or the official APK, no jailbreak. Here is why you might and what to set on the small screen.
+lastUpdated: 2026-11-23
 order: 0
 software: KOReader
 softwareVersion: "2026.07.1"
 ---
 
-The Palma 2 runs Android, so KOReader is just an app. You install it from the
-Google Play Store or by sideloading the Android APK — no jailbreak, and the
+The Palma 2 runs Android, so KOReader is just an app. You install it from F-Droid or by sideloading the official Android APK (it is not on the Google Play Store) — no jailbreak, and the
 stock BOOX software is untouched.
 
 ## Why put it on a Palma 2

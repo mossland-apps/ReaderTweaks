@@ -2,7 +2,7 @@
 title: "What is KOReader, and should you install it?"
 summary: "KOReader is a free, open-source reading app that runs on almost every e-reader. Here is what it does, what it does not, and who it is for."
 category: koreader
-lastUpdated: 2026-09-02
+lastUpdated: 2026-11-23
 order: 10
 relatedDevices:
   - libra-colour
@@ -32,6 +32,22 @@ instead of — the software your reader shipped with.
 - If the stock reader already does what you need, KOReader is optional, not
   mandatory.
 
+## Common questions
+
+- **Is KOReader free and open source?** Yes. It costs nothing, has no ads or
+  account, and its code is public under the AGPL-3.0 licence.
+- **Is it safe?** The app itself is, if you download it from the official
+  sources: the KOReader releases page on GitHub, or F-Droid for Android. The
+  risk on a Kindle is the jailbreak needed to install it, not KOReader.
+- **Is it worth it?** For people who fiddle with typography, read lots of PDFs or
+  comics, or use several devices, usually yes. For someone happy with the stock
+  reader, it adds complexity for little gain.
+- **Is it on the Google Play Store or the App Store?** No. On Android it comes
+  from F-Droid or GitHub, and there is no iPhone or iPad version.
+- **Can I remove it?** On Kobo and PocketBook, yes, by deleting its folder; the
+  stock software was never replaced. On a Kindle, a firmware update removes it
+  whether you want it to or not.
+
 ## The short version
 
 If you like adjusting how a page looks, or you own more than one reader, KOReader
@@ -40,7 +56,9 @@ software is probably fine.
 
 ## Where to go next
 
-- **Installing it:** the how-to lives on each device's page —
+- **Installing it:** start with
+  [how to install KOReader on any device](/guides/install-koreader-any-device/),
+  then the step-by-step guide on your device's page —
   [Kobo](/devices/kobo/libra-colour/koreader/),
   [Kindle](/guides/koreader-on-kindle-2026/) (harder, needs a jailbreak),
   [PocketBook](/devices/pocketbook/pocketbook-verse/koreader/),

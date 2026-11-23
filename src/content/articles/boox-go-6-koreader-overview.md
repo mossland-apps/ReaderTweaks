@@ -3,15 +3,14 @@ title: KOReader on the BOOX Go 6
 device: boox-go-6
 section: koreader
 type: overview
-summary: KOReader runs on the Go 6 as a normal Android app — install it from the Play Store or an APK, no jailbreak. Here is why you might and what to set.
-lastUpdated: 2026-08-31
+summary: KOReader runs on the Go 6 as a normal Android app — install it from F-Droid or the official APK, no jailbreak. Here is why you might and what to set.
+lastUpdated: 2026-11-23
 order: 0
 software: KOReader
 softwareVersion: "2026.07.1"
 ---
 
-The Go 6 runs Android, so KOReader is just an app. You install it from the Google
-Play Store or by sideloading the Android APK — there is no jailbreak, no launcher
+The Go 6 runs Android, so KOReader is just an app. You install it from F-Droid or by sideloading the official Android APK (it is not on the Google Play Store) — there is no jailbreak, no launcher
 to register, and the stock BOOX software is untouched.
 
 ## Why put it on a BOOX

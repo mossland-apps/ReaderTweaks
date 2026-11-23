@@ -7,6 +7,6 @@ founded: 2015
 ---
 
 BOOX devices run Android, so they can install almost any reading app directly —
-including KOReader from the Play Store or a sideloaded APK. The flip side is more
+including KOReader from F-Droid or its official APK. The flip side is more
 settings to get right for a good e-ink experience: refresh modes, app
 optimisation and battery behaviour.

@@ -10,7 +10,7 @@ summary: >-
 difficulty: Moderate
 estimatedTime: 15 to 30 minutes
 lastTested: 2026-08-25
-lastUpdated: 2026-09-02
+lastUpdated: 2026-11-23
 searchTerms:
   - crash
   - crashes
@@ -58,6 +58,9 @@ decisionTree:
     - label: An error message with text in it
       hint: Note the wording — it points to a specific cause
       href: "#fix-3"
+    - label: It broke after the Kobo took the 6.0 beta
+      hint: Known problems with KOReader on Kobo's new software
+      href: "#fix-4"
 fixes:
   - title: Use the "kobov5" package and put the files at the drive root
     rationale: >-
@@ -124,6 +127,30 @@ fixes:
         If an error message appears, note its exact wording. A message about "no
         such file" points back to Fix 1; one that names a specific ".lua" file
         points to Fix 2.
+  - title: If the Clara BW is on Kobo's 6.0 beta
+    rationale: >-
+      Kobo's optional 6.0 beta is a major change to the device's software.
+      KOReader runs on it, but users have reported problems, including the
+      battery showing 0% and the device never going to sleep. Fixes are being
+      worked on by the KOReader developers.
+    steps:
+      - >-
+        Check the version under Settings, then Device information. If it starts
+        with 6, this section applies.
+      - >-
+        Install the newest KOReader release, using the package with "kobov5" in
+        the name, in case a fix has landed.
+      - >-
+        Do not roll back to the older software to fix KOReader without reading
+        Kobo's warning first: Kobo says rolling back from 6.0 deletes sideloaded
+        books, annotations, highlights and reading stats stored on the device.
+        Back those up before doing anything.
+      - >-
+        Otherwise, use the stock Kobo reader until a KOReader release fixes the
+        problem, and check KOReader's GitHub page for progress.
+    note: >-
+      If your Clara BW is still on 4.x software, you can avoid this entirely by
+      tapping Skip when the beta is offered.
 recovery: >-
   KOReader lives entirely in the ".adds/koreader" folder plus a couple of
   launcher files. To remove it and put the Clara BW back as it was: connect the

@@ -5,8 +5,8 @@ device: boox-note-air-4-c
 section: koreader
 type: guide
 order: 1
-summary: Install KOReader from the Play Store or an APK on the Note Air 4 C, then set its BOOX refresh mode and grant storage access. No jailbreak.
-lastUpdated: 2026-08-31
+summary: Install KOReader from F-Droid or the official APK on the Note Air 4 C, then set its BOOX refresh mode and grant storage access. No jailbreak.
+lastUpdated: 2026-11-23
 datePublished: 2026-08-31
 software: KOReader
 softwareVersion: "2026.07.1"
@@ -14,7 +14,7 @@ difficulty: Easy
 estimatedTime: 10 minutes
 lastTested: 2026-08-29
 whatYouNeed:
-  - BOOX Note Air 4 C with the Play Store enabled, or the KOReader Android APK
+  - BOOX Note Air 4 C and either the F-Droid app or the KOReader Android APK
 prerequisites:
   - text: "KOReader on the BOOX Note Air 4 C — why and what to set"
     href: /devices/boox/boox-note-air-4-c/koreader/
@@ -35,10 +35,11 @@ searchTerms:
 steps:
   - instruction: Install KOReader
     detail: >-
-      Open the Play Store, search for "KOReader", and install it. If you prefer
-      not to use Google, download the "koreader-android" APK from the KOReader
-      releases page in the device's browser and open it to install; allow
-      "install unknown apps" for the browser when prompted.
+      KOReader is not on the Google Play Store, so ignore look-alike listings
+      there. Either install the F-Droid app store and get KOReader from it, or
+      download the "koreader-android-arm" APK from the KOReader releases page on
+      GitHub in the device's browser and open it to install. You may need to
+      allow "install unknown apps" for the browser or F-Droid when prompted.
   - instruction: Open KOReader and grant file access
     detail: >-
       Launch KOReader. On first run it asks for permission to access storage —
@@ -68,8 +69,8 @@ steps:
       does not reach the far edge of a 10.3-inch screen one-handed.
 ---
 
-On the Note Air 4 C, KOReader installs like any Android app — from the Play
-Store or an APK, no jailbreak. The two things that make it look right are
+On the Note Air 4 C, KOReader installs like any Android app — from F-Droid or the
+official APK, no jailbreak. The two things that make it look right are
 granting full file access so it can find your books, and letting KOReader manage
 e-ink refresh itself in black-and-white rather than through BOOX's per-app
 colour system. Keep NeoReader or BOOX Notes for anything involving the pen.

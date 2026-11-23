@@ -40,8 +40,9 @@ specs:
   dimensions: 156 x 137 x 6.4 mm
 ---
 
-The Go Color 7 runs full Android 13 with the Google Play Store. KOReader, the
-Kindle app, the Kobo app, Libby and almost anything else install directly, and
+The Go Color 7 runs full Android 13 with the Google Play Store. The Kindle app, the
+Kobo app, Libby and almost anything else install directly (KOReader from F-Droid
+or its official APK), and
 there is no ecosystem lock-in. It has physical page-turn buttons, a colour
 screen, a microSD slot, and a speaker.
 

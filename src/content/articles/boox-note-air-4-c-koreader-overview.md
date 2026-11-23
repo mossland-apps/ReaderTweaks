@@ -3,15 +3,15 @@ title: KOReader on the BOOX Note Air 4 C
 device: boox-note-air-4-c
 section: koreader
 type: overview
-summary: KOReader runs on the Note Air 4 C as a normal Android app — install it from the Play Store or an APK, no jailbreak. Here is why you might and what to set.
-lastUpdated: 2026-08-31
+summary: KOReader runs on the Note Air 4 C as a normal Android app — install it from F-Droid or the official APK, no jailbreak. Here is why you might and what to set.
+lastUpdated: 2026-11-23
 order: 0
 software: KOReader
 softwareVersion: "2026.07.1"
 ---
 
 The Note Air 4 C runs Android, so KOReader is just an app. You install it from
-the Google Play Store or by sideloading the Android APK — no jailbreak, no
+F-Droid or by sideloading the official Android APK (it is not on the Google Play Store) — no jailbreak, no
 launcher to register, and the stock BOOX software is untouched.
 
 ## Why put it on a Note Air 4 C

@@ -6,7 +6,7 @@ section: guides
 type: guide
 order: 1
 summary: Take a new Libra Colour from the box to a working reader, with a clear explanation of what a Kobo account does and does not require.
-lastUpdated: 2026-08-25
+lastUpdated: 2026-11-23
 datePublished: 2026-08-25
 difficulty: Easy
 estimatedTime: 15 minutes
@@ -50,6 +50,11 @@ steps:
       progress bar, and restarts once. This can take five to ten minutes. Leave
       it plugged in and do not press anything until it returns to the setup
       screens.
+    tip: >-
+      Separately from normal updates, Kobo is offering this model an optional
+      "beta 6.0" software upgrade with Skip and Download buttons. It changes a
+      lot, and community add-ons such as KOReader and NickelMenu are not fully
+      ready for it. Read our guide to updating a Kobo before choosing.
   - instruction: Decide whether to sign in with a Kobo account
     detail: >-
       A Kobo account is only needed to buy or borrow books through the Kobo store
