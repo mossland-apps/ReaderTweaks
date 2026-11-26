@@ -4,7 +4,7 @@ device: remarkable-2
 section: calibre
 type: overview
 summary: There is no official Calibre driver for the reMarkable. Here is what Calibre is still useful for, and how documents actually get onto the reMarkable 2.
-lastUpdated: 2026-09-01
+lastUpdated: 2026-11-25
 order: 0
 software: Calibre
 softwareVersion: "7.21"
@@ -34,7 +34,7 @@ drive mode, and Calibre has no built-in driver for it.
   index) can add a "send to reMarkable" action that uploads through your account
   or the local USB connection. It is unofficial but well maintained for the
   reMarkable 2.
-- Over **SSH**, if you have enabled developer mode, using "scp" to copy files
+- Over **SSH**, which the reMarkable 2 has built in, using "scp" to copy files
   into the device's document folder.
 
 ## Start here

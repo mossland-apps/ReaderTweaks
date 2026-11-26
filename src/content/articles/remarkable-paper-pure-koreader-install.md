@@ -5,96 +5,126 @@ device: remarkable-paper-pure
 section: koreader
 type: guide
 order: 1
-summary: Enable developer mode, connect over SSH, and install KOReader through the community package manager — with a warning that support for reMarkable's newer platform is still catching up.
-lastUpdated: 2026-09-01
+summary: Turn on developer mode (which erases the tablet), then install KOReader with reManager, the free desktop mod manager KOReader's developers now recommend. Plus what happens after a restart or a reMarkable update.
+lastUpdated: 2026-11-25
 datePublished: 2026-09-01
 software: KOReader
 softwareVersion: "2026.07.1"
 difficulty: Advanced
-estimatedTime: 60 minutes
-lastTested: 2026-08-27
+estimatedTime: 45 minutes
 whatYouNeed:
   - reMarkable Paper Pure
-  - A computer comfortable with a command line and SSH
-  - The USB-C cable
-  - The device's SSH password (shown in Settings after enabling developer mode)
+  - A Windows, Mac or Linux computer for the reManager app
+  - The USB-C cable, or the tablet and computer on the same Wi-Fi
+  - The tablet's SSH password (shown in its Settings)
 prerequisites:
-  - text: "KOReader on the reMarkable Paper Pure — what developer mode involves and the risks"
+  - text: "KOReader on the reMarkable Paper Pure — what it involves and the risks"
     href: /devices/remarkable/remarkable-paper-pure/koreader/
-  - text: "Check current support and steps for reMarkable's newer platform (Toltec documentation)"
-    href: https://toltec-dev.org/
+  - text: "KOReader's official reMarkable install instructions (KOReader wiki)"
+    href: https://github.com/koreader/koreader/wiki/Installation-on-ReMarkable
 related:
-  - text: "What is KOReader, and should you install it?"
-    href: /guides/what-is-koreader/
+  - text: "How to install KOReader on any device"
+    href: /guides/install-koreader-any-device/
   - text: "The reMarkable Paper Pure won't turn on or is frozen"
     href: /devices/remarkable/remarkable-paper-pure/troubleshooting/wont-turn-on/
 searchTerms:
   - koreader remarkable
-  - toltec
-  - developer mode
+  - remanager
+  - vellum
+  - xovi
+  - appload
+  - tripletap
   - ssh remarkable
-  - opkg
-  - remux
-  - custom software
-  - paper pure platform
+  - developer mode
+  - toltec
 steps:
-  - instruction: Check that your firmware is supported before you start
+  - instruction: Check your reMarkable software version
     detail: >-
-      The reMarkable 2's community tooling is mature; the newer platform the
-      Paper Pure shares with the Paper Pro is still being worked on. On the
-      Toltec project site, confirm KOReader is packaged for the Paper Pure's
-      current firmware. If it is not, wait — installing on an unsupported version
-      is how devices get bricked.
-  - instruction: Back up your notebooks first
-    detail: >-
-      Make sure everything on the device has synced to your reMarkable account,
-      and export any notebook you cannot lose as a PDF. Enabling developer mode
-      wipes the device.
-  - instruction: Enable developer mode
-    detail: >-
-      In Settings, then "General", then "Software", turn on developer mode. This
-      wipes the device as part of enabling it. After it re-provisions, developer
-      mode gives you SSH access.
+      reManager's guide says that if your tablet runs software older than
+      3.11.2.5 you should update to 3.11.2.5 first, and it does not support
+      reMarkable beta releases. The launcher KOReader uses on current software
+      needs 3.20 or later. Check the version in Settings before you start.
     warning: >-
-      Enabling developer mode erases the device. Do not do this step until your
-      content is safely synced and any important notebook is exported.
-  - instruction: Find the SSH details and connect
+      Older guides, including an earlier version of this one, tell you to use
+      Toltec. Toltec only supports reMarkable software up to 3.3 and does not support the Paper Pro family.
+      Installing it on a newer version can leave the tablet stuck at start-up.
+      KOReader's developers describe the Toltec route as outdated.
+  - instruction: Back up everything, then turn on developer mode
     detail: >-
-      In Settings, on the licenses / GPL compliance screen, the device shows its
-      IP address over USB and an SSH password. Connect the USB cable, then from
-      your computer run "ssh root@10.11.99.1" and enter that password.
-  - instruction: Install the community package manager
+      On the Paper Pure, SSH access (which reManager needs) only works with
+      developer mode on. Go to Settings, then General, then Paper Tablet, then
+      Software, then Advanced, and turn on Developer Mode.
+    warning: >-
+      reMarkable says turning on developer mode performs a factory reset, so
+      everything on the device is erased. Sync to your reMarkable account and
+      export any notebook you cannot lose first. Afterwards the tablet shows a
+      warning on every start-up that cannot be removed, and turning developer
+      mode off later needs reMarkable's recovery application.
+  - instruction: Find the SSH password
     detail: >-
-      Follow the current install command on the Toltec website for the newer
-      reMarkable platform. It sets up the "opkg" package manager and the
-      repository. Confirm it reports success; if the script refuses because the
-      firmware is unsupported, stop here.
+      After the device has reset and you have set it up again, go to Settings,
+      then General, then Help, then About, then Copyrights and licenses. It shows
+      the username (root), the password and the IP address. Over a USB cable the
+      address is 10.11.99.1.
+  - instruction: Install reManager on your computer
+    detail: >-
+      reManager is a free, open-source mod manager for every reMarkable model,
+      and it is the method KOReader's own instructions recommend. Get it from
+      the Mac App Store, the Microsoft Store or Flathub on Linux, or download it
+      from its GitHub page (rmitchellscott/reManager).
+  - instruction: Connect reManager to the tablet
+    detail: >-
+      Connect the USB cable (or use Wi-Fi). In reManager, enter the IP address
+      and the SSH password from the previous step. The first time it connects,
+      reManager offers to set up Vellum, the package system it uses to install
+      mods. Accept.
+  - instruction: Turn off automatic reMarkable updates
+    detail: >-
+      reManager's guide recommends switching off automatic updates while you
+      use mods, so a reMarkable update does not break them unexpectedly.
+      reManager has a switch for this.
   - instruction: Install KOReader
     detail: >-
-      Run "opkg install koreader". This pulls KOReader and a launcher that lets
-      you switch between the reMarkable software and KOReader.
-  - instruction: Launch KOReader and point it at your files
+      In reManager, open the Mods tab, find KOReader under Discover, press the
+      plus button (or Add), then press Apply on the Changes bar. reManager
+      installs KOReader and the pieces it needs.
+  - instruction: Start mods and open KOReader
     detail: >-
-      From the launcher on the device, start KOReader. Use its file browser to
-      find your documents — synced reMarkable files live under a data folder, and
-      you can copy an ebook folder over SSH with "scp". Set a home directory.
-  - instruction: Plan for firmware updates
+      Mods do not start on their own. Start them from reManager's System tab,
+      or install the "tripletap" mod so a triple-press of the power button
+      starts them. Then open KOReader from the AppLoad button in the sidebar of
+      the reMarkable's main screen.
+    tip: >-
+      Put your ebooks in a folder KOReader can see, and set it as KOReader's home
+      folder so it opens there.
+  - instruction: After every restart
     detail: >-
-      A reMarkable firmware update can disable developer mode or remove the
-      community changes. Before updating, check whether the new firmware is
-      supported; after updating, expect to re-run the install. Many users turn
-      off automatic updates while running this setup.
+      A restart returns the tablet to the plain reMarkable software. Your
+      KOReader install is still there; triple-press the power button (with
+      tripletap) or start mods from reManager again. Do not try to make the mod
+      framework start automatically at boot — its developer warns that this can
+      leave the tablet in a restart loop.
+  - instruction: After a reMarkable software update
+    detail: >-
+      Open reManager. Its status screen walks you through recovery in numbered
+      steps, including checking which mods are compatible with the new version.
+      Follow them before using KOReader again.
   - instruction: To remove it
     detail: >-
-      Run "opkg remove koreader", then the uninstall script, or simply turn
-      developer mode back off in Settings, which wipes the device and returns it
-      to stock.
+      In reManager, open Installed and press the bin icon next to KOReader.
+      To remove everything, use System, then Advanced, then Uninstall, which
+      removes Vellum and, by default, your installed mods. Turning developer mode off is done with reMarkable's recovery application.
 ---
 
-KOReader makes the Paper Pure a good ebook reader, but the install is genuinely
-advanced and, on reMarkable's newer platform, still maturing. Developer mode
-wipes the device, then you work over SSH to set up the package manager and
-install KOReader. Because the exact steps and supported firmware change often
-here, treat the Toltec project's own documentation as authoritative and do not
-proceed if your firmware is not listed as supported. If you specifically want a
-rock-solid KOReader setup today, a used reMarkable 2 is the better base.
+On the Paper Pure, KOReader is the difference between a weak ebook reader and a
+good one. The current way to install it is **reManager**, a free desktop app
+that KOReader's developers recommend. The big cost on this model is developer mode: turning it on erases the tablet and adds a permanent start-up warning, so back up first.
+
+Two things are different from older guides. Toltec, the tool most guides used
+to recommend, does not work on current reMarkable software. And mods no longer
+start by themselves after a restart: you start them with a triple-press of the
+power button or from reManager.
+
+The tools change often. If a step here no longer matches what you see, follow
+[KOReader's reMarkable instructions](https://github.com/koreader/koreader/wiki/Installation-on-ReMarkable),
+which also cover a manual install for people comfortable with the command line.

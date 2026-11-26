@@ -9,7 +9,7 @@ summary: >-
 difficulty: Easy
 estimatedTime: 45 minutes
 lastTested: 2026-08-30
-lastUpdated: 2026-09-01
+lastUpdated: 2026-11-25
 searchTerms:
   - won't turn on
   - dead
@@ -101,10 +101,16 @@ fixes:
         symptoms and your serial number. The reMarkable 2 still receives support
         even though it is no longer sold new.
       - >-
-        If you enabled developer mode or installed community software, the
-        supported path back is to re-provision the device — reMarkable's recovery
-        process or turning developer mode off, both of which wipe it. Notebooks
-        that had synced to your account come back afterwards.
+        If you run mods through current tools such as reManager, a forced
+        restart alone returns the tablet to the plain reMarkable software, because
+        those mods only run when you start them. Try that first.
+      - >-
+        If you installed Toltec, do not factory reset first: the Toltec project
+        warns against it and says to run its uninstall command before any reset.
+      - >-
+        Otherwise the usual path back is a factory reset or reMarkable support's
+        recovery help, which wipes the device. Notebooks that had synced to your
+        account come back afterwards.
       - >-
         The reMarkable 2 has mature community recovery guides for a bricked
         device; follow one matched to your exact firmware, and only if you are

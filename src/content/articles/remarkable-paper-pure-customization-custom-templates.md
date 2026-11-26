@@ -6,7 +6,7 @@ section: customization
 type: guide
 order: 1
 summary: How to use the built-in template set, and how to add your own template images through developer mode and SSH.
-lastUpdated: 2026-09-01
+lastUpdated: 2026-11-25
 datePublished: 2026-09-01
 software: Codex firmware
 difficulty: Advanced
@@ -48,9 +48,20 @@ steps:
       the device synced so your notebooks are safe.
   - instruction: Enable developer mode and connect over SSH
     detail: >-
-      Turn on developer mode in Settings (this wipes the device, so sync and
-      export first), then connect the USB cable and run "ssh root@10.11.99.1"
-      with the password shown on the device's licenses screen.
+      Turn on developer mode: Settings, then General, then Paper Tablet, then
+      Software, then Advanced, then Developer Mode. reMarkable says this
+      performs a factory reset, so sync and export first, and it adds a
+      permanent start-up warning. Then connect the USB cable and run
+      "ssh root@10.11.99.1" with the password shown under Settings, General,
+      Help, About, Copyrights and licenses.
+  - instruction: Expect the system folder to resist changes
+    detail: >-
+      On the Paper Pro family the system partition is read-only, and changes
+      made there do not survive reMarkable updates, so copying files straight
+      into the templates folder may fail or be undone. Community mod managers
+      such as reManager handle this for you where a template mod exists for
+      your software version; check its catalogue before editing system files by
+      hand.
   - instruction: Copy your template image to the device
     detail: >-
       Prepare a PNG at the screen resolution with light-grey lines on white. From

@@ -4,7 +4,7 @@ device: remarkable-paper-pure
 section: comparisons
 type: overview
 summary: Where the Paper Pure sits against the reMarkable 2 it replaced, the Kindle Scribe and the reMarkable Paper Pro, and which one to pick.
-lastUpdated: 2026-09-01
+lastUpdated: 2026-11-25
 order: 0
 compareWith:
   - remarkable-2
@@ -20,10 +20,9 @@ cloud features need a subscription.
 - **reMarkable 2.** The device the Paper Pure replaces. The reading and writing
   experience is very close; the Paper Pure adds a faster processor, more storage,
   a bigger replaceable battery, and repairability, while the reMarkable 2 has a
-  far more mature community-modification scene (KOReader through Toltec is rock
-  solid on it). Choose the Paper Pure new; choose a used or refurbished
-  reMarkable 2 to save money or if you specifically want the settled KOReader
-  setup.
+  longer-established community-modification scene, and it runs KOReader and
+  other mods without developer mode, which erases the Paper Pure. Choose the Paper Pure new; choose a used or refurbished
+  reMarkable 2 to save money or if you want mods without developer mode.
 - **Kindle Scribe.** Also a 10-inch writing tablet, but a full Kindle too, so it
   reads Amazon books well and has a front light. Its notebooks live inside
   Amazon's system with email-only export. Choose the Scribe if you want one

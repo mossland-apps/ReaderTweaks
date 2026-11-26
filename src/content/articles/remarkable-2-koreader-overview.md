@@ -3,40 +3,43 @@ title: KOReader on the reMarkable 2
 device: remarkable-2
 section: koreader
 type: overview
-summary: The reMarkable 2 has the most mature KOReader setup of any e-ink device — developer mode plus the Toltec package manager, no jailbreak exploit. It turns a poor ebook reader into a good one.
-lastUpdated: 2026-09-01
+summary: KOReader can run on the reMarkable 2, installed with the free reManager mod manager. No developer mode is needed. It turns a weak ebook reader into a good one, but it is advanced.
+lastUpdated: 2026-11-25
 order: 0
 software: KOReader
 softwareVersion: "2026.07.1"
 ---
 
-The reMarkable 2's stock EPUB reading is weak, and KOReader is the standard fix.
-Unlike a Kindle, no jailbreak exploit is needed — reMarkable includes a
-developer mode that gives you SSH access, and the community package manager
-**Toltec** installs KOReader over that connection. Because the reMarkable 2 has
-been out for years and its platform is stable, this is the most trodden,
-best-documented KOReader install of any device on this site.
+The reMarkable 2's stock EPUB reading is weak, and KOReader is the usual fix. No
+jailbreak exploit is needed. The reMarkable 2 has SSH access built in, and
+community tools use that access to install KOReader. KOReader's developers now
+recommend **reManager**, a free desktop app that installs mods for you.
 
 ## Why do it
 
 - **A real ebook reader.** Proper font, margin and layout control, library
   management, and formats beyond PDF and EPUB — CBZ, FB2, DjVu and more.
 - **Better PDF reflow** than the stock reader for small-text documents.
-- **It runs alongside the stock software.** A launcher lets you switch between
-  KOReader and the reMarkable writing side; nothing is replaced.
-- **Big, stable community.** Guides, launchers and helper tools are mature, and
-  problems are well covered in forums.
+- **It runs alongside the stock software.** You open KOReader from the AppLoad
+  button in the sidebar; the reMarkable writing side is untouched.
 
 ## Why you might not
 
-- **It is still advanced.** You enable developer mode (which wipes the device),
-  connect over SSH, and run command-line steps. A wrong move can require a reset.
-- **Firmware updates can break it.** A reMarkable update may disable developer
-  mode or remove Toltec's changes; you re-run the install. Many people hold back
-  updates while running it.
+- **It is unofficial software.** Nothing is erased to install it, but a mistake
+  with community tools can need a reset to recover from.
+- **Mods do not start by themselves.** After every restart the tablet is back to
+  stock until you start mods again, with a triple-press of the power button or
+  from reManager.
+- **reMarkable updates can break it.** reManager recommends turning off automatic
+  updates while you use mods, and walks you through recovery after an update.
 - **No pen support.** KOReader is a reading app — no handwriting, no notebooks.
-- **Warranty and support.** reMarkable will not support a device with community
-  software on it.
+
+## A note on older guides
+
+Many guides, including an earlier version of ours, recommend **Toltec**. Toltec
+only supports reMarkable software up to version 3.3, and installing
+it on a newer version can leave the tablet stuck at start-up. Use reManager
+instead.
 
 ## Start here
 

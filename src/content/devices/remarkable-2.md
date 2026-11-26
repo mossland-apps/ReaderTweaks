@@ -39,9 +39,9 @@ stopped selling it new in 2026 when the Paper Pure took its place, but it is
 still sold refurbished, still gets software updates, and is in use by the
 millions — so it remains worth covering in full.
 
-Its other strength is the community. Because developer mode has been available
-and stable for years, the reMarkable 2 has the most mature ecosystem of
-third-party tools of any e-ink device: KOReader through Toltec, custom
+Its other strength is the community. Because SSH access has been built in for
+years, with no developer mode needed, the reMarkable 2 has one of the most
+mature ecosystems of third-party tools of any e-ink device: KOReader, custom
 templates, screen-sharing, alternative launchers and sync clients. As an ebook
 reader the stock software is weak, but KOReader turns it into a good one. These
 pages cover setup, getting documents on, the note-taking, customization and

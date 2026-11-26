@@ -102,14 +102,24 @@ afterwards. See [our BOOX pages](/devices/boox/).
 
 ## reMarkable
 
-Possible, but it means modifying the tablet's software. KOReader's wiki currently
-recommends a tool called **reManager** for the reMarkable 1 and 2. It describes
-the older **Toltec** package as outdated. The reMarkable Paper Pro, Paper Pro Move
-and Paper Pure use a separate 64-bit build installed with community tools. These
-methods change often, so follow KOReader's reMarkable wiki page for the current
-steps.
+Possible on every current model, but it means adding unofficial software.
+KOReader's wiki recommends **reManager**, a free desktop app that installs mods
+for you over SSH.
 
-Device guides: [our reMarkable pages](/devices/remarkable/).
+- **reMarkable 2:** SSH is built in, so no developer mode is needed and nothing
+  is erased.
+- **Paper Pro, Paper Pro Move and Paper Pure:** you must turn on developer mode
+  first. reMarkable says that performs a factory reset, and it adds a permanent
+  start-up warning.
+- **Avoid Toltec**, the tool older guides recommend. It only supports reMarkable
+  software up to 3.3, and KOReader's developers call that route outdated.
+- **Mods do not start by themselves** after a restart. You start them again with
+  a triple-press of the power button or from reManager.
+
+Step-by-step guides: [reMarkable 2](/devices/remarkable/remarkable-2/koreader/install/),
+[Paper Pro](/devices/remarkable/remarkable-paper-pro/koreader/install/),
+[Paper Pro Move](/devices/remarkable/remarkable-paper-pro-move/koreader/install/) and
+[Paper Pure](/devices/remarkable/remarkable-paper-pure/koreader/install/).
 
 ## Computers
 

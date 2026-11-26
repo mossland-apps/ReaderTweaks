@@ -9,7 +9,7 @@ summary: >-
 difficulty: Easy
 estimatedTime: 45 minutes
 lastTested: 2026-08-30
-lastUpdated: 2026-09-01
+lastUpdated: 2026-11-25
 searchTerms:
   - won't turn on
   - dead
@@ -100,11 +100,16 @@ fixes:
         symptoms and your serial number. A genuine boot failure on an unmodified
         device is a warranty matter.
       - >-
-        If you enabled developer mode or installed community software, the
-        supported path back is to re-provision the device — reMarkable's recovery
-        process or turning developer mode off, both of which wipe it. Your
-        notebooks are recoverable from your reMarkable account afterwards, if they
-        had synced.
+        If you run mods through current tools such as reManager, a forced
+        restart alone returns the tablet to the plain reMarkable software, because
+        those mods only run when you start them. Try that first.
+      - >-
+        If you enabled developer mode or installed community software and it
+        still will not start, the supported path back is reMarkable's recovery
+        mode and recovery application. reMarkable's developer documentation says
+        to hold the power button for 25 to 30 seconds to enter recovery mode. The
+        recovery application is also how developer mode is turned off. Expect to
+        lose anything that had not synced.
       - >-
         The reMarkable community maintains recovery guides; follow one matched to
         the Paper Pure and your exact firmware, and only if you are comfortable
